@@ -1,0 +1,13 @@
+header {
+    border: 1px solid;
+    padding: 30px;
+    text-align: center;
+
+    a {
+        display: inline-block;
+    
+        & + a {
+        margin-left: 20px;
+        }
+    }
+}
