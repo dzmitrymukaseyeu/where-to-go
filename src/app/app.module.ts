@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UserRoutingModule } from './modules/user/user-routing.module';
 import { HomeComponent } from './components/home/home.component';
+import { RegistrationRoutingModule } from './modules/registration/registration-routing.module';
+import { EventRoutingModule } from './modules/event/event-routing.module'
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { HomeComponent } from './components/home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UserRoutingModule
+    UserRoutingModule,
+    RegistrationRoutingModule,
+    EventRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
