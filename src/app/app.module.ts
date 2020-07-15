@@ -8,7 +8,9 @@ import { HomeComponent } from './components/home/home.component';
 import { AuthRoutingModule } from './modules/auth/auth-routing.module';
 import { EventRoutingModule } from './modules/event/event-routing.module';
 import { AboutComponent } from './components/about/about.component';
-import { FaqComponent } from './components/faq/faq.component'
+import { FaqComponent } from './components/faq/faq.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatButtonModule } from '@angular/material/button'
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { FaqComponent } from './components/faq/faq.component'
     AppRoutingModule,
     UserRoutingModule,
     AuthRoutingModule,
-    EventRoutingModule
+    EventRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

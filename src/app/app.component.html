@@ -1,9 +1,30 @@
-<header>
-    <a routerLink="">Главная</a>
-    <a routerLink="faq">FAQ</a>    
-    <a routerLink="about">О проекте</a>
-    <a routerLink="event">Создать событие</a>    
-    <a routerLink="auth">Зарегистрироваться / Войти</a>
-    <a routerLink="user">Пользователь</a>
-</header>
+<div class="conteiner">
+    <header class="header">
+        <div class="header-logo">
+            <img src="/assets/logo_site.png" alt="site-logo" class="header-logo__img">
+        </div>
+        <div class="header-info">
+            <div class="b-nav">
+                <ul class="l-nav">
+                    <li class="l-nav__link">
+                        <a routerLink="">Главная</a>
+                    </li>
+                    <li class="l-nav__link">
+                        <a routerLink="faq">FAQ</a>    
+                    </li>       
+                    <li class="l-nav__link">
+                        <a routerLink="about">О проекте</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="b-event">
+                <a mat-stroked-button routerLink="event">Создать событие</a>    
+            </div>
+            <div class="b-auth">
+                <a routerLink="auth" *ngIf="isLoggedIn">Зарегистрироваться / Войти</a>
+                <a routerLink="user" *ngIf="!isLoggedIn">Пользователь</a>
+            </div>
+        </div>
+    </header>
+</div>
 <router-outlet></router-outlet>
