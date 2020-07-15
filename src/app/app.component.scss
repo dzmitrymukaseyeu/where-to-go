@@ -1,13 +1,37 @@
-header {
-    border: 1px solid;
-    padding: 30px;
-    text-align: center;
 
-    a {
-        display: inline-block;
-    
-        & + a {
-        margin-left: 20px;
+
+.header {
+    border: 1px solid;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-logo {
+        flex-basis: 150px;
+        height: auto;
+
+        &__img {
+            max-width: 100%;
         }
     }
+
+    &-info {
+        display: flex;
+        flex-basis: 800px;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
+
+.l-nav {
+    &__link:nth-child(n+2){
+        margin-left: 60px;
+    }
+}
+
+.b-event {
+
+}
+
