@@ -1,0 +1,21 @@
+.container{
+
+    padding: 35px;
+
+    h1{
+        margin-bottom: 45px;
+    }
+
+    
+    &_p:nth-child(n+3){
+        border-top: 1px solid rgba($color: #494949, $alpha: 0.5);
+        margin-top: 35px;
+        padding-top: 35px;
+    }
+
+
+    &_p{
+        padding-left: 20px;
+        font-size: 35px;
+    }
+}
