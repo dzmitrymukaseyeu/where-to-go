@@ -1,9 +1,33 @@
 .b-me{
 
     padding: 35px;
+    padding-bottom: 40px;
 
     &__title{
-        margin-bottom: 45px;
+        text-align: center;
+        margin-bottom: 65px;
+        position: relative;
+    }
+
+    &__title::after{
+        content: "";
+        width: 100px;
+        border-radius: 5px;
+        position: absolute;
+        border-bottom: 4px solid #69f0ae;
+        left: 77%;
+        top: 50%;
+        transform: translate(-50%);
+    }
+    &__title::before{
+        content: "";
+        width: 100px;
+        border-bottom: 5px;
+        position: absolute;
+        border-bottom: 4px solid #69f0ae;
+        left: 23%;
+        top: 46%;
+        transform: translate(-50%);
     }
 
     

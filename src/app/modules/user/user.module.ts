@@ -6,6 +6,7 @@ import { MeComponent } from './components/me/me.component';
 import { EventsComponent } from './components/events/events.component';
 import { UserContainerComponent } from './containers/user-container/user-container.component';
 import { CreatedEventsComponent } from './components/created-events/created-events.component';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { CreatedEventsComponent } from './components/created-events/created-even
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    MatButtonModule
   ]
 })
 export class UserModule { }
