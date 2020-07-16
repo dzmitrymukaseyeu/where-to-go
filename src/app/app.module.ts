@@ -10,7 +10,7 @@ import { EventRoutingModule } from './modules/event/event-routing.module';
 import { AboutComponent } from './components/about/about.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import { MatButtonModule } from '@angular/material/button'
+
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { MatButtonModule } from '@angular/material/button'
     AuthRoutingModule,
     EventRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

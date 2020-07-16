@@ -1,0 +1,21 @@
+.b-me{
+
+    padding: 35px;
+
+    &__title{
+        margin-bottom: 45px;
+    }
+
+    
+    &__item:nth-child(n+3){
+        border-top: 1px solid rgba($color: #494949, $alpha: 0.5);
+        margin-top: 35px;
+        padding-top: 35px;
+    }
+
+
+    &__item{
+        padding-left: 20px;
+        font-size: 25px;
+    }
+}

@@ -2,6 +2,7 @@
 .b-user {
     display: flex;
     flex-wrap: wrap;
+    
 
     &__aside {
         padding: 20px;
@@ -15,15 +16,20 @@
         border: 1px solid;
     }
 
+    a:hover{
+        color: #69f0ae;
+        transition: 0.1s linear
+    }
+
+    ul{
+        text-align: center;
+    }
+
     li {
         display: block;
     }
 
-    a {
-        text-decoration: underline;
-    }
-
     li + li {
-        margin-top: 15px;
+        margin-top: 35px;
     }
 }
