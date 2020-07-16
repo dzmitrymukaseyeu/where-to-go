@@ -1,21 +1,21 @@
-.cont{
+.b-me{
 
     padding: 35px;
 
-    h1{
+    &__title{
         margin-bottom: 45px;
     }
 
     
-    &_p:nth-child(n+3){
+    &__item:nth-child(n+3){
         border-top: 1px solid rgba($color: #494949, $alpha: 0.5);
         margin-top: 35px;
         padding-top: 35px;
     }
 
 
-    &_p{
+    &__item{
         padding-left: 20px;
-        font-size: 35px;
+        font-size: 25px;
     }
 }
