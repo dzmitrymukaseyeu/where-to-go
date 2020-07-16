@@ -17,8 +17,10 @@
     }
 
     a:hover{
-        color: #69f0ae;
-        transition: 0.1s linear
+        transform: scale(1.2, 1.2);
+    }
+    a{
+        transition: all 0.3s ease-in-out;
     }
 
     ul{
