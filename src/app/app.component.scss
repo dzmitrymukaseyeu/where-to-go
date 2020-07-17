@@ -1,3 +1,5 @@
+@import 'abstracts/variables.scss';
+
 * {
     font-weight: 600;
     letter-spacing: 1px;
@@ -22,38 +24,79 @@
 
     &-info {
         display: flex;
-        flex-basis: 800px;
+        flex-basis: 900px;
         align-items: center;
         justify-content: space-between;
-        color: #38384f;
+        color: $mainTextColor;
+
     }
 }
 
 .l-nav {
+
+    &__link a {
+        position: relative;
+        padding-bottom: 5px;
+
+        &::after {
+            position: absolute;
+            content: '';
+            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background-color: $mainColor;
+            transition: width .2s ease-out;
+        
+        }
+
+        &:hover::after {
+            width: 100%;
+        }
+    }
+
 
     &__link:nth-child(n+2){
         margin-left: 60px;
     }
 }
 
-.b-event {
 
-    border-radius: 3px;
-}
 
 .b-auth {
-    border: 2px solid rgba(0,0,10,0.08);
-    border-radius: 3px;
-    padding: 8px;
-    transition: 0.5s ease-out;
 
-
-    &:hover {
+    &__login {
+        border: 2px solid rgba(0,0,10,0.08);
+        border-radius: 3px;
         transition: 0.5s ease-out;
-        background-color: #69f0ae ;
-        border-color:#69f0ae;
-        color: #ffffff;
+        padding: 8px;
+
+        &:hover {
+            transition: 0.5s ease-out;
+            background-color: #69f0ae ;
+            border-color:#69f0ae;
+            color: #ffffff;
+        }
     }
+
+    &__user {
+        display: flex;
+        align-items: center;
+
+
+        &:hover {
+            transition: 0.5s ease-out;
+            background-color: #69f0ae ;
+            border-color:#69f0ae;
+            color: black;
+        }
+
+        & span {
+            margin-left: 5px;
+        }
+    
+    }
+
 }
 
 
