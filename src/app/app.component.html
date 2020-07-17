@@ -19,11 +19,31 @@
                     </ul>
                 </div>
                 <div class="b-event">
-                    <a mat-raised-button color="warn" routerLink="event">Создать событие</a>    
+                    <button 
+                    type="button"
+                    mat-raised-button color="primary" 
+                    routerLink="event"
+                    >
+                    Создать событие
+                    </button>    
                 </div>
                 <div class="b-auth">
-                    <a routerLink="auth" *ngIf="isLoggedIn">Зарегистрироваться / Войти</a>
-                    <a routerLink="user" *ngIf="!isLoggedIn">Пользователь</a>
+                    <button
+                    type="button"
+                    routerLink="auth" 
+                    *ngIf="isLoggedIn"
+                    class="b-auth__login"
+                    >
+                    Зарегистрироваться / Войти
+                    </button>
+                    <a 
+                    routerLink="auth" 
+                    *ngIf="!isLoggedIn"
+                    class="b-auth__user"
+                    >
+                        <img src="/assets/iconmonstr-user-20.svg" alt="user-logo">
+                        <span>Пользователь</span>
+                    </a>
                 </div>
             </div>
         </div>
