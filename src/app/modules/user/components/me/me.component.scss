@@ -3,36 +3,9 @@
     padding: 35px;
     padding-bottom: 40px;
 
-    &__title{
-        text-align: center;
-        margin-bottom: 65px;
-        position: relative;
-    }
-
-    &__title::after{
-        content: "";
-        width: 100px;
-        border-radius: 5px;
-        position: absolute;
-        border-bottom: 4px solid #69f0ae;
-        left: 77%;
-        top: 50%;
-        transform: translate(-50%);
-    }
-    &__title::before{
-        content: "";
-        width: 100px;
-        border-bottom: 5px;
-        position: absolute;
-        border-bottom: 4px solid #69f0ae;
-        left: 23%;
-        top: 46%;
-        transform: translate(-50%);
-    }
-
     
-    &__item:nth-child(n+3){
-        border-top: 1px solid rgba($color: #494949, $alpha: 0.5);
+    &__item:nth-child(n+2){
+        border-top: 1px solid rgba($color: #e2e2e2, $alpha: .5);
         margin-top: 35px;
         padding-top: 35px;
     }
