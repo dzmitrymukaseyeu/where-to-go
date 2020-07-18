@@ -30,14 +30,14 @@
                 <button
                 type="button"
                 routerLink="auth" 
-                *ngIf= isLoggedIn
+                *ngIf= "!isLoggedIn"
                 class="b-auth__login"
                 >
                 Зарегистрироваться / Войти
                 </button>
                 <a 
                 routerLink="user" 
-                *ngIf="!isLoggedIn"
+                *ngIf="isLoggedIn"
                 class="b-auth__user"
                 >
                     <img src="/assets/iconmonstr-user-20.svg" alt="user-logo">
