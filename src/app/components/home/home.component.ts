@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EventsAll } from '@app/shared/mocks';
+import { EventsAllDefinition } from '@app/shared/interfaces';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +12,7 @@ export class HomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
 
+    (EventsAll: EventsAllDefinition) => console.log(EventsAll)
+  }
 }
