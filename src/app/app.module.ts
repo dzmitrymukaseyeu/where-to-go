@@ -9,7 +9,8 @@ import { AuthRoutingModule } from './modules/auth/auth-routing.module';
 import { EventRoutingModule } from './modules/event/event-routing.module';
 import { AboutComponent } from './components/about/about.component';
 import { FaqComponent } from './components/faq/faq.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeaderComponent } from './components/header/header.component'
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     AppComponent,
     HomeComponent,
     AboutComponent,
-    FaqComponent
+    FaqComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
