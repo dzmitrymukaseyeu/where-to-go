@@ -8,11 +8,14 @@ import { EventsAllDefinition } from '@app/shared/interfaces';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  
+  EventsAll : EventsAllDefinition[]  = EventsAll;
 
   constructor() { }
 
   ngOnInit(): void {
 
-    (EventsAll: EventsAllDefinition) => console.log(EventsAll)
+    console.log(EventsAll);
+
   }
 }
