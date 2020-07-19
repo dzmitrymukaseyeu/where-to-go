@@ -29,75 +29,12 @@
     </div>
     <div class="b-events">
         <ul class="l-events">
-            <li class="l-events__item">
+            <li *ngFor="let event of EventsAll" class="l-events__item">
                 <div class="l-events__item-info">
-                    <div class="l-events__item-info-type">Тип события</div>
-                    <div class="l-events__item-info-date">Дата</div>
-                    <div class="l-events__item-info-time">Время</div>
-                    <p class="l-events__item-info-text">Текст описания события события</p>
-                    <button class="l-events__item-info-btn">Подписаться</button>
-                </div>
-            </li>
-            <li class="l-events__item">
-                <div class="l-events__item-info">
-                    <div class="l-events__item-info-type">Тип события</div>
-                    <div class="l-events__item-info-date">Дата</div>
-                    <div class="l-events__item-info-time">Время</div>
-                    <p class="l-events__item-info-text">Текст описания события события</p>
-                    <button class="l-events__item-info-btn">Подписаться</button>
-                </div>
-            </li>
-            <li class="l-events__item">
-                <div class="l-events__item-info">
-                    <div class="l-events__item-info-type">Тип события</div>
-                    <div class="l-events__item-info-date">Дата</div>
-                    <div class="l-events__item-info-time">Время</div>
-                    <p class="l-events__item-info-text">Текст описания события события</p>
-                    <button class="l-events__item-info-btn">Подписаться</button>
-                </div>
-            </li>
-            <li class="l-events__item">
-                <div class="l-events__item-info">
-                    <div class="l-events__item-info-type">Тип события</div>
-                    <div class="l-events__item-info-date">Дата</div>
-                    <div class="l-events__item-info-time">Время</div>
-                    <p class="l-events__item-info-text">Текст описания события события</p>
-                    <button class="l-events__item-info-btn">Подписаться</button>
-                </div>
-            </li>
-            <li class="l-events__item">
-                <div class="l-events__item-info">
-                    <div class="l-events__item-info-type">Тип события</div>
-                    <div class="l-events__item-info-date">Дата</div>
-                    <div class="l-events__item-info-time">Время</div>
-                    <p class="l-events__item-info-text">Текст описания события события</p>
-                    <button class="l-events__item-info-btn">Подписаться</button>
-                </div>
-            </li>
-            <li class="l-events__item">
-                <div class="l-events__item-info">
-                    <div class="l-events__item-info-type">Тип события</div>
-                    <div class="l-events__item-info-date">Дата</div>
-                    <div class="l-events__item-info-time">Время</div>
-                    <p class="l-events__item-info-text">Текст описания события события</p>
-                    <button class="l-events__item-info-btn">Подписаться</button>
-                </div>
-            </li>
-            <li class="l-events__item">
-                <div class="l-events__item-info">
-                    <div class="l-events__item-info-type">Тип события</div>
-                    <div class="l-events__item-info-date">Дата</div>
-                    <div class="l-events__item-info-time">Время</div>
-                    <p class="l-events__item-info-text">Текст описания события события</p>
-                    <button class="l-events__item-info-btn">Подписаться</button>
-                </div>
-            </li>
-            <li class="l-events__item">
-                <div class="l-events__item-info">
-                    <div class="l-events__item-info-type">Тип события</div>
-                    <div class="l-events__item-info-date">Дата</div>
-                    <div class="l-events__item-info-time">Время</div>
-                    <p class="l-events__item-info-text">Текст описания события события</p>
+                    <div class="l-events__item-info-type">{{event.type}}</div>
+                    <div class="l-events__item-info-date">{{event.date}}</div>
+                    <div class="l-events__item-info-time">{{event.time}}</div>
+                    <p class="l-events__item-info-text">{{event.text}}</p>
                     <button class="l-events__item-info-btn">Подписаться</button>
                 </div>
             </li>
