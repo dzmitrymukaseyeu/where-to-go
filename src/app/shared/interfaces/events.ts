@@ -5,3 +5,4 @@ export interface EventsAllDefinition {
     time: string,
     text: string
 }
+
