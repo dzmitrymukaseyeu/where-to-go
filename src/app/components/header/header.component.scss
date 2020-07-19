@@ -1,10 +1,5 @@
 @import 'abstracts/variables.scss';
 
-* {
-    font-weight: 600;
-    letter-spacing: 1px;
-}
-
 .header {
     border: 1px solid;
     padding: 20px;
@@ -12,6 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-weight: 600;
 
     &-logo {
         flex-basis: 150px;
@@ -32,27 +28,45 @@
     }
 }
 
+
+
+
 .l-nav {
 
     &__link a {
         position: relative;
-        padding-bottom: 5px;
+        padding: 5px 0;
+
 
         &::after {
             position: absolute;
             content: '';
-            width: 0;
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: $mainColor;
+            transition: transform .2s ease-out;
+            transform: scaleX(0);
+            transform-origin: 0;
+        }
+
+        &:hover::after {
+            transform: scaleX(1);
+
+        }
+
+        &._active::after {
+            position: absolute;
+            content: '';
             height: 3px;
             bottom: 0;
             left: 0;
             background-color: $mainColor;
-            transition: width .2s ease-out;
-        
+            transform: scaleX(1);
+            transition: all 0.2s ease-in-out;   
         }
 
-        &:hover::after {
-            width: 100%;
-        }
     }
 
 
@@ -61,15 +75,25 @@
     }
 }
 
+.b-event {
+    a {
+        border: 1px solid;
+        padding: 8px ;
+        border-radius: 3px;
 
+    }
+}
 
 .b-auth {
+    display: flex;
+    align-items: center;
 
     &__login {
         border: 2px solid rgba(0,0,10,0.08);
         border-radius: 3px;
-        transition: 0.5s ease-out;
+        transition: 0.2s ease-out;
         padding: 8px;
+        font-size: 16px;
 
         &:hover {
             transition: 0.5s ease-out;
@@ -83,11 +107,11 @@
         display: flex;
         align-items: center;
         position: relative;
-        padding-bottom: 5px;
+        padding: 5px 0;
+        margin-right: 20px;
         
         & span {
             margin-left: 5px;
-            align-self: flex-end;
         }
 
         &::after {
@@ -105,6 +129,18 @@
         &:hover::after {
             width: 100%;
         }   
+    }
+
+    &__exit {
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding: 5px 0;
+        
+        & span {
+            margin-left: 5px;
+        }
+
     }
 
 }
