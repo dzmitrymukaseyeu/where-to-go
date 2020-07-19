@@ -1,3 +1,5 @@
 import { EventsAll } from './events' 
+import { User } from './users'
 
-export {EventsAll }
+export { EventsAll }
+export { User }

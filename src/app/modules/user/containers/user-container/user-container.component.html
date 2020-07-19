@@ -6,13 +6,28 @@
         <aside class="b-user__aside">
             <ul>
                 <li>
-                    <a  routerLink="me">Личная информация</a>
+                    <a 
+                    routerLinkActive="_active"
+                    [routerLinkActiveOptions]="{exact:true}" 
+                    routerLink="me">
+                    Личная информация
+                    </a>
                 </li>
                 <li>
-                    <a  routerLink="events">Мои подписки</a>
+                    <a
+                    routerLinkActive="_active"
+                    [routerLinkActiveOptions]="{exact:true}"  
+                    routerLink="events">
+                    Мои подписки
+                    </a>
                 </li>
                 <li>
-                    <a  routerLink="created-events">Созданные события</a>
+                    <a
+                    routerLinkActive="_active"
+                    [routerLinkActiveOptions]="{exact:true}"  
+                    routerLink="created-events">
+                    Созданные события
+                    </a>
                 </li>
             </ul>
         </aside>
