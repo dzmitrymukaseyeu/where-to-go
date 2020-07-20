@@ -1,43 +1,45 @@
-<div class="conteiner">
-    <div class="b-filter">
-        <ul class="l-list">
-            <li class="l-list__link">
-                <a href="#">Кино</a>
-            </li>
-            <li class="l-list__link">
-                <a href="#">Концерты</a>
-            </li>
-            <li class="l-list__link">
-                <a href="#">Фестивали</a>
-            </li>
-            <li class="l-list__link">
-                <a href="#">Вечеринки</a>
-            </li>
-            <li class="l-list__link">
-                <a href="#">Спектакли</a>
-            </li>
-            <li class="l-list__link">
-                <a href="#">Выставки</a>
-            </li>
-            <li class="l-list__link">
-                <a href="#">Другое</a>
-            </li>
-            <li class="l-list__link">
-                <a href="#">Активности</a>
-            </li>
-        </ul>
+<section>
+    <div class="conteiner">
+        <div class="b-filter">
+            <ul class="l-list">
+                <li class="l-list__link">
+                    <a href="#">Кино</a>
+                </li>
+                <li class="l-list__link">
+                    <a href="#">Концерты</a>
+                </li>
+                <li class="l-list__link">
+                    <a href="#">Фестивали</a>
+                </li>
+                <li class="l-list__link">
+                    <a href="#">Вечеринки</a>
+                </li>
+                <li class="l-list__link">
+                    <a href="#">Спектакли</a>
+                </li>
+                <li class="l-list__link">
+                    <a href="#">Выставки</a>
+                </li>
+                <li class="l-list__link">
+                    <a href="#">Другое</a>
+                </li>
+                <li class="l-list__link">
+                    <a href="#">Активности</a>
+                </li>
+            </ul>
+        </div>
+        <div class="b-events">
+            <ul class="l-events">
+                <li *ngFor="let event of EventsAll" class="l-events__item">
+                    <div class="l-events__item-info">
+                        <div class="l-events__info-type">{{event.type}}</div>
+                        <div class="l-events__info-date">{{event.date}}</div>
+                        <div class="l-events__info-time">{{event.time}}</div>
+                        <p class="l-events__item-info-text">{{event.text}}</p>
+                        <button class="l-events__info-btn" type="button">Подписаться</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="b-events">
-        <ul class="l-events">
-            <li *ngFor="let event of EventsAll" class="l-events__item">
-                <div class="l-events__item-info">
-                    <div class="l-events__item-info-type">{{event.type}}</div>
-                    <div class="l-events__item-info-date">{{event.date}}</div>
-                    <div class="l-events__item-info-time">{{event.time}}</div>
-                    <p class="l-events__item-info-text">{{event.text}}</p>
-                    <button class="l-events__item-info-btn">Подписаться</button>
-                </div>
-            </li>
-        </ul>
-    </div>
-</div>
+</section>
