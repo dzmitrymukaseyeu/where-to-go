@@ -1,3 +1,12 @@
-<div class="b-event">
-    <h1 class="b-event__title">Мои подписки</h1>
+<div  class="b-events">
+    <ul  class="l-events">
+        <li *ngFor="let event of userEvents" class="l-events__item">
+            <div class="l-events__item-info">
+                <div class="l-events__info-type">{{event.type}}</div>
+                <div class="l-events__info-date">{{event.date}}</div>
+                <div class="l-events__info-time">{{event.time}}</div>
+                <p class="l-events__item-info-text">{{event.text}}</p>
+            </div>
+        </li>
+    </ul>
 </div>
