@@ -10,17 +10,8 @@ const eventsHandlerPost = async (req, res) => {
         || !eventToSave.title
         || !eventToSave.description
         || !eventToSave.date
-        || !eventToSave.creator
-        || !eventToSave.creator.firstName
-        || !eventToSave.creator.lastName
-        || !eventToSave.creator.email
-        || !eventToSave.visitors
-        || !eventToSave.visitors.length
-        || !eventToSave.visitors[0].firstName
-        || !eventToSave.visitors[0].lastName
-        || !eventToSave.visitors[0].email
-        || eventToSave.creator.email !== eventToSave.visitors[0].email
-        || Object.keys(eventToSave).length !== 6
+        || !eventToSave.userEmail
+        || Object.keys(eventToSave).length !== 5
     ) {
         return responseSender(res, 422, 'You\'ve missed something important...');
     }
@@ -29,13 +20,22 @@ const eventsHandlerPost = async (req, res) => {
     const rawUsersData = fs.readFileSync('./BACKEND/DB/users.json');
     const events = JSON.parse(rawEventsData);
     const users = JSON.parse(rawUsersData);
-    const user = users.find(user => user.email === eventToSave.creator.email);
+    const user = users.find(user => user.email === eventToSave.userEmail);
 
     if (!user) {
         return responseSender(res, 404, 'User not found!');
     }
 
+    const userForEvent = {
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email
+    };
+
     eventToSave.id = sha1(Date.now());
+    eventToSave.creator = userForEvent;
+    eventToSave.visitors = [userForEvent]
+    delete eventToSave.userEmail;
     
     events.push(eventToSave);
     user.createdEvents.push(eventToSave.id);
