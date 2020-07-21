@@ -1,30 +1,33 @@
 @import 'abstracts/variables.scss';
 
 .header {
-    border: 1px solid;
-    padding: 20px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: 600;
-
-    &-logo {
-        flex-basis: 150px;
-        height: auto;
-
-        &__img {
-            max-width: 100%;
-        }
-    }
-
-    &-info {
+    
+    &-content {
+        border: 1px solid;
+        padding: 20px;
+        text-align: center;
         display: flex;
-        flex-basis: 900px;
         align-items: center;
         justify-content: space-between;
-        color: $mainTextColor;
+        font-weight: 600;
 
+        &__logo {
+            flex-basis: 150px;
+            height: auto;
+
+            &-img {
+                max-width: 100%;
+            }
+        }
+
+        &__info {
+            display: flex;
+            flex-basis: 900px;
+            align-items: center;
+            justify-content: space-between;
+            color: $mainTextColor;
+
+        }
     }
 }
 
@@ -112,22 +115,6 @@
         
         & span {
             margin-left: 5px;
-        }
-
-        &::after {
-            position: absolute;
-            content: '';
-            width: 0;
-            height: 3px;
-            bottom: 0;
-            left: 0;
-            background-color: $mainColor;
-            transition: width .2s ease-out;
-        
-        }
-
-        &:hover::after {
-            width: 100%;
         }   
     }
 

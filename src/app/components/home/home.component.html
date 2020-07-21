@@ -3,34 +3,74 @@
         <div class="b-filter">
             <ul class="l-list">
                 <li class="l-list__link">
-                    <a href="#">Кино</a>
+                    <button 
+                    type="button" 
+                    (click)="OnFilterClick($event)"
+                    >
+                    Кино
+                    </button>
                 </li>
                 <li class="l-list__link">
-                    <a href="#">Концерты</a>
+                    <button 
+                    type="button" 
+                    (click)="OnFilterClick($event)"
+                    >
+                    Концерты
+                    </button>
                 </li>
                 <li class="l-list__link">
-                    <a href="#">Фестивали</a>
+                    <button 
+                    type="button" 
+                    (click)="OnFilterClick($event)"
+                    >
+                    Фестивали
+                    </button>
                 </li>
                 <li class="l-list__link">
-                    <a href="#">Вечеринки</a>
+                    <button 
+                    type="button" 
+                    (click)="OnFilterClick($event)"
+                    >
+                    Вечеринки
+                    </button>
                 </li>
                 <li class="l-list__link">
-                    <a href="#">Спектакли</a>
+                    <button 
+                    type="button" 
+                    (click)="OnFilterClick($event)"
+                    >
+                    Спектакли
+                    </button>
                 </li>
                 <li class="l-list__link">
-                    <a href="#">Выставки</a>
+                    <button 
+                    type="button" 
+                    (click)="OnFilterClick($event)"
+                    >
+                    Выставки
+                    </button>
                 </li>
                 <li class="l-list__link">
-                    <a href="#">Другое</a>
+                    <button 
+                    type="button" 
+                    (click)="OnFilterClick($event)"
+                    >
+                    Другое
+                    </button>
                 </li>
                 <li class="l-list__link">
-                    <a href="#">Активности</a>
+                    <button 
+                    type="button" 
+                    (click)="OnFilterClick($event)"
+                    >
+                    Активности
+                    </button>
                 </li>
             </ul>
         </div>
         <div class="b-events">
             <ul class="l-events">
-                <li *ngFor="let event of EventsAll" class="l-events__item">
+                <li *ngFor="let event of (filteredEvents | async)" class="l-events__item">
                     <div class="l-events__item-info">
                         <div class="l-events__info-type">{{event.type}}</div>
                         <div class="l-events__info-date">{{event.date}}</div>
