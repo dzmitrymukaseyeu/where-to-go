@@ -72,9 +72,9 @@
             <ul class="l-events">
                 <li *ngFor="let event of (filteredEvents | async)" class="l-events__item">
                     <div class="l-events__item-info">
-                        <div class="l-events__info-type">{{event.type}}</div>
-                        <div class="l-events__info-date">{{event.date}}</div>
-                        <div class="l-events__info-time">{{event.time}}</div>
+                        <div class="l-events__info-type">{{event.description}}</div>
+                        <div class="l-events__info-date">{{event.date | date:'longDate'}}</div>
+                        <div class="l-events__info-time">{{event.date | date:'shortTime'}}</div>
                         <p class="l-events__item-info-text">{{event.text}}</p>
                         <button class="l-events__info-btn" type="button">Подписаться</button>
                     </div>

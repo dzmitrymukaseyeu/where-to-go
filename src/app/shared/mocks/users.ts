@@ -1,10 +1,13 @@
 export const User = [
     {
         id: 1,
-        last: 'Вася',
-        first: 'Пупкин',
+        lastName: 'Вася',
+        firstName: 'Пупкин',
         email: "rnjote@yandex.ru",
-        subscriEventsId:[1, 2],
-        createdEventsId:[8, 5]
+        subscriedEventsId:[5, 7],
+        createdEventsId:[4, 6, 8],
+        username: "orangefish385", 
+        password: "f00tball", 
+        cell: "696-184-130",
     }
-]
+] 
