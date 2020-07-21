@@ -1,3 +1,5 @@
+@import 'abstracts/variables.scss';
+
 .l-events {
     display: flex;
     flex-wrap: wrap;
@@ -9,13 +11,40 @@
         padding: 0 20px;
 
         &-info {
-            border: 1px solid;
+            border: 1px solid rgba(226, 226, 226, 0.5);
+            border-radius: 10px;
+            box-shadow: 4px 4px 12px -4px;
             padding: 15px;
+            position: relative;
+
         }
 
         &:nth-child(n+4){
             margin-top: 40px;
         }
+    }
+
+    &__info-type{
+        position: absolute;
+        background-color: $mainColor;
+        padding: 4px 0 4px;
+        padding-left: 15px;
+        padding-right: 10px;
+        left: 0;
+        border-radius: 0px 10px 10px 0px;
+        color:#fff;
+        font-weight: 600;
+        box-shadow: #000 6px -2px 18px -8px;
+    }
+    
+    &__info-text{
+        margin-top: 50px;
+        margin-bottom: 15px;
+    }
+
+    &__info-date{
+        color: $mainColor;
+        font-weight: 600;
     }
 
 }

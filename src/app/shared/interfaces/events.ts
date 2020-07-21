@@ -2,7 +2,13 @@ export interface EventsAllDefinition {
     id: number,
     type: string,
     date: string,
-    time: string,
-    text: string
+    title: string,
+    description: string,
+    user:{
+        lastName: string,
+        firstName: string,
+        email: string,
+    },
+    bgImage: string
 }
 

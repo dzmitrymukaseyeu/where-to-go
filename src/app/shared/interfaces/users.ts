@@ -1,8 +1,11 @@
 export interface UserDefinition{
     id: number,
-    last: string,
-    first: string,
+    lastName: string,
+    firstName: string,
     email: string,
-    subscriEventsId: number[],
-    createdEventsId: number[],   
+    subscriedEventsId: number[],
+    createdEventsId: number[],
+    username: string, 
+    password: string, 
+    cell: string,
 }

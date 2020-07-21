@@ -2,11 +2,11 @@
     <ul  class="l-events">
         <li *ngFor="let event of userEvents" class="l-events__item">
             <div class="l-events__item-info">
-                <div class="l-events__info-type">{{event.type}}</div>
-                <div class="l-events__info-date">{{event.date}}</div>
-                <div class="l-events__info-time">{{event.time}}</div>
-                <p class="l-events__item-info-text">{{event.text}}</p>
-            </div>
+                <div [style.backgroundColor]="colorsTable[event.type]" class="l-events__info-type">{{event.type}}</div>
+                <p class="l-events__info-text">{{event.description}}</p>
+                <div class="l-events__info-time">{{event.date | date:'shortTime'}}</div> 
+                <div [style.color]="colorsTable[event.type]" class="l-events__info-date">{{event.date | date:'longDate'}}</div>
+            </div> 
         </li>
     </ul>
 </div>

@@ -13,14 +13,24 @@ export class EventsComponent implements OnInit {
   userEvents: EventsAllDefinition[] = [];
   EventsAll : EventsAllDefinition[]  = EventsAll;
   User : UserDefinition[] = User;
+  colorsTable = {
+    'Кино': "#FF7100",
+    'Концерты': "#E40045",
+    'Фестивали': "#A1A500",
+    'Вечеринки': "#6949D7",
+    'Спектакли': "#009999",
+    'Выставки': "#FF4E40",
+    'Другое': "#35C0CD",
+    'Активности': "#2DD700",
+  }
  
   constructor() { }
 
   ngOnInit(): void {
     
-    const userEvents = this.User[0].subscriEventsId;
-    this.userEvents = this.EventsAll.filter(evets => userEvents.includes(evets.id))
-    console.log(this.userEvents);
+    const userEvents = this.User[0].subscriedEventsId;
+    this.userEvents = this.EventsAll.filter(events => userEvents.includes(events.id))
+    console.log(this.userEvents); 
   }
 
   
