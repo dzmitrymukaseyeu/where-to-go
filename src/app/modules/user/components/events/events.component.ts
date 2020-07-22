@@ -21,7 +21,7 @@ export class EventsComponent implements OnInit {
     'Спектакли': "#009999",
     'Выставки': "#FF4E40",
     'Другое': "#35C0CD",
-    'Активности': "#2DD700",
+    'Активности': "#4AA329",
   }
  
   constructor() { }
