@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -28,7 +29,7 @@ import { HeaderComponent } from './components/header/header.component'
     AuthRoutingModule,
     EventRoutingModule,
     BrowserAnimationsModule,
-    
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
