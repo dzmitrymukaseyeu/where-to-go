@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient }  from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +38,7 @@ export class ApiService {
     title: string;
     description: string;
     date: string;
+    bgImage: string;
     userEmail: string;
   }) {
     return this.httpClient.post(this.env.apiUrl + 'api/events', body);

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventsAll } from '@app/shared/mocks';
 import { EventsAllDefinition } from '@app/shared/interfaces';
 import { BehaviorSubject } from 'rxjs';
+import { ApiService } from '@app/services';
 
 @Component({
   selector: 'app-home',
@@ -12,9 +13,16 @@ export class HomeComponent implements OnInit {
   
   EventsAll : EventsAllDefinition[] = EventsAll;
   filteredEvents = new BehaviorSubject(this.EventsAll);
-  constructor() { }
+  constructor(
+    private apiService: ApiService
+  ) {
+    
+   }
 
   ngOnInit(): void {
+
+    this.apiService.getAllEvents()
+      .subscribe(res => console.log(res)); 
  
     console.log(EventsAll);
   }

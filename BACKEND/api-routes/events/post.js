@@ -10,8 +10,9 @@ const eventsHandlerPost = async (req, res) => {
         || !eventToSave.title
         || !eventToSave.description
         || !eventToSave.date
+        || !eventToSave.bgImage
         || !eventToSave.userEmail
-        || Object.keys(eventToSave).length !== 5
+        || Object.keys(eventToSave).length !== 6
     ) {
         return responseSender(res, 422, 'You\'ve missed something important...');
     }
