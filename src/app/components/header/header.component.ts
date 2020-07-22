@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output , EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +9,16 @@ export class HeaderComponent implements OnInit {
 
   @Input() isLoggedIn = false;
 
+  @Output() authOn = new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+
+  OnAuthClick(event) {
+    this.authOn.emit(true);
   }
 
 }

@@ -1,0 +1,49 @@
+.b-auth {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: white;
+    flex-basis: 50%;
+}
+
+.f-registr {
+    padding: 10px;
+    border: 1px solid;
+    flex-basis: 50%;
+
+
+    &__row {
+        width: 100%;
+
+        & + & {
+            margin-top: 20px;
+        }
+    }
+
+    &__actions {
+        margin-top: 20px;
+        text-align: right;
+    }
+}
+
+.f-login {
+    align-self: baseline;
+    padding: 10px;
+    border: 1px solid;
+    flex-basis: 50%;
+
+    background-color: white;
+
+    &__row {
+        width: 100%;
+
+        & + & {
+            margin-top: 20px;
+        }
+    }
+
+    &__actions {
+        margin-top: 20px;
+        text-align: right;
+    }
+}
