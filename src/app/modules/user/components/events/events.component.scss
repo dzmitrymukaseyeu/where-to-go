@@ -36,9 +36,14 @@
         font-weight: 600;
         box-shadow: #000 6px -2px 18px -8px;
     }
+
+    &__info-title{
+        margin-top: 50px;
+        font-weight: 600;
+    }
     
     &__info-text{
-        margin-top: 50px;
+        margin-top: 10px;
         margin-bottom: 15px;
     }
 
