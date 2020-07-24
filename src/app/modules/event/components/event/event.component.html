@@ -7,9 +7,10 @@
             action="#"
             [formGroup]="creationEventForm"
             (submit)="onEventSubmit($event)" 
-            >
+        >
             <div class="b-info">
                 <p class="b-info__title">Информация о мероприятии</p>
+        
                 <mat-form-field class="example-full-width">
                     <mat-label>Название события</mat-label>
                     <input 
@@ -22,6 +23,7 @@
                     >
                     <mat-hint align="end">{{messages.value.length}} / 30</mat-hint>
                 </mat-form-field>
+        
                 <mat-form-field class="example-full-width">
                     <mat-label>Опишите событие</mat-label>
                     <input
@@ -35,18 +37,21 @@
                     <mat-hint align="end">{{message.value.length}} / 100</mat-hint>
                 </mat-form-field>
             </div>
+        
             <div class="b-data">
                 <p class="b-data__title">Время проведения события</p>
+        
                 <mat-form-field class="example-full-width">
-                <mat-label>Дата проведения события</mat-label>
-                <input
-                   matInput 
-                   placeholder="Дата проведения события"
-                   type="date"
-                   name="date"
-                   formControlName="date"
-                >
+                    <mat-label>Дата проведения события</mat-label>
+                    <input
+                        matInput 
+                        placeholder="Дата проведения события"
+                        type="date"
+                        name="date"
+                        formControlName="date"
+                    >
                 </mat-form-field>
+                
                 <mat-form-field class="example-full-width">
                     <mat-label>Время проведения события</mat-label>
                     <input
@@ -58,59 +63,20 @@
                     >
                 </mat-form-field>
             </div>
+
             <p class="b-form__type">Тип вашего события</p>
             <div class="b-radio">
-                <mat-radio-group class="b-radio__value" aria-label="Select an option">
-                    <mat-radio-button 
-                        name="type" 
-                        formControlName="type"  
-                        value="1"
-                        >Кино
-                    </mat-radio-button>
-                    <mat-radio-button 
-                        name="type" 
-                        formControlName="type" 
-                        value="2"
-                        >Концерты
-                    </mat-radio-button>
-                    <mat-radio-button 
-                        name="type" 
-                        formControlName="type" 
-                        value="3"
-                        >Фестивали
-                    </mat-radio-button>
-                    <mat-radio-button 
-                        name="type" 
-                        formControlName="type" 
-                        value="4"
-                        >Вечеринки
-                    </mat-radio-button>
-                    <mat-radio-button 
-                        name="type" 
-                        formControlName="type" 
-                        value="5"
-                        >Спектакли
-                    </mat-radio-button>
-                    <mat-radio-button 
-                        name="type" 
-                        formControlName="type"
-                        value="6"
-                        >Выставки
-                    </mat-radio-button>
-                    <mat-radio-button 
-                        name="type" 
-                        formControlName="type" 
-                        value="7"
-                        >Другое
-                    </mat-radio-button>
-                    <mat-radio-button 
-                        name="type" 
-                        formControlName="type" 
-                        value="8"
-                        >Активности
+                <mat-radio-group
+                    class="b-radio__value"
+                    formControlName="type"
+                    aria-label="Select an option"
+                >
+                    <mat-radio-button name="type" [value]="item" *ngFor="let item of eventsTypeList">
+                        {{item}}
                     </mat-radio-button>
                 </mat-radio-group> 
             </div>
+
             <button type="submit" class="b-event__btn">Отправить</button>
         </form>
     </div>
