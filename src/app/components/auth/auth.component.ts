@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UserService } from '@app/services';
 
 
 @Component({
@@ -8,15 +9,16 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms'
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
-
   signUpForm: FormGroup;
   signInForm: FormGroup;
   signIn = false;
+  @Output() close = new EventEmitter<boolean>();
 
   text:string = 'У меня уже есть аккаунт';
   
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -56,6 +58,8 @@ export class AuthComponent implements OnInit {
         Validators.maxLength(10)
       ]]
     })
+
+    console.log(1);
   }
 
 
@@ -86,7 +90,7 @@ export class AuthComponent implements OnInit {
   }
 
   onCloseAuth(event: Event) {
-
+    this.close.emit(true);
     
   }
 
