@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '@app/services';
+import { FormGroup, FormBuilder, Validator, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-event',
@@ -17,12 +18,21 @@ export class EventComponent implements OnInit {
     'Другое': "/assets/other.jpg",
     'Активности': "/assets/active.jpg"
   } 
+  creationEventForm: FormGroup;
 
   constructor(
-    private apiService: ApiService
+    private apiService: ApiService,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
+    this.creationEventForm = this.formBuilder.group({
+      title: [null,[Validators.required,Validators.minLength(10),Validators.maxLength(30)]],
+      description: [null,[Validators.required,Validators.minLength(20),Validators.maxLength(100)]],
+      date:[null,[Validators.required]],
+      time: [null,[Validators.required]],
+     //type:[null],
+    })
     // const user = {
     //     firstName: 'Коля',
     //     lastName: 'Лукашов',
@@ -46,5 +56,8 @@ export class EventComponent implements OnInit {
     // this.apiService.createEvent(obj)
     //   .subscribe(res => console.log(res))
   }
-
+  onEventSubmit(event: Event){
+    event.preventDefault();
+    console.log(this.creationEventForm.value); 
+  }
 }

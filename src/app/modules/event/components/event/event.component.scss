@@ -1,0 +1,25 @@
+.conteiner{
+    display:flex;
+    justify-content: center;
+}
+
+
+.b-event{
+    flex-basis: 780px;
+    &__btn{
+        border: 1px solid;
+        padding: 10px;
+    }
+}
+
+.b-radio{
+    &__value{
+        display: flex;
+        flex-direction: column;
+    }
+ 
+}
+
+.example-full-width{
+    display: block;
+}
