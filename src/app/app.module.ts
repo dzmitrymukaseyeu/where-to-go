@@ -30,11 +30,8 @@ import {MatTabsModule} from '@angular/material/tabs';
     UserRoutingModule,
     EventRoutingModule,
     BrowserAnimationsModule,
-<<<<<<< HEAD
-    HttpClientModule
-=======
+    HttpClientModule,
     MatTabsModule
->>>>>>> d11ed3f... added auth component
   ],
   providers: [],
   bootstrap: [AppComponent]

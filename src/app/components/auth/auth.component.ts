@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 
 
 @Component({
@@ -8,9 +9,85 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  signUpForm: FormGroup;
+  signInForm: FormGroup;
+  signIn = false;
+
+  text:string = 'У меня уже есть аккаунт';
+  
+  constructor(
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit(): void {
+    this.signUpForm = this.formBuilder.group({
+      login: [null, [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(10)
+      ]],
+      password: [null, [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(10)
+      ]],
+      email: [null, [
+        Validators.required,
+        Validators.pattern(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)
+      ]],
+      firstName: [null, [
+        Validators.required,
+        Validators.pattern(/^[а-яё -]+$/i)
+      ]],
+      lastName: [null, [
+        Validators.required,
+        Validators.pattern(/^[а-яё -]+$/i)
+      ]]
+    })
+
+    this.signInForm = this.formBuilder.group({
+      email: [null, [
+        Validators.required,
+        Validators.pattern(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)
+      ]],
+      password: [null, [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(10)
+      ]]
+    })
+  }
+
+
+  onSignUpSubmit(event: Event) {
+    event.preventDefault();
+
+    if(!this.signUpForm.valid) {
+      return;
+    }
+    console.log(this.signUpForm.value);
+  }
+
+
+  onSingUpShow(event: Event) {
+    this.text = this.signIn ? 'У меня уже есть аккаунт' : 'Зарегистрироваться';
+    this.signIn = !this.signIn;
+    
+  }
+
+
+  onSignInSubmit(event: Event) {
+    event.preventDefault();
+
+    if(!this.signInForm.valid) {
+      return;
+    }
+    console.log(this.signInForm.value);
+  }
+
+  onCloseAuth(event: Event) {
+
+    
   }
 
 }

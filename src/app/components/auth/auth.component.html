@@ -1,115 +1,177 @@
 <section class="s-auth">
     <div class="conteiner">
         <div class="b-auth">
-            <mat-tab-group mat-align-tabs="start">
-                <mat-tab label="Регистрация">
-                    <div class="b-registr">
-                        <form action="#" class="f-registr">
-                            <h3>Регистрация нового пользователя</h3>
-                            <div class="f-registr__row">
-                                <input 
-                                    type="text"
-                                    name="login"
-                                    placeholder="login"
-                                    class="f-registr__field"
-                                >
-                            </div>
-                            <div class="f-registr__row">
-                                <input 
-                                    type="password"
-                                    name="password"
-                                    placeholder="password"
-                                    class="f-registr__field"
-                                >
-                            </div>
-                            <div class="f-registr__row">
-                                <input 
-                                    type="password"
-                                    name="retype_password"
-                                    placeholder="retype_password"
-                                    class="f-registr__field"
-                                >
-                            </div>
-                            <div class="f-registr__row">
-                                <input 
-                                    type="email"
-                                    name="email"
-                                    placeholder="email"
-                                    class="f-registr__field"
-                                >
-                            </div>
-                            <div class="f-registr__row">
-                                <input 
-                                    type="text"
-                                    name="firstName"
-                                    placeholder="firstName"
-                                    class="f-registr__field"
-                                >
-                            </div>
-                            <div class="f-registr__row">
-                                <input 
-                                    type="text"
-                                    name="lastName"
-                                    placeholder="lastName"
-                                    class="f-registr__field"
-                                >
-                            </div>
-                            <div class="f-registr__row">
-                                <input 
-                                    type="tel"
-                                    name="tel"
-                                    placeholder="tel"
-                                    class="f-registr__field"
-                                >
-                            </div>
-            
-                            <div class="f-registr__actions">
-                                <button 
-                                    type="submit"
-                                    class="f-registr__btn"
-                                >
-                                    Registration
-                                </button>
-                            </div>
-            
-                        </form>
-            
+            <button
+                type="button"
+                class="btn-auth__close"
+                (click)="onCloseAuth($event)"
+            >
+            </button>
+            <div 
+                class="b-signUp"
+                *ngIf="!signIn"
+            >
+                <form 
+                    action="#"
+                    name="signUp"
+                    class="f-signUp"
+                    [formGroup]="signUpForm"
+                    (submit)="onSignUpSubmit($event)"
+                >
+                    <h3>Регистрация нового пользователя</h3>
+                    <mat-form-field class="f-signUp__row">
+                        <mat-label>Введите логин</mat-label>
+                        <input
+                            type="text"
+                            name="login"
+                            formControlName="login"
+                            placeholder="Логин"
+                            matInput
+                        >
+                        <mat-error *ngIf="signUpForm.controls.login.hasError('required')">
+                            Поле не должно быть пустым
+                        </mat-error>
+                        <mat-error *ngIf="signUpForm.controls.login.hasError('minlength') || signUpForm.controls.login.hasError('maxlength')">
+                            Логин должен состоять от 5 до 10 символов
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="f-signUp__row">
+                        <mat-label>Введите пароль</mat-label>
+                        <input
+                            type="password"
+                            name="password"
+                            formControlName="password"
+                            placeholder='Пароль'
+                            matInput
+                        >
+                        <mat-error *ngIf="signUpForm.controls.password.hasError('required')">
+                            Поле не должно быть пустым
+                        </mat-error>
+                        <mat-error *ngIf="signUpForm.controls.password.hasError('minlength') || signUpForm.controls.password.hasError('maxlength')">
+                            Логин должен состоять от 5 до 10 символов
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="f-signUp__row">
+                        <mat-label>Введите e-mail</mat-label>
+                        <input
+                            type="email"
+                            name="email"
+                            formControlName="email"
+                            placeholder="e-mail"
+                            matInput
+                        >
+                        <mat-error *ngIf="signUpForm.controls.email.hasError('required')">
+                            Поле не должно быть пустым
+                        </mat-error>
+                        <mat-error *ngIf="signUpForm.controls.email.hasError('pattern')">
+                            Введите корректный e-mail
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="f-signUp__row">
+                        <mat-label>Введите ваше имя</mat-label>
+                        <input
+                            type="text"
+                            name="firstName"
+                            formControlName="firstName"
+                            placeholder="Ваше имя"
+                            matInput
+                        >
+                        <mat-error *ngIf="signUpForm.controls.firstName.hasError('required')">
+                            Поле не должно быть пустым
+                        </mat-error>
+                        <mat-error *ngIf="signUpForm.controls.firstName.hasError('pattern')">
+                            Поле должно состоять из букв русского алфавита
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="f-signUp__row">
+                        <mat-label>Введите вашу фамилию</mat-label>
+                        <input
+                            type="text"
+                            name="lastName"
+                            formControlName="lastName"
+                            placeholder="Ваша фамилия"
+                            matInput
+                        >
+                        <mat-error *ngIf="signUpForm.controls.lastName.hasError('required')">
+                            Поле не должно быть пустым
+                        </mat-error>
+                        <mat-error *ngIf="signUpForm.controls.lastName.hasError('pattern')">
+                            Поле должно состоять из букв русского алфавита
+                        </mat-error>
+                    </mat-form-field>
+                    <div class="f-signUp__actions">
+                        <button 
+                            type="submit"
+                            class="f-signUp__btn"
+                            [disabled] = "!this.signUpForm.valid"
+                        >
+                            Зарегистрироваться
+                        </button>
                     </div>
-                </mat-tab>
-                <mat-tab label="Войти">
-                    <div class="b-login">
-                        <form action="#" class="f-login">
-                            <h3>Регистрация нового пользователя</h3>
-                            <div class="f-login__row">
-                                <input 
-                                    type="email"
-                                    name="email"
-                                    placeholder="login"
-                                    class="f-login__field"
-                                >
-                            </div>
-                            <div class="f-login__row">
-                                <input 
-                                    type="password"
-                                    name="password"
-                                    placeholder="password"
-                                    class="f-login__field"
-                                >
-                            </div>
-                            <div class="f-login__actions">
-                                <button 
-                                    type="submit"
-                                    class="f-login__btn"
-                                >
-                                    Войти
-                                </button>
-                            </div>
-            
-                        </form>
-            
-                    </div>                
-                </mat-tab>
-            </mat-tab-group>
+                </form>
+            </div>
+            <div 
+                class="b-signIn"
+                *ngIf="signIn"
+            >
+                <form 
+                    action="#"
+                    name="signIn"
+                    class="f-signIn"
+                    [formGroup]="signInForm"
+                    (submit)="onSignInSubmit($event)"
+                >
+                    <h3>Войти в существующий аккаунт</h3>
+                    <mat-form-field class="f-signIn__row">
+                        <mat-label>Введите e-mail</mat-label>
+                        <input
+                            type="email"
+                            name="email"
+                            formControlName="email"
+                            placeholder="e-mail"
+                            matInput
+                        >
+                        <mat-error *ngIf="signInForm.controls.email.hasError('required')">
+                            Поле не должно быть пустым
+                        </mat-error>
+                        <mat-error *ngIf="signInForm.controls.email.hasError('pattern')">
+                            Введите корректный e-mail
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="f-signIn__row">
+                        <mat-label>Введите пароль</mat-label>
+                        <input
+                            type="password"
+                            name="password"
+                            formControlName="password"
+                            placeholder='Пароль'
+                            matInput
+                        >
+                        <mat-error *ngIf="signInForm.controls.password.hasError('required')">
+                            Поле не должно быть пустым
+                        </mat-error>
+                        <mat-error *ngIf="signInForm.controls.password.hasError('minlength') || signInForm.controls.password.hasError('maxlength')">
+                            Логин должен состоять от 5 до 10 символов
+                        </mat-error>
+                    </mat-form-field>
+                    <div class="f-signIn__actions">
+                        <button 
+                            type="submit"
+                            class="f-signIn__btn"
+                            [disabled] = "!this.signUpForm.valid"
+                        >
+                            Войти
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <button
+                type="button"
+                class="btn-auth__change"
+                (click)="onSingUpShow($event)"
+            >
+                {{text}}
+            </button>            
         </div>    
     </div>
 </section>
