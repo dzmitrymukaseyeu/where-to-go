@@ -6,9 +6,7 @@ import { Component, OnInit, Input, Output , EventEmitter} from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
   @Input() isLoggedIn = false;
-
   @Output() authOn = new EventEmitter<boolean>();
 
   constructor() { }
@@ -16,9 +14,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  OnAuthClick(event) {
+  OnAuthClick(event:Event) {
     this.authOn.emit(true);
   }
-
 }

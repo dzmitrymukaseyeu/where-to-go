@@ -13,6 +13,8 @@ export class AuthComponent implements OnInit {
   signInForm: FormGroup;
   signIn = false;
   @Output() close = new EventEmitter<boolean>();
+  @Output() showUser = new EventEmitter<boolean>();
+   
 
   text:string = 'У меня уже есть аккаунт';
   
@@ -69,6 +71,8 @@ export class AuthComponent implements OnInit {
     if(!this.signUpForm.valid) {
       return;
     }
+
+
     console.log(this.signUpForm.value);
   }
 
@@ -87,6 +91,7 @@ export class AuthComponent implements OnInit {
       return;
     }
     console.log(this.signInForm.value);
+    this.showUser.emit(true);
   }
 
   onCloseAuth(event: Event) {

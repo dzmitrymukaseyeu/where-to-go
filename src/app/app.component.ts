@@ -19,5 +19,11 @@ export class AppComponent {
     this.isModalVisible = !event;
   }
 
+  
+  onUserShow(event:boolean){
+    this.isLoggedIn = event;
+    this.isModalVisible = false;
+  }
+
 
 }
