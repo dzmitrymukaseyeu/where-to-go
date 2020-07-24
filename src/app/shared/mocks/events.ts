@@ -101,7 +101,7 @@ export const EventsAll = [
             firstName: 'Киркоров',
             email: "rre4e@yandex.ru",
         },
-        bgImage:"/assets/.jpg",
+        bgImage:"/assets/active.jpg",
     },
 
 ]
