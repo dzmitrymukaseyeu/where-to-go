@@ -6,8 +6,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  isLoggedIn = true;
-
-
+  isModalVisible = false;
+  isLoggedIn = false;
   title = 'where-to-go';
+
+  onAuthUser(event:boolean) {
+    this.isModalVisible = event;
+    console.log(this.isModalVisible);
+  }
+
+  onAuthClose(event:boolean) {
+    this.isModalVisible = !event;
+  }
+
+  
+  onUserShow(event:boolean){
+    this.isLoggedIn = event;
+    this.isModalVisible = false;
+  }
+
+
 }

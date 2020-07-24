@@ -33,8 +33,7 @@ export class HomeComponent implements OnInit {
 
     this.apiService.getAllEvents()
       .subscribe(res => console.log(res)); 
- 
-    console.log(EventsAll);
+      console.log(EventsAll);
   }
 
   OnFilterClick(event) {

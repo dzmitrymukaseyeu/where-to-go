@@ -38,10 +38,10 @@
                 </div>
                 <div class="b-auth">
                     <button
-                    type="button"
-                    routerLink="auth" 
+                    type="button" 
                     *ngIf= "!isLoggedIn"
                     class="b-auth__login"
+                    (click)="OnAuthClick($event)"
                     >
                     Зарегистрироваться / Войти
                     </button>
