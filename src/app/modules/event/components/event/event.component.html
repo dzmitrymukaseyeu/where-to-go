@@ -77,7 +77,13 @@
                 </mat-radio-group> 
             </div>
 
-            <button type="submit" class="b-event__btn">Отправить</button>
+            <button 
+                type="submit" 
+                class="b-event__btn"
+                [disabled]="!this.creationEventForm.valid"
+            >
+                Отправить
+            </button>
         </form>
     </div>
 </div>

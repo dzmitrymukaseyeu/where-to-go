@@ -76,6 +76,9 @@ export class EventComponent implements OnInit {
   }
   onEventSubmit(event: Event){
     event.preventDefault();
+    if(!this.creationEventForm.valid){
+      return;
+    }
     console.log(this.creationEventForm.value); 
   }
 }
