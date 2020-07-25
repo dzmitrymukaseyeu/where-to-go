@@ -1,7 +1,7 @@
 <div  class="b-events">
     <ul  class="l-events">
         <li *ngFor="let event of userCreatedEvents" class="l-events__item">
-            <div class="l-events__item-info">
+            <div [style.backgroundImage]="imagesTable[event.type]" class="l-events__item-info">
                 <div [style.backgroundColor]="colorsTable[event.type]" class="l-events__info-type">{{event.type}}</div>
                 <div class="l-events__info-title">{{event.title}}</div>
                 <p class="l-events__info-text">{{event.description}}</p>
