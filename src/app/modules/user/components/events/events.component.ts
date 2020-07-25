@@ -23,11 +23,9 @@ export class EventsComponent implements OnInit {
     'Другое': "#35C0CD",
     'Активности': "#4AA329",
   }
- 
   constructor() { }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void { 
     const userEvents = this.User[0].subscriedEventsId;
     this.userEvents = this.EventsAll.filter(events => userEvents.includes(events.id))
     console.log(this.userEvents); 

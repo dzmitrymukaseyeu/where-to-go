@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '@app/services';
+import { ApiService } from '@app/services';
 
 
 @Component({
@@ -20,25 +21,12 @@ export class AuthComponent implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private apiService: ApiService
   ) { }
 
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
-      login: [null, [
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(10)
-      ]],
-      password: [null, [
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(10)
-      ]],
-      email: [null, [
-        Validators.required,
-        Validators.pattern(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)
-      ]],
       firstName: [null, [
         Validators.required,
         Validators.pattern(/^[а-яё -]+$/i)
@@ -46,6 +34,15 @@ export class AuthComponent implements OnInit {
       lastName: [null, [
         Validators.required,
         Validators.pattern(/^[а-яё -]+$/i)
+      ]],
+      email: [null, [
+        Validators.required,
+        Validators.pattern(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)
+      ]],
+      password: [null, [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(10)
       ]]
     })
 
@@ -67,13 +64,16 @@ export class AuthComponent implements OnInit {
 
   onSignUpSubmit(event: Event) {
     event.preventDefault();
+    const userInfo = this.signUpForm.value;
+    this.apiService.signUp(userInfo)
+      .subscribe(res => console.log(res))
+
+
 
     if(!this.signUpForm.valid) {
       return;
     }
 
-
-    console.log(this.signUpForm.value);
   }
 
 
