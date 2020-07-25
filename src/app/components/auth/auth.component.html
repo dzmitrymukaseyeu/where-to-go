@@ -20,54 +20,6 @@
                 >
                     <h3>Регистрация нового пользователя</h3>
                     <mat-form-field class="f-signUp__row">
-                        <mat-label>Введите логин</mat-label>
-                        <input
-                            type="text"
-                            name="login"
-                            formControlName="login"
-                            placeholder="Логин"
-                            matInput
-                        >
-                        <mat-error *ngIf="signUpForm.controls.login.hasError('required')">
-                            Поле не должно быть пустым
-                        </mat-error>
-                        <mat-error *ngIf="signUpForm.controls.login.hasError('minlength') || signUpForm.controls.login.hasError('maxlength')">
-                            Логин должен состоять от 5 до 10 символов
-                        </mat-error>
-                    </mat-form-field>
-                    <mat-form-field class="f-signUp__row">
-                        <mat-label>Введите пароль</mat-label>
-                        <input
-                            type="password"
-                            name="password"
-                            formControlName="password"
-                            placeholder='Пароль'
-                            matInput
-                        >
-                        <mat-error *ngIf="signUpForm.controls.password.hasError('required')">
-                            Поле не должно быть пустым
-                        </mat-error>
-                        <mat-error *ngIf="signUpForm.controls.password.hasError('minlength') || signUpForm.controls.password.hasError('maxlength')">
-                            Логин должен состоять от 5 до 10 символов
-                        </mat-error>
-                    </mat-form-field>
-                    <mat-form-field class="f-signUp__row">
-                        <mat-label>Введите e-mail</mat-label>
-                        <input
-                            type="email"
-                            name="email"
-                            formControlName="email"
-                            placeholder="e-mail"
-                            matInput
-                        >
-                        <mat-error *ngIf="signUpForm.controls.email.hasError('required')">
-                            Поле не должно быть пустым
-                        </mat-error>
-                        <mat-error *ngIf="signUpForm.controls.email.hasError('pattern')">
-                            Введите корректный e-mail
-                        </mat-error>
-                    </mat-form-field>
-                    <mat-form-field class="f-signUp__row">
                         <mat-label>Введите ваше имя</mat-label>
                         <input
                             type="text"
@@ -98,7 +50,39 @@
                         <mat-error *ngIf="signUpForm.controls.lastName.hasError('pattern')">
                             Поле должно состоять из букв русского алфавита
                         </mat-error>
+                    </mat-form-field>                    
+                    <mat-form-field class="f-signUp__row">
+                        <mat-label>Введите e-mail</mat-label>
+                        <input
+                            type="email"
+                            name="email"
+                            formControlName="email"
+                            placeholder="e-mail"
+                            matInput
+                        >
+                        <mat-error *ngIf="signUpForm.controls.email.hasError('required')">
+                            Поле не должно быть пустым
+                        </mat-error>
+                        <mat-error *ngIf="signUpForm.controls.email.hasError('pattern')">
+                            Введите корректный e-mail
+                        </mat-error>
                     </mat-form-field>
+                    <mat-form-field class="f-signUp__row">
+                        <mat-label>Введите пароль</mat-label>
+                        <input
+                            type="password"
+                            name="password"
+                            formControlName="password"
+                            placeholder='Пароль'
+                            matInput
+                        >
+                        <mat-error *ngIf="signUpForm.controls.password.hasError('required')">
+                            Поле не должно быть пустым
+                        </mat-error>
+                        <mat-error *ngIf="signUpForm.controls.password.hasError('minlength') || signUpForm.controls.password.hasError('maxlength')">
+                            Логин должен состоять от 5 до 10 символов
+                        </mat-error>
+                    </mat-form-field> 
                     <div class="f-signUp__actions">
                         <button 
                             type="submit"
