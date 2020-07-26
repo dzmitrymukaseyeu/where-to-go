@@ -25,6 +25,18 @@ export class CreatedEventsComponent implements OnInit {
     'Другое': "#35C0CD",
     'Активности': "#4AA329",
   }
+  imagesTable={
+    'Кино': 'url(/assets/cinema.jpg)',
+    'Концерты': 'url(/assets/concert.jpg)',
+    'Фестивали': 'url(/assets/festival.jpg)',
+    'Вечеринки': 'url(/assets/party.jpg)',
+    'Спектакли': 'url(/assets/show.jpg)',
+    'Выставки': 'url(/assets/insert.jpg)',
+    'Другое': 'url(/assets/other.jpg)',
+    'Активности': 'url(/assets/active.jpg)'
+  };
+
+
   constructor() { }
 
   ngOnInit(): void {

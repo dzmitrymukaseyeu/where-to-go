@@ -23,12 +23,13 @@
         padding: 0 20px;
 
         &-info {
-            border: 1px solid rgba(226, 226, 226, 0.5);
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: 4px 4px 12px -4px;
             padding: 15px;
             position: relative;
-
+            background-repeat: no-repeat ;
+            background-size: cover;
+            
         }
 
         &:nth-child(n+4){
@@ -51,12 +52,15 @@
     &__info-title{
         margin-top: 50px;
         font-weight: 600;
+        color: #fff;
     }
     
     &__info-text{
         margin-top: 10px;
         margin-bottom: 15px;
+        color: #fff;
     }
+
 
     &__info-date{
         font-weight: 600;
@@ -71,6 +75,10 @@
         color: #fff;
         font-weight: 600;
         transition: all 0.2s ease-in-out;
+    }
+
+    &__info-time{
+        color: #fff;   
     }
 
     &__info-btn:hover{
