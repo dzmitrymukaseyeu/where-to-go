@@ -1,30 +1,51 @@
 <div class="conteiner">
     <div class="b-event">
-        <h1 class="b-event__title">Создайте свое событие событие</h1>
+        <h1 class="b-event__title">Создайте свое событие</h1>
         <form 
-            class="b-form"
+            class="f-createevent"
             name="creation-event"
             action="#"
             [formGroup]="creationEventForm"
             (submit)="onEventSubmit($event)" 
         >
+            <div class="b-radio">
+                <p class="b-radio__title">Тип вашего события</p>
+                <mat-radio-group
+                    class="b-radio__value"
+                    formControlName="type"
+                    aria-label="Select an option"
+                >
+                    <mat-radio-button class="b-radio__value-item" name="type" [value]="item" *ngFor="let item of eventsTypeList">
+                        {{item}}
+                    </mat-radio-button>
+                </mat-radio-group> 
+            </div>
             <div class="b-info">
                 <p class="b-info__title">Информация о мероприятии</p>
         
                 <mat-form-field class="example-full-width">
                     <mat-label>Название события</mat-label>
-                    <input 
+                    <input
                          matInput
                          #messages maxlength="30" 
-                         placeholder="Название события"
+                         placeholder="Название события..."
                          name="title"
                          formControlName="title"
                          type="text"
                     >
                     <mat-hint align="end">{{messages.value.length}} / 30</mat-hint>
                 </mat-form-field>
-        
                 <mat-form-field class="example-full-width">
+                    <mat-label>Опишите событие</mat-label>
+                    <textarea 
+                        name="description"
+                        formControlName="description"
+                        matInput placeholder="Опишите событие..."
+                        >
+                    </textarea>
+                </mat-form-field>
+        
+                <!-- <mat-form-field class="example-full-width">
                     <mat-label>Опишите событие</mat-label>
                     <input
                          matInput 
@@ -35,55 +56,45 @@
                          type="text"
                     >
                     <mat-hint align="end">{{message.value.length}} / 100</mat-hint>
-                </mat-form-field>
+                </mat-form-field> -->
             </div>
-        
-            <div class="b-data">
-                <p class="b-data__title">Время проведения события</p>
-        
-                <mat-form-field class="example-full-width">
-                    <mat-label>Дата проведения события</mat-label>
-                    <input
-                        matInput 
-                        placeholder="Дата проведения события"
-                        type="date"
-                        name="date"
-                        formControlName="date"
-                    >
-                </mat-form-field>
-                
-                <mat-form-field class="example-full-width">
-                    <mat-label>Время проведения события</mat-label>
-                    <input
-                         matInput 
-                         placeholder="Время проведения события"
-                         type="time"
-                         name="time"
-                         formControlName="time"
-                    >
-                </mat-form-field>
+            <div class="b-datatime">
+                <div class="b-datatime__dt">
+                    <p class="b-datatime__title">Дата</p>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Выберите дату</mat-label>
+                        <input
+                            matInput 
+                            placeholder="Дата проведения события"
+                            type="date"
+                            name="date"
+                            formControlName="date"
+                        >
+                    </mat-form-field>
+                </div>
+                <div class="b-datatime__dt">
+                    <p class="b-datatime__title">Время</p>   
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Выберите время</mat-label>
+                        <input
+                             matInput 
+                             placeholder="Время проведения события"
+                             type="time"
+                             name="time"
+                             formControlName="time"
+                        >
+                    </mat-form-field>
+                </div>
             </div>
-
-            <p class="b-form__type">Тип вашего события</p>
-            <div class="b-radio">
-                <mat-radio-group
-                    class="b-radio__value"
-                    formControlName="type"
-                    aria-label="Select an option"
+            <div class="test">
+                <button 
+                    type="submit" 
+                    class="test__btn"
+                    [disabled]="!this.creationEventForm.valid"
                 >
-                    <mat-radio-button name="type" [value]="item" *ngFor="let item of eventsTypeList">
-                        {{item}}
-                    </mat-radio-button>
-                </mat-radio-group> 
+                    Отправить
+                </button>
             </div>
-
-            <button 
-                type="submit" 
-                class="b-event__btn"
-                [disabled]="!this.creationEventForm.valid"
-            >
-                Отправить
-            </button>
         </form>
     </div>
 </div>

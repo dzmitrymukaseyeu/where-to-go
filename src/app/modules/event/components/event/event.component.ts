@@ -79,6 +79,15 @@ export class EventComponent implements OnInit {
     if(!this.creationEventForm.valid){
       return;
     }
-    console.log(this.creationEventForm.value); 
+
+    const newEvent = this.creationEventForm.value;
+    this.apiService.createEvent(newEvent)
+    .subscribe(res => console.log(res))
+    //console.log(this.creationEventForm.value); 
   }
 }
+
+// const obj = {
+//   ...this.creationEventForm.value,
+//   bgImage:
+// }

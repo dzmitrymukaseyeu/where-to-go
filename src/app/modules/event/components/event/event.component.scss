@@ -1,23 +1,84 @@
 .conteiner{
     display:flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
-
 .b-event{
-    flex-basis: 780px;
+    flex-basis: 1140px;
+    margin-top: 25px;
+
+    &__title{
+        text-align: center;
+    }
+    
+}
+
+.f-createevent{
+    margin-top: 20px; 
+}
+
+.test{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+
+
     &__btn{
         border: 1px solid;
-        padding: 10px;
+        width: 500px;
+        padding: 15px;
     }
 }
 
 .b-radio{
-    &__value{
-        display: flex;
-        flex-direction: column;
+    border: solid 2px rgba($color: #e2e2e2, $alpha: .5);
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 2px 1px 8px -4px;
+
+    &__title{
+        text-align: center;
     }
- 
+
+    &__value{
+        margin: 10px 0 10px 0;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+    }   
+}
+
+.b-info{
+    border: solid 2px rgba($color: #e2e2e2, $alpha: .5);
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 2px 1px 8px -4px;
+    margin-top: 25px;
+
+    &__title{
+        text-align: center;
+    }
+}
+
+.b-datatime{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 20px;
+
+    &__title{
+        text-align: center;
+        margin: 20px 0 20px 0;
+    }
+
+    &__dt{
+        border: solid 2px rgba($color: #e2e2e2, $alpha: .5);
+        padding: 0 25px 0 25px;
+        border-radius: 5px;
+        box-shadow: 2px 1px 8px -4px;    
+    }
+    
 }
 
 .example-full-width{
