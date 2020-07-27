@@ -1,0 +1,27 @@
+.b-toasts {
+    position: fixed;
+    width: 200px;
+    top: 50px;
+    right: 50px ;
+    padding: 20px 15px;
+    border-radius: 5px;
+    z-index: 1001;
+
+    &._success {
+        background-color: #4aa329;
+    }
+
+    &._error {
+        background-color:rgba(227, 24, 55, .9);
+        color: #fff;
+    }
+
+    &__title {
+        font-size: 18px;
+    }
+
+    &__text {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+}

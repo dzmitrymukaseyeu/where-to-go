@@ -2,6 +2,10 @@ import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from '@app/services';
 import { ApiService } from '@app/services';
+import { ToastsService } from '@app/services';
+import { finalize } from 'rxjs/operators'
+import { pipe } from 'rxjs';
+import { ResDefinition } from '@app/shared/interfaces'
 
 
 @Component({
@@ -16,13 +20,18 @@ export class AuthComponent implements OnInit {
   @Output() close = new EventEmitter<boolean>();
   @Output() showUser = new EventEmitter<boolean>();
    
+  res: ResDefinition;
+
+
+
 
   text:string = 'У меня уже есть аккаунт';
   
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private toastsService: ToastsService
   ) { }
 
   ngOnInit(): void {
@@ -66,7 +75,22 @@ export class AuthComponent implements OnInit {
     event.preventDefault();
     const userInfo = this.signUpForm.value;
     this.apiService.signUp(userInfo)
-      .subscribe(res => console.log(res))
+      .pipe(
+        finalize(() => {
+
+        })
+      )
+      .subscribe((res:ResDefinition) => {
+        this.toastsService.show(res.code, res.message);
+        this.close.emit(true);
+      },
+      ({error}: { error: {
+        code: number,
+        message: string
+      }}) => {
+        console.log(error);
+        this.toastsService.show(error.code, error.message);       
+      } )
 
 
 
@@ -86,12 +110,27 @@ export class AuthComponent implements OnInit {
 
   onSignInSubmit(event: Event) {
     event.preventDefault();
-
+    const userSignInValue = this.signInForm.value;
     if(!this.signInForm.valid) {
       return;
     }
-    console.log(this.signInForm.value);
-    this.showUser.emit(true);
+    this.apiService.signIn(userSignInValue)
+      .pipe(
+        finalize(() => {
+
+        })
+      )
+      .subscribe((res:ResDefinition) => {
+        this.toastsService.show(res.code, res.message);
+        this.showUser.emit(true);
+      },
+      ({error}: { error: {
+        code: number,
+        message: string
+      }}) => {
+        console.log(error);
+        this.toastsService.show(error.code, error.message);       
+      })
   }
 
   onCloseAuth(event: Event) {

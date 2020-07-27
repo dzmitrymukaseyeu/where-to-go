@@ -12,11 +12,6 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'auth',
-    pathMatch: 'full',
-    component: AuthComponent,
-  },
-  {
     path: 'about',
     component: AboutComponent
   },

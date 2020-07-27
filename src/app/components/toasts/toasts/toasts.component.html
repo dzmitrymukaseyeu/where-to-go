@@ -1,0 +1,11 @@
+<div 
+    *ngIf="toastsService.toastsMessageData | async as toast" 
+    class="b-toasts"
+    [ngClass]= "{
+        _success: toast.type === 'success',
+        _error: toast.type === 'error'
+    }"
+>
+    <h3 class="b-toasts__title">{{(toastsService.toastsMessageData | async).title}}</h3>
+    <p class="b-toasts__text">{{(toastsService.toastsMessageData | async).message}}</p>
+</div>
