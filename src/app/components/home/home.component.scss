@@ -74,7 +74,7 @@
         background-color: #ff0000;
         color: #fff;
         font-weight: 600;
-        transition: all 0.2s ease-in-out;
+        transition: transform 0.2s ease-in-out;
     }
 
     &__info-time{
@@ -82,6 +82,6 @@
     }
 
     &__info-btn:hover{
-        transform: scale(1.1, 1.1);
+        transform: scale(1.1);
     } 
 }

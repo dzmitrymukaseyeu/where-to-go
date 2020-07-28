@@ -15,6 +15,7 @@ import { AuthComponent } from './components/auth/auth.component'
 import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { ToastsComponent } from './components/toasts/toasts/toasts.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { MatInputModule } from '@angular/material/input';
     AboutComponent,
     FaqComponent,
     HeaderComponent,
-    AuthComponent
+    AuthComponent,
+    ToastsComponent
   ],
   imports: [
     BrowserModule,

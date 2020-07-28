@@ -8,28 +8,25 @@
                 <div class="b-nav">
                     <ul class="l-nav">
                         <li class="l-nav__link">
-                            <a routerLink=""
-                            routerLinkActive="_active"
-                            [routerLinkActiveOptions]="{exact:true}"
-                            >
-                            Главная
-                            </a>
+                            <a 
+                                routerLink=""
+                                routerLinkActive="_active"
+                                [routerLinkActiveOptions]="{exact:true}"
+                            >Главная</a>
                         </li>
                         <li class="l-nav__link">
-                            <a routerLink="faq"
-                            routerLinkActive="_active"
-                            [routerLinkActiveOptions]="{exact:true}"
-                            >
-                            FAQ
-                            </a>    
+                            <a 
+                                routerLink="faq"
+                                routerLinkActive="_active"
+                                [routerLinkActiveOptions]="{exact:true}"
+                            >FAQ</a>    
                         </li>       
                         <li class="l-nav__link">
-                            <a routerLink="about"
-                            routerLinkActive="_active"
-                            [routerLinkActiveOptions]="{exact:true}"
-                            >
-                            О проекте
-                            </a>
+                            <a 
+                                routerLink="about"
+                                routerLinkActive="_active"
+                                [routerLinkActiveOptions]="{exact:true}"
+                            >О проекте</a>
                         </li>
                     </ul>
                 </div>
@@ -38,25 +35,23 @@
                 </div>
                 <div class="b-auth">
                     <button
-                    type="button" 
-                    *ngIf= "!isLoggedIn"
-                    class="b-auth__login"
-                    (click)="OnAuthClick($event)"
-                    >
-                    Зарегистрироваться / Войти
-                    </button>
+                        type="button" 
+                        *ngIf= "!isLoggedIn"
+                        class="b-auth__login"
+                        (click)="OnAuthClick($event)"
+                    >Зарегистрироваться / Войти</button>
                     <a 
-                    routerLink="user" 
-                    *ngIf="isLoggedIn"
-                    class="b-auth__user"
+                        routerLink="user" 
+                        *ngIf="isLoggedIn"
+                        class="b-auth__user"
                     >
                         <img src="/assets/iconmonstr-user-20.svg" alt="user-logo">
                         <span>Пользователь</span>
                     </a>
                     <a  
-                    *ngIf="isLoggedIn"
-                    class="b-auth__exit"
-                    href=""
+                        *ngIf="isLoggedIn"
+                        class="b-auth__exit"
+                        href=""
                     >
                         <img src="/assets/iconmonstr-door-8.svg " alt="logout">
                         <span>Выйти</span>
