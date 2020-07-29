@@ -1,1 +1,11 @@
-<p>eventitem works!</p>
+<div class="b__value">
+    <div [style.backgroundImage]="imagesTable[event.type]" class="b__value-info">
+        <div [style.backgroundColor]="colorsTable[event.type]" class="b__value-type">{{event.type}}</div>
+        <h3 class="b__value-title">{{event.title}}</h3>
+        <p class="b__value-text">{{event.description}}</p>
+        <div class="b__value-time">{{event.date | date:'shortTime'}}</div>
+        <div [style.color]="colorsTable[event.type]" class="b__value-date">{{event.date | date:'longDate'}}</div>
+        <button class="b__value-btn" type="button">Подписаться</button>
+    </div>
+</div>
+<p>работает</p>

@@ -18,16 +18,25 @@
     margin-top: 20px; 
 }
 
-.test{
+.b-submit{
     display: flex;
     justify-content: center;
     margin-top: 50px;
 
 
     &__btn{
-        border: 1px solid;
         width: 500px;
         padding: 15px;
+        transition: transform 0.2s ease-in-out;
+        background-color: red;
+        border-radius: 5px;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    &__btn:hover{
+        transform: scale(1.2);
+        border-radius: 10px;
     }
 }
 
@@ -39,6 +48,7 @@
 
     &__title{
         text-align: center;
+        font-weight: 600;
     }
 
     &__value{
@@ -46,8 +56,10 @@
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
-    }   
+    } 
+    
 }
+
 
 .b-info{
     border: solid 2px rgba($color: #e2e2e2, $alpha: .5);
@@ -58,8 +70,12 @@
 
     &__title{
         text-align: center;
+        font-weight: 600;
     }
+    
 }
+
+
 
 .b-datatime{
     display: flex;
@@ -70,15 +86,17 @@
     &__title{
         text-align: center;
         margin: 20px 0 20px 0;
+        font-weight: 600;
+        
     }
 
     &__dt{
         border: solid 2px rgba($color: #e2e2e2, $alpha: .5);
         padding: 0 25px 0 25px;
         border-radius: 5px;
-        box-shadow: 2px 1px 8px -4px;    
-    }
-    
+        box-shadow: 2px 1px 8px -4px;
+      
+    }    
 }
 
 .example-full-width{

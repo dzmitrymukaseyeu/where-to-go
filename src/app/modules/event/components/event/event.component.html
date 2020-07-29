@@ -9,7 +9,7 @@
             (submit)="onEventSubmit($event)" 
         >
             <div class="b-radio">
-                <p class="b-radio__title">Тип вашего события</p>
+                <p class="b-radio__title">Тип вашего события<p>
                 <mat-radio-group
                     class="b-radio__value"
                     formControlName="type"
@@ -44,19 +44,6 @@
                         >
                     </textarea>
                 </mat-form-field>
-        
-                <!-- <mat-form-field class="example-full-width">
-                    <mat-label>Опишите событие</mat-label>
-                    <input
-                         matInput 
-                         #message maxlength="100"
-                         placeholder="Описать событие"
-                         name="description"
-                         formControlName="description"
-                         type="text"
-                    >
-                    <mat-hint align="end">{{message.value.length}} / 100</mat-hint>
-                </mat-form-field> -->
             </div>
             <div class="b-datatime">
                 <div class="b-datatime__dt">
@@ -86,10 +73,10 @@
                     </mat-form-field>
                 </div>
             </div>
-            <div class="test">
+            <div class="b-submit">
                 <button 
                     type="submit" 
-                    class="test__btn"
+                    class="b-submit__btn"
                     [disabled]="!this.creationEventForm.valid"
                 >
                     Отправить
