@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from '@app/shared/shared.module';
 
 import { UserRoutingModule } from './user-routing.module';
 import { MeComponent } from './components/me/me.component';
@@ -19,7 +20,8 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     UserRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    SharedModule
   ]
 })
 export class UserModule { }

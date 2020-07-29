@@ -9,10 +9,10 @@
 }
 
 .b-events {
-    padding-top: 50px;
+    padding-top: 50px;  
 }
 
-.l-events {
+.l-events{
     display: flex;
     flex-wrap: wrap;
     margin: 0 -20px;
@@ -20,68 +20,10 @@
 
     &__item{
         flex-basis: 33.333%;
-        padding: 0 20px;
-
-        &-info {
-            border-radius: 15px;
-            box-shadow: 4px 4px 12px -4px;
-            padding: 15px;
-            position: relative;
-            background-repeat: no-repeat ;
-            background-size: cover;
-            
-        }
+        padding: 0 20px; 
 
         &:nth-child(n+4){
             margin-top: 40px;
         }
     }
-
-    &__info-type{
-        position: absolute;
-        padding: 4px 0 4px;
-        padding-left: 15px;
-        padding-right: 10px;
-        left: 0;
-        border-radius: 0px 10px 10px 0px;
-        color:#fff;
-        font-weight: 600;
-        box-shadow: #000 6px -2px 18px -8px;
-    }
-
-    &__info-title{
-        margin-top: 50px;
-        font-weight: 600;
-        color: #fff;
-    }
-    
-    &__info-text{
-        margin-top: 10px;
-        margin-bottom: 15px;
-        color: #fff;
-    }
-
-
-    &__info-date{
-        font-weight: 600;
-    }
-
-    &__info-btn{
-        margin-top: 10px;
-        padding: 5px;
-        border: 1px solid  rgba(226, 226, 226, 0.5);
-        border-radius: 3px;
-        background-color: #ff0000;
-        color: #fff;
-        font-weight: 600;
-        transition: transform 0.2s ease-in-out;
-    }
-
-    &__info-time{
-        color: #fff;   
-    }
-
-    &__info-btn:hover{
-        transform: scale(1.1);
-    } 
 }

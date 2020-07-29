@@ -71,14 +71,7 @@
         <div class="b-events">
             <ul class="l-events">
                 <li *ngFor="let event of (filteredEvents | async)" class="l-events__item">
-                    <div [style.backgroundImage]="imagesTable[event.type]" class="l-events__item-info">
-                        <div [style.backgroundColor]="colorsTable[event.type]" class="l-events__info-type">{{event.type}}</div>
-                        <div class="l-events__info-title">{{event.title}}</div>
-                        <div class="l-events__info-text">{{event.description}}</div>
-                        <div class="l-events__info-time">{{event.date | date:'shortTime'}}</div>
-                        <div [style.color]="colorsTable[event.type]" class="l-events__info-date">{{event.date | date:'longDate'}}</div>
-                        <button class="l-events__info-btn" type="button">Подписаться</button>
-                    </div>
+                    <app-eventitem [event]="event" ></app-eventitem>
                 </li>
             </ul>
         </div>

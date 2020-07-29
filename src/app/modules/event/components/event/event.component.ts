@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '@app/services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'app-event',
@@ -9,14 +10,14 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class EventComponent implements OnInit {
   imagesTable={
-    'Кино': 'assets/cinema.jpg',
-    'Концерты': '/assets/concert.jpg',
-    'Фестивали': '/assets/festival.jpg',
-    'Вечеринки': '/assets/party.jpg',
-    'Спектакли': '/assets/show.jpg',
-    'Выставки': '/assets/insert.jpg',
-    'Другое': '/assets/other.jpg',
-    'Активности': '/assets/active.jpg'
+    'Кино': 'url(/assets/cinema.jpg)',
+    'Концерты': 'url(/assets/concert.jpg)',
+    'Фестивали': 'url(/assets/festival.jpg)',
+    'Вечеринки': 'url(/assets/party.jpg)',
+    'Спектакли': 'url(/assets/show.jpg)',
+    'Выставки': 'url(/assets/insert.jpg)',
+    'Другое': 'url(/assets/other.jpg)',
+    'Активности': 'url(/assets/active.jpg)'
   };
   eventsTypeList: string[] = Object.keys(this.imagesTable);
 
@@ -73,12 +74,32 @@ export class EventComponent implements OnInit {
 
     // this.apiService.createEvent(obj)
     //   .subscribe(res => console.log(res))
+    
   }
   onEventSubmit(event: Event){
     event.preventDefault();
     if(!this.creationEventForm.valid){
       return;
     }
-    console.log(this.creationEventForm.value); 
+
+    const newEvent = this.creationEventForm.value;
+    this.apiService.createEvent(newEvent)
+    .subscribe(res => console.log(res))
+    //console.log(this.creationEventForm.value); 
+
+    const obj = {
+      ...this.creationEventForm.value,
+      bgImage: this.imagesTable[this.creationEventForm.value.type]
+    }
+    console.log("obj:", obj )
+  
   }
+
+  
 }
+
+
+
+
+
+

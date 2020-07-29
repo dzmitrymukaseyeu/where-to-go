@@ -1,0 +1,59 @@
+.b__value{
+     &-info {
+         border-radius: 15px;
+         box-shadow: 4px 4px 12px -4px;
+         padding: 15px;
+         position: relative;
+         background-repeat: no-repeat ;
+         background-size: cover;       
+     }
+ 
+    &-type{
+        position: absolute;
+        padding: 4px 0 4px;
+        padding-left: 15px;
+        padding-right: 10px;
+        left: 0;
+        border-radius: 0px 10px 10px 0px;
+        color:#fff;
+        font-weight: 600;
+        box-shadow: #000 6px -2px 18px -8px;
+    }
+
+    &-title{
+        margin-top: 50px;
+        font-weight: 600;
+        color: #fff;
+    }
+
+    &-text{
+        margin-top: 10px;
+        margin-bottom: 15px;
+        color: #fff;
+    }
+
+    &-date{
+        font-weight: 600;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    &-btn{
+        margin-top: 10px;
+        padding: 5px;
+        border-radius: 3px;
+        background-color: #ff0000;
+        color: #fff;
+        font-weight: 600;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    &-time{
+        color: #fff;   
+    }
+
+    &-btn:hover{
+        transform: scale(1.1);
+    } 
+}

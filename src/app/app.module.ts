@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '@app/shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -26,7 +27,7 @@ import { ToastsComponent } from './components/toasts/toasts/toasts.component';
     FaqComponent,
     HeaderComponent,
     AuthComponent,
-    ToastsComponent
+    ToastsComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +39,7 @@ import { ToastsComponent } from './components/toasts/toasts/toasts.component';
     MatTabsModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
     MatInputModule
   ],
   providers: [],
