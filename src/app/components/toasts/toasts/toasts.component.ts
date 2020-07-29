@@ -9,8 +9,8 @@ import { ToastsService } from '@app/services';
 export class ToastsComponent implements OnInit {
 
   constructor(
-    public toastsService: ToastsService  
-  ) { }
+    public toastsService: ToastsService
+  ) {}
 
   ngOnInit(): void {
     this.toastsService.toastsMessageData

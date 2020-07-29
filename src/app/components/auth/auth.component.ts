@@ -1,8 +1,6 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy, Renderer2} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UserService } from '@app/services';
-import { ApiService } from '@app/services';
-import { ToastsService } from '@app/services';
+import { UserService, ApiService, ToastsService } from '@app/services';
 import { finalize } from 'rxjs/operators'
 import { pipe } from 'rxjs';
 import { ResDefinition } from '@app/shared/interfaces'
@@ -13,17 +11,12 @@ import { ResDefinition } from '@app/shared/interfaces'
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent implements OnInit, OnDestroy {
   signUpForm: FormGroup;
   signInForm: FormGroup;
   signIn = false;
   @Output() close = new EventEmitter<boolean>();
   @Output() showUser = new EventEmitter<boolean>();
-   
-  res: ResDefinition;
-
-
-
 
   text:string = 'У меня уже есть аккаунт';
   
@@ -31,10 +24,13 @@ export class AuthComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userService: UserService,
     private apiService: ApiService,
-    private toastsService: ToastsService
+    private toastsService: ToastsService,
+    private renderer: Renderer2
   ) { }
 
   ngOnInit(): void {
+    this.renderer.addClass(document.body, 'modal-open');
+
     this.signUpForm = this.formBuilder.group({
       firstName: [null, [
         Validators.required,
@@ -121,8 +117,10 @@ export class AuthComponent implements OnInit {
         })
       )
       .subscribe((res:ResDefinition) => {
-        this.toastsService.show(res.code, res.message);
+        // this.toastsService.show(res.code, res.message);
+        this.userService.userData= res.content;
         this.showUser.emit(true);
+        console.log(res);
       },
       ({error}: { error: {
         code: number,
@@ -136,6 +134,10 @@ export class AuthComponent implements OnInit {
   onCloseAuth(event: Event) {
     this.close.emit(true);
     
+  }
+
+  ngOnDestroy() {
+    this.renderer.removeClass(document.body, 'modal-open');
   }
 
 }

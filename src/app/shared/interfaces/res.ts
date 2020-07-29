@@ -1,4 +1,5 @@
 export interface ResDefinition {
-        code: number,
-        message: string
+        code: number;
+        message: string;
+        content?: unknown;
 }
