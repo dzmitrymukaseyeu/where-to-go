@@ -1,21 +1,21 @@
 @import 'abstracts/variables.scss';
 
-// .l-events{
-//     display: flex;
-//     flex-wrap: wrap;
-//     margin: 0 -20px;
-//     padding: 30px;
+.l-events{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -20px;
+    padding: 30px;
 
-//     &__item{
-//         flex-basis: 33.333%;
-//         padding: 0 20px; 
+    &__item{
+        flex-basis: 33.333%;
+        padding: 0 20px; 
 
-//         &:nth-child(n+4){
-//             margin-top: 40px;
-//         }
-//     }
+        &:nth-child(n+4){
+            margin-top: 40px;
+        }
+    }
 
-// }
+}
 
 // .l-events {
 //     display: flex;
