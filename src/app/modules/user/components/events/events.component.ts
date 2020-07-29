@@ -13,6 +13,7 @@ export class EventsComponent implements OnInit {
   userEvents: EventsAllDefinition[] = [];
   EventsAll : EventsAllDefinition[]  = EventsAll;
   User : UserDefinition[] = User;
+  isButtonVisible = false;
   // colorsTable = {
   //   'Кино': "#FF7100",
   //   'Концерты': "#E40045",

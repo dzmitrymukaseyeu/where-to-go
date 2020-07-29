@@ -8,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class EventitemComponent implements OnInit {
 
 @Input() event
+@Input() isButtonVisible = true;
 
 colorsTable = {
   'Кино': "#FF7100",
