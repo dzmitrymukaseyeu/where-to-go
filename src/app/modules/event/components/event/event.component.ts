@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '@app/services';
+import { ApiService, UserService } from '@app/services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
 
@@ -25,7 +25,8 @@ export class EventComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -82,16 +83,23 @@ export class EventComponent implements OnInit {
       return;
     }
 
-    const newEvent = this.creationEventForm.value;
+    // const obj = {
+    //   ...this.creationEventForm.value,
+    //   bgImage: this.imagesTable[this.creationEventForm.value.type],
+    //   userEmail: this.userService.userData.email
+    // }
+    // console.log("obj:", obj )
+
+    const newEvent = {
+      ...this.creationEventForm.value,
+      bgImage: this.imagesTable[this.creationEventForm.value.type],
+      userEmail: this.userService.userData.email
+    } 
     this.apiService.createEvent(newEvent)
     .subscribe(res => console.log(res))
     //console.log(this.creationEventForm.value); 
-
-    const obj = {
-      ...this.creationEventForm.value,
-      bgImage: this.imagesTable[this.creationEventForm.value.type]
-    }
-    console.log("obj:", obj )
+    console.log(newEvent);
+    
   
   }
 
