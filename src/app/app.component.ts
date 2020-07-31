@@ -9,7 +9,6 @@ import { ResDefinition } from '@app/shared/interfaces'
 })
 export class AppComponent implements OnInit {
   isModalVisible = false;
-  isLoggedIn = false;
   title = 'where-to-go';
 
 
@@ -27,7 +26,6 @@ export class AppComponent implements OnInit {
         .subscribe((res: ResDefinition) => {
           console.log(res);
           this.userService.userData= res.content;
-          this.isLoggedIn = true;
         })
     }
   }
