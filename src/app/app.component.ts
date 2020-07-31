@@ -43,7 +43,6 @@ export class AppComponent implements OnInit {
 
   
   onUserShow(event:boolean){
-    this.isLoggedIn = event;
     this.isModalVisible = false;
   }
 

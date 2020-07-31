@@ -36,13 +36,13 @@
                 <div class="b-auth">
                     <button
                         type="button" 
-                        *ngIf= "!isLoggedIn"
+                        *ngIf= "!userService.userData"
                         class="b-auth__login"
                         (click)="OnAuthClick($event)"
                     >Зарегистрироваться / Войти</button>
                     <a 
                         routerLink="user" 
-                        *ngIf="isLoggedIn"
+                        *ngIf="userService.userData"
                         
                         class="b-auth__user"
                     >
@@ -51,7 +51,7 @@
                     </a>
                     <button
                         type="button"  
-                        *ngIf="isLoggedIn"
+                        *ngIf="userService.userData"
                         class="b-auth__exit"
                         href=""
                         (click)="onLogOut($event)"
