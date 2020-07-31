@@ -2,6 +2,8 @@
     display:flex;
     justify-content: center;
     flex-wrap: wrap;
+    background-color: #f7fcff;
+    padding-bottom: 15px;
 }
 
 .b-event{
@@ -10,6 +12,7 @@
 
     &__title{
         text-align: center;
+        color: #0079ae;
     }
     
 }
@@ -28,7 +31,7 @@
         width: 500px;
         padding: 15px;
         transition: transform 0.2s ease-in-out;
-        background-color: red;
+        background-color: #0079ae;
         border-radius: 5px;
         color: #fff;
         font-weight: 600;
@@ -42,13 +45,13 @@
 
 .b-radio{
     border: solid 2px rgba($color: #e2e2e2, $alpha: .5);
-    border-radius: 5px;
+    border-radius: 15px;
     padding: 15px;
-    box-shadow: 2px 1px 8px -4px;
-
+    box-shadow: -1px 6px 15px -8px;
     &__title{
         text-align: center;
         font-weight: 600;
+        color: #0079ae;
     }
 
     &__value{
@@ -57,32 +60,29 @@
         justify-content: space-evenly;
         flex-wrap: wrap;
     } 
-    
 }
+
 
 
 .b-info{
     border: solid 2px rgba($color: #e2e2e2, $alpha: .5);
-    border-radius: 5px;
+    border-radius: 15px;
     padding: 15px;
-    box-shadow: 2px 1px 8px -4px;
+    box-shadow: -1px 6px 15px -8px;
     margin-top: 25px;
 
     &__title{
         text-align: center;
         font-weight: 600;
+        color: #0079ae;
     }
     
 }
 
-
-
 .b-datatime{
     display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
     margin-top: 20px;
-
+ 
     &__title{
         text-align: center;
         margin: 20px 0 20px 0;
@@ -91,12 +91,12 @@
     }
 
     &__dt{
-        border: solid 2px rgba($color: #e2e2e2, $alpha: .5);
-        padding: 0 25px 0 25px;
-        border-radius: 5px;
-        box-shadow: 2px 1px 8px -4px;
-      
-    }    
+        padding: 0 25px 0 25px; 
+        flex-basis: 50%;
+    } 
+    .mat-input-element{
+        text-align: center;
+    }   
 }
 
 .example-full-width{

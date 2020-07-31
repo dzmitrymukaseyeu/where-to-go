@@ -1,12 +1,14 @@
 .b__value{
-     &-info {
-         border-radius: 15px;
-         box-shadow: 4px 4px 12px -4px;
-         padding: 15px;
-         position: relative;
-         background-repeat: no-repeat ;
-         background-size: cover;       
-     }
+
+    &-info {
+        border-radius: 15px;
+        box-shadow: 4px 4px 12px -4px;
+        padding: 15px;
+        position: relative;
+        background-repeat: no-repeat ;
+        background-size: cover;  
+    }
+
  
     &-type{
         position: absolute;

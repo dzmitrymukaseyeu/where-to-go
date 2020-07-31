@@ -44,35 +44,36 @@
                         >
                     </textarea>
                 </mat-form-field>
-            </div>
-            <div class="b-datatime">
-                <div class="b-datatime__dt">
-                    <p class="b-datatime__title">Дата</p>
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Выберите дату</mat-label>
-                        <input
-                            matInput 
-                            placeholder="Дата проведения события"
-                            type="date"
-                            name="date"
-                            formControlName="date"
-                        >
-                    </mat-form-field>
+                <div class="b-datatime">
+                    <div class="b-datatime__dt">
+                        <p class="b-datatime__title">Дата</p>
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Выберите дату</mat-label>
+                            <input
+                                matInput 
+                                placeholder="Дата проведения события"
+                                type="date"
+                                name="date"
+                                formControlName="date"
+                            >
+                        </mat-form-field>
+                    </div>
+                    <div class="b-datatime__dt">
+                        <p class="b-datatime__title">Время</p>   
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Выберите время</mat-label>
+                            <input
+                                 matInput 
+                                 placeholder="Время проведения события"
+                                 type="time"
+                                 name="time"
+                                 formControlName="time"
+                            >
+                        </mat-form-field>
+                    </div>
                 </div>
-                <div class="b-datatime__dt">
-                    <p class="b-datatime__title">Время</p>   
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Выберите время</mat-label>
-                        <input
-                             matInput 
-                             placeholder="Время проведения события"
-                             type="time"
-                             name="time"
-                             formControlName="time"
-                        >
-                    </mat-form-field>
-                </div>
             </div>
+            
             <div class="b-submit">
                 <button 
                     type="submit" 
