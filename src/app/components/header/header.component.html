@@ -36,22 +36,22 @@
                 <div class="b-auth">
                     <button
                         type="button" 
-                        *ngIf= "!userService.userData"
+                        *ngIf= "!(userService.userData$ | async)"
                         class="b-auth__login"
                         (click)="OnAuthClick($event)"
                     >Зарегистрироваться / Войти</button>
                     <a 
                         routerLink="user" 
-                        *ngIf="userService.userData"
+                        *ngIf="userService.userData$ | async as user"
                         
                         class="b-auth__user"
                     >
                         <img src="/assets/iconmonstr-user-20.svg" alt="user-logo">
-                        <span>Привет, {{userService.userData.firstName}}</span>
+                        <span>Привет, {{user.firstName}}</span>
                     </a>
                     <button
                         type="button"  
-                        *ngIf="userService.userData"
+                        *ngIf="userService.userData$ | async"
                         class="b-auth__exit"
                         href=""
                         (click)="onLogOut($event)"

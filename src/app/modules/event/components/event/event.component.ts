@@ -92,9 +92,8 @@ export class EventComponent implements OnInit {
     const newEvent = {
       ...formValue,
       bgImage: this.imagesTable[this.creationEventForm.value.type],
-      userEmail: this.userService.userData.email,
-      date:`${this.creationEventForm.value.date}T${this.creationEventForm.value.time}`
-    } 
+      userEmail: this.userService.userData$.value.email
+    }
 
     this.apiService.createEvent(newEvent)
     .subscribe(res => console.log(res))

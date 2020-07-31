@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
       this.apiService.getUser({email})
         .subscribe((res: ResDefinition) => {
           console.log(res);
-          this.userService.userData= res.content;
+          this.userService.userData$.next(res.content);
         })
     }
   }

@@ -21,9 +21,9 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogOut(event:Event) {
-    this.userService.userData = null;
+    this.userService.userData$.next(null);
     localStorage.removeItem('userEmail')
-    console.log(this.userService.userData);
+    console.log(this.userService.userData$.value);
   }
 
 }
