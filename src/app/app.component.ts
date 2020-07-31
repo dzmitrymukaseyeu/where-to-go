@@ -1,14 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService, ApiService } from '@app/services';
+import { ResDefinition } from '@app/shared/interfaces'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   isModalVisible = false;
   isLoggedIn = false;
   title = 'where-to-go';
+
+
+  constructor(
+    private userService: UserService,
+    private apiService: ApiService
+  ) { }
+
+
+  ngOnInit(): void {
+    const email = localStorage.getItem('userEmail');
+
+    if (localStorage.getItem('userEmail') !== null) {
+      this.apiService.getUser({email})
+        .subscribe((res: ResDefinition) => {
+          console.log(res);
+          this.userService.userData= res.content;
+          this.isLoggedIn = true;
+        })
+    }
+  }
 
   onAuthUser(event:boolean) {
     this.isModalVisible = event;

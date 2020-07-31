@@ -25,7 +25,7 @@ export class ToastsService {
       type: 'success'
       }
       
-      if (code == 409) {
+      if (code >=400) {
       obj.title = 'Error!';
       obj.type = 'error'
       }

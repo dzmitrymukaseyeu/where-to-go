@@ -1,5 +1,11 @@
 export interface ResDefinition {
         code: number;
         message: string;
-        content?: unknown;
+        content?: {
+                firstName: string;
+                lastName: string;
+                email: string;
+                createdEvents: [];
+                eventsToVisit: [];
+        };
 }

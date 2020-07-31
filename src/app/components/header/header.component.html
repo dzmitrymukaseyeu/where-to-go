@@ -43,19 +43,22 @@
                     <a 
                         routerLink="user" 
                         *ngIf="isLoggedIn"
+                        
                         class="b-auth__user"
                     >
                         <img src="/assets/iconmonstr-user-20.svg" alt="user-logo">
-                        <span>Пользователь</span>
+                        <span>Привет, {{userService.userData.firstName}}</span>
                     </a>
-                    <a  
+                    <button
+                        type="button"  
                         *ngIf="isLoggedIn"
                         class="b-auth__exit"
                         href=""
+                        (click)="onLogOut($event)"
                     >
                         <img src="/assets/iconmonstr-door-8.svg " alt="logout">
                         <span>Выйти</span>
-                    </a> 
+                    </button> 
                 </div>
             </div>
         </div>

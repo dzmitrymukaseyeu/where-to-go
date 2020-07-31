@@ -18,7 +18,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   @Output() close = new EventEmitter<boolean>();
   @Output() showUser = new EventEmitter<boolean>();
 
-  text:string = 'У меня уже есть аккаунт';
+  text:string = 'Зарегистрироваться';
   
   constructor(
     private formBuilder: FormBuilder,
@@ -98,7 +98,7 @@ export class AuthComponent implements OnInit, OnDestroy {
 
 
   onSingUpShow(event: Event) {
-    this.text = this.signIn ? 'У меня уже есть аккаунт' : 'Зарегистрироваться';
+    this.text = this.signIn ? 'Зарегистрироваться' : 'У меня уже есть аккаунт';
     this.signIn = !this.signIn;
     
   }
@@ -121,6 +121,7 @@ export class AuthComponent implements OnInit, OnDestroy {
         this.userService.userData= res.content;
         this.showUser.emit(true);
         console.log(res);
+        localStorage.setItem( "userEmail", res.content.email)
       },
       ({error}: { error: {
         code: number,
