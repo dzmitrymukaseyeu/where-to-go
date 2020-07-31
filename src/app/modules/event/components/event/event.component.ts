@@ -83,24 +83,26 @@ export class EventComponent implements OnInit {
       return;
     }
 
-    // const obj = {
-    //   ...this.creationEventForm.value,
-    //   bgImage: this.imagesTable[this.creationEventForm.value.type],
-    //   userEmail: this.userService.userData.email
-    // }
-    // console.log("obj:", obj )
+    const formValue = {
+      ...this.creationEventForm.value
+    }
+
+    delete formValue.time;
 
     const newEvent = {
-      ...this.creationEventForm.value,
+      ...formValue,
       bgImage: this.imagesTable[this.creationEventForm.value.type],
-      userEmail: this.userService.userData.email
+      userEmail: this.userService.userData.email,
+      date:`${this.creationEventForm.value.date}T${this.creationEventForm.value.time}`
     } 
+
     this.apiService.createEvent(newEvent)
     .subscribe(res => console.log(res))
-    //console.log(this.creationEventForm.value); 
+    console.log(this.creationEventForm.value); 
     console.log(newEvent);
     
-  
+   //getUserEvents(api/user/events)
+   // парам. email
   }
 
   
