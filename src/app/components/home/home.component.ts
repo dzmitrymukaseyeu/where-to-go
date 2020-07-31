@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { EventsAll } from '@app/shared/mocks';
 import { EventsAllDefinition } from '@app/shared/interfaces';
 import { BehaviorSubject } from 'rxjs';
@@ -11,13 +11,13 @@ import { ApiService } from '@app/services';
 })
 export class HomeComponent implements OnInit {
   
+  @Input () isButtonVisible: boolean;
+
   EventsAll : EventsAllDefinition[] = EventsAll;
   filteredEvents = new BehaviorSubject(this.EventsAll);
   constructor(
     private apiService: ApiService
-  ) {
-    
-   }
+  ) {}
  
 
   ngOnInit(): void {
