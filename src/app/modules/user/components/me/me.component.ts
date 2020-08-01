@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '@app/shared/mocks';
-import { UserDefinition } from '@app/shared/interfaces';
 import { UserService } from '@app/services';
 
 @Component({
@@ -10,7 +8,6 @@ import { UserService } from '@app/services';
 })
 export class MeComponent implements OnInit {
 
-  User : UserDefinition[] = User;
 
   constructor(
     public userService: UserService
@@ -18,7 +15,7 @@ export class MeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.userService);
+    console.log(this.userService.userData$.value);
   }
 
 }
