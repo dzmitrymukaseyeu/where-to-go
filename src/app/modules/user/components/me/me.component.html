@@ -1,5 +1,5 @@
-<div class="b-me">
-    <p class="b-me__item">Имя:{{' ' + userService.userData.firstName}}</p>
-    <p class="b-me__item">Фамилия:{{' ' + userService.userData.lastName }}</p>
-    <p class="b-me__item">E-mail:{{' ' + userService.userData.email}}</p>
+<div class="b-me" *ngIf="userService.userData$ | async as user">
+    <p class="b-me__item">Имя:{{' ' + user.firstName}}</p>
+    <p class="b-me__item">Фамилия:{{' ' + user.lastName }}</p>
+    <p class="b-me__item">E-mail:{{' ' + user.email}}</p>
 </div>

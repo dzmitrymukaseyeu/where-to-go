@@ -118,7 +118,7 @@ export class AuthComponent implements OnInit, OnDestroy {
       )
       .subscribe((res:ResDefinition) => {
         // this.toastsService.show(res.code, res.message);
-        this.userService.userData= res.content;
+        this.userService.userData$.next(res.content);
         this.showUser.emit(true);
         console.log(res);
         localStorage.setItem( "userEmail", res.content.email)

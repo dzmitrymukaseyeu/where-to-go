@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { ToastsDataDefinition } from '@app/shared/interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToastsService {
-  toastsMessageData = new BehaviorSubject<{
-    title: string;
-    message: string;
-    type: string
-  }>(null);
+  toastsMessageData = new BehaviorSubject<ToastsDataDefinition>(null);
 
 
 

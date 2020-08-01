@@ -7,7 +7,6 @@ import { UserService } from '@app/services'
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @Input() isLoggedIn = false;
   @Output() authOn = new EventEmitter<boolean>();
 
   constructor(
@@ -22,10 +21,9 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogOut(event:Event) {
-    this.userService.userData = null;
+    this.userService.userData$.next(null);
     localStorage.removeItem('userEmail')
-    this.isLoggedIn = false;
-    console.log(this.userService.userData);
+    console.log(this.userService.userData$.value);
   }
 
 }
