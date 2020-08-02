@@ -1,16 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService, ApiService } from '@app/services';
-import { ResDefinition } from '@app/shared/interfaces'
+import { ResDefinition } from '@app/shared/interfaces';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy{
   isModalVisible = false;
   title = 'where-to-go';
-
+  private destroy$ = new Subject();
 
   constructor(
     private userService: UserService,
@@ -23,6 +25,9 @@ export class AppComponent implements OnInit {
 
     if (localStorage.getItem('userEmail') !== null) {
       this.apiService.getUser({email})
+        .pipe(
+          takeUntil(this.destroy$)
+        )
         .subscribe((res: ResDefinition) => {
           console.log(res);
           this.userService.userData$.next(res.content);
@@ -44,5 +49,8 @@ export class AppComponent implements OnInit {
     this.isModalVisible = false;
   }
 
-
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.complete();
+  }
 }

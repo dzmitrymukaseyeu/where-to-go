@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ApiService, UserService } from '@app/services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators'
 
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
   styleUrls: ['./event.component.scss']
 })
-export class EventComponent implements OnInit {
+
+export class EventComponent implements OnInit, OnDestroy {
   imagesTable={
     'Кино': 'url(/assets/cinema.jpg)',
     'Концерты': 'url(/assets/concert.jpg)',
@@ -20,8 +23,8 @@ export class EventComponent implements OnInit {
     'Активности': 'url(/assets/active.jpg)'
   };
   eventsTypeList: string[] = Object.keys(this.imagesTable);
-
   creationEventForm: FormGroup;
+  private destroy$ = new Subject();
 
   constructor(
     private apiService: ApiService,
@@ -52,29 +55,6 @@ export class EventComponent implements OnInit {
 
       type:[this.eventsTypeList[0]],
     })
-
-    // const user = {
-    //     firstName: 'Коля',
-    //     lastName: 'Лукашов',
-    //     email: 'batyamoi@ya.ru',
-    //     password: 'fdkffdf'
-    // }
-
-    // this.apiService.signUp(user)
-    //   .subscribe(res => console.log(res));
-
-
-    //  const obj = {
-    //   type: "Кино",
-    //   date: "2015-01-24T21:23",
-    //   title: "Кто в кино?",
-    //   description: "Кто со мной на Темный рыцарь",
-    //   userEmail: "batyamoi@ya.ru",
-    //   bgImage: 'dsdsdsds'
-    // }
-
-    // this.apiService.createEvent(obj)
-    //   .subscribe(res => console.log(res))
     
   }
   onEventSubmit(event: Event){
@@ -92,10 +72,14 @@ export class EventComponent implements OnInit {
     const newEvent = {
       ...formValue,
       bgImage: this.imagesTable[this.creationEventForm.value.type],
-      userEmail: this.userService.userData$.value.email
+      userEmail: this.userService.userData$.value.email,
+      date: `${this.creationEventForm.value.date}T${this.creationEventForm.value.time}`
     }
 
     this.apiService.createEvent(newEvent)
+    .pipe(
+      takeUntil(this.destroy$)
+    )
     .subscribe(res => console.log(res))
     console.log(this.creationEventForm.value); 
     console.log(newEvent);
@@ -104,6 +88,10 @@ export class EventComponent implements OnInit {
    // парам. email
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.complete();
+  }
   
 }
 

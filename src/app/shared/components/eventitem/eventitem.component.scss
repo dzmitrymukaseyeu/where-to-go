@@ -1,6 +1,6 @@
-.b__value{
+.b-event{
 
-    &-info {
+    &__info {
         border-radius: 15px;
         box-shadow: 4px 4px 12px -4px;
         padding: 15px;
@@ -10,7 +10,7 @@
     }
 
  
-    &-type{
+    &__type{
         position: absolute;
         padding: 4px 0 4px;
         padding-left: 15px;
@@ -22,26 +22,26 @@
         box-shadow: #000 6px -2px 18px -8px;
     }
 
-    &-title{
+    &__title{
         margin-top: 50px;
         font-weight: 600;
         color: #fff;
     }
 
-    &-text{
+    &__text{
         margin-top: 10px;
         margin-bottom: 15px;
         color: #fff;
     }
 
-    &-date{
+    &__date{
         font-weight: 600;
         position: absolute;
         top: 20px;
         right: 20px;
     }
 
-    &-btn{
+    &__btn{
         margin-top: 10px;
         padding: 5px;
         border-radius: 3px;
@@ -51,11 +51,11 @@
         transition: transform 0.2s ease-in-out;
     }
 
-    &-time{
+    &__time{
         color: #fff;   
     }
 
-    &-btn:hover{
+    &__btn:hover{
         transform: scale(1.1);
     } 
 }
