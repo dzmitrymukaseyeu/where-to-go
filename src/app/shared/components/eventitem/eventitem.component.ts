@@ -43,10 +43,9 @@ imagesTable={
 
   }
 
-  onGoToEvent(event: Event) {
-    console.log(this.event.id, this.userService.userData$.value.email )
+  onGoToEvent(id: string) {
     this.apiService.goToEvent({
-      id: this.event.id,
+      id,
       email: this.userService.userData$.value.email 
     })
       .subscribe(res => console.log(res))

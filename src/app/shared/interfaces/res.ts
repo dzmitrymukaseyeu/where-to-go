@@ -15,6 +15,12 @@ export interface ResUserDefinition extends ResDefinition {
         content: UserDefinition;
 }
 
+export interface ResUserEventsDefinition extends ResDefinition {
+        content: {
+                createdEvents: [];
+                eventsToVisit: [];
+        };
+}
 // {
 //         firstName: string;
 //         lastName: string;

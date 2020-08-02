@@ -1,6 +1,11 @@
 import { EventsAllDefinition } from './events' 
 import { UserDefinition } from './users'
-import { ResDefinition, ResEventsDefinition, ResUserDefinition} from './res'
+import { 
+    ResDefinition,
+    ResEventsDefinition,
+    ResUserDefinition,
+    ResUserEventsDefinition
+} from './res'
 import { ToastsDataDefinition } from './toastData'
 
 
@@ -10,5 +15,6 @@ export {
     ResDefinition, 
     ResEventsDefinition,
     ResUserDefinition,
+    ResUserEventsDefinition,
     ToastsDataDefinition
 }

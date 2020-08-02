@@ -62,7 +62,7 @@ export class ApiService {
   }
   
   goToEvent (body: {
-    id: number;
+    id: string;
     email: string;
   }) {
     return this.httpClient.post(this.env.apiUrl + 'api/events/go', body);
