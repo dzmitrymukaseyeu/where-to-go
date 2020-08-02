@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { EventsAll } from '@app/shared/mocks';
 import { EventsAllDefinition, ResEventsDefinition } from '@app/shared/interfaces';
 import { BehaviorSubject } from 'rxjs';
 import { ApiService } from '@app/services';
@@ -21,11 +20,8 @@ export class HomeComponent implements OnInit {
  
 
   ngOnInit(): void {
-
     this.apiService.getAllEvents()
-      .subscribe((res: ResEventsDefinition)=> {
-        this.eventsAll = res.content;
-        console.log(this.eventsAll)}); 
+      .subscribe((res: ResEventsDefinition) => this.eventsAll = res.content)
   }
 
   OnFilterClick(event) {

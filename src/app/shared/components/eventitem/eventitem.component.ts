@@ -1,16 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ApiService, UserService } from '@app/services';
-import { EventsAll } from '@app/shared/mocks';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { ApiService, UserService, ToastsService } from '@app/services';
+import { ResUserEventsDefinition } from '@app/shared/interfaces';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-eventitem',
   templateUrl: './eventitem.component.html',
   styleUrls: ['./eventitem.component.scss']
 })
-export class EventitemComponent implements OnInit {
-
+export class EventitemComponent implements OnInit, OnDestroy {
 @Input() event;
 @Input() isButtonVisible = true;
+private destroy$ = new Subject();
 
 colorsTable = {
   'Кино': "#FF7100",
@@ -36,11 +38,11 @@ imagesTable={
 
   constructor(
     private apiService: ApiService,
-    private userService: UserService
+    private userService: UserService,
+    private toastsService: ToastsService,
   ) { }
 
   ngOnInit(): void {
-
   }
 
   onGoToEvent(id: string) {
@@ -48,7 +50,20 @@ imagesTable={
       id,
       email: this.userService.userData$.value.email 
     })
-      .subscribe(res => console.log(res))
+      .pipe(
+        takeUntil(this.destroy$)
+      )
+      .subscribe(
+        (res:ResUserEventsDefinition) => this.toastsService.show(res.code, res.message),
+        ({error}: { error: {
+          code: number,
+          message: string
+        }}) => this.toastsService.show(error.code, error.message)       
+      )
   }
 
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.complete();
+  }
 }
