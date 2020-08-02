@@ -54,4 +54,10 @@ export class ApiService {
   }) {
     return this.httpClient.get(this.env.apiUrl + 'api/events' , { params });
   }
+
+  getUserEvents(params: {
+    email: string;
+  }) {
+    return this.httpClient.get(this.env.apiUrl + 'api/user/events' , { params });
+  }
 }
