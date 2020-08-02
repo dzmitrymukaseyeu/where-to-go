@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ApiService, UserService } from '@app/services';
+import { EventsAll } from '@app/shared/mocks';
 
 @Component({
   selector: 'app-eventitem',
@@ -32,10 +34,22 @@ imagesTable={
   'Активности': 'url(/assets/active.jpg)'
 };
 
-  constructor() { }
+  constructor(
+    private apiService: ApiService,
+    private userService: UserService
+  ) { }
 
   ngOnInit(): void {
 
+  }
+
+  onGoToEvent(event: Event) {
+    console.log(this.event.id, this.userService.userData$.value.email )
+    this.apiService.goToEvent({
+      id: this.event.id,
+      email: this.userService.userData$.value.email 
+    })
+      .subscribe(res => console.log(res))
   }
 
 }

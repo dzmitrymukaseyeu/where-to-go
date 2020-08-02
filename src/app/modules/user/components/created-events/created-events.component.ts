@@ -14,9 +14,6 @@ import { takeUntil } from 'rxjs/operators';
 })
 
 export class CreatedEventsComponent implements OnInit, OnDestroy {
-  // userCreatedEvents: EventsAllDefinition[] = [];
-  // EventsAll : EventsAllDefinition[]  = EventsAll;
-  // User : UserDefinition[] = User;
   isButtonVisible = false;
   createdEvents  = [];
   private destroy$ = new Subject();

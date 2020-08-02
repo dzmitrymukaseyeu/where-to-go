@@ -60,4 +60,11 @@ export class ApiService {
   }) {
     return this.httpClient.get(this.env.apiUrl + 'api/user/events' , { params });
   }
+  
+  goToEvent (body: {
+    id: number;
+    email: string;
+  }) {
+    return this.httpClient.post(this.env.apiUrl + 'api/events/go', body);
+  }
 }
