@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ApiService, UserService } from '@app/services';
+import { ApiService, UserService, ToastsService } from '@app/services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import { ResEventsDefinition } from '@app/shared/interfaces'
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators'
 
@@ -29,7 +30,9 @@ export class EventComponent implements OnInit, OnDestroy {
   constructor(
     private apiService: ApiService,
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private userService: UserService,
+    private toastsService: ToastsService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -80,12 +83,16 @@ export class EventComponent implements OnInit, OnDestroy {
     .pipe(
       takeUntil(this.destroy$)
     )
-    .subscribe(res => console.log(res))
-    console.log(this.creationEventForm.value); 
-    console.log(newEvent);
-    
-   //getUserEvents(api/user/events)
-   // парам. email
+    .subscribe((res: ResEventsDefinition) => {
+      this.toastsService.show(res.code, res.message);
+      this.router.navigate(['/']);
+    },
+    ({error}: { error: {
+      code: number,
+      message: string
+    }}) => {
+      this.toastsService.show(error.code, error.message);       
+    });
   }
 
   ngOnDestroy(): void {
