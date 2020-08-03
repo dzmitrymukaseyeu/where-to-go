@@ -26,13 +26,9 @@
             align-items: center;
             justify-content: space-between;
             color: $mainTextColor;
-
         }
     }
 }
-
-
-
 
 .l-nav {
 
@@ -78,19 +74,9 @@
     }
 }
 
-.b-event {
-    a {
-        border: 1px solid;
-        padding: 8px ;
-        border-radius: 3px;
-
-    }
-}
-
 .b-auth {
     display: flex;
     align-items: center;
-
 
     &__login {
         border: 2px solid rgba(0,0,10,0.08);
@@ -129,9 +115,7 @@
         & span {
             margin-left: 5px;
         }
-
     }
-
 }
 
 

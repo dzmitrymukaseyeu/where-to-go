@@ -28,13 +28,15 @@
                                 [routerLinkActiveOptions]="{exact:true}"
                             >О проекте</a>
                         </li>
+                        <li class="l-nav__link">
+                            <a 
+                            routerLink="event" 
+                            routerLinkActive="_active"
+                            [routerLinkActiveOptions]="{exact:true}"
+                            (click)="onCreateEvent($event)"
+                        >Создать событие</a>  
+                        </li>                        
                     </ul>
-                </div>
-                <div class="b-event">
-                    <a 
-                        routerLink="event" 
-                        (click)="onCreateEvent($event)"
-                    >Создать событие</a>    
                 </div>
                 <div class="b-auth">
                     <button
