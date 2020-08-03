@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { UserDataDefinition } from '@app/shared/interfaces';
+import { UserDefinition } from '@app/shared/interfaces';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  userData$ = new BehaviorSubject< UserDataDefinition >(null);
+  userData$ = new BehaviorSubject<UserDefinition>(null);
   
   constructor() { }
 }

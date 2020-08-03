@@ -12,7 +12,6 @@ import { UserDefinition } from '@app/shared/interfaces';
 export class EventsComponent implements OnInit {
   userEvents: EventsAllDefinition[] = [];
   EventsAll : EventsAllDefinition[]  = EventsAll;
-  User : UserDefinition[] = User;
   isButtonVisible = false;
  
   
@@ -20,9 +19,9 @@ export class EventsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void { 
-    const userEvents = this.User[0].subscriedEventsId;
-    this.userEvents = this.EventsAll.filter(events => userEvents.includes(events.id))
-    console.log(this.userEvents); 
+    // const userEvents = this.User[0].subscriedEventsId;
+    // this.userEvents = this.EventsAll.filter(events => userEvents.includes(events.id))
+    // console.log(this.userEvents); 
   }
 
   

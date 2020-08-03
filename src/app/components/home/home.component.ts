@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { EventsAll } from '@app/shared/mocks';
-import { EventsAllDefinition } from '@app/shared/interfaces';
+import { EventsAllDefinition, ResEventsDefinition } from '@app/shared/interfaces';
 import { BehaviorSubject } from 'rxjs';
 import { ApiService } from '@app/services';
 
@@ -13,23 +12,21 @@ export class HomeComponent implements OnInit {
   
   @Input () isButtonVisible: boolean;
 
-  EventsAll : EventsAllDefinition[] = EventsAll;
-  filteredEvents = new BehaviorSubject(this.EventsAll);
+  eventsAll : EventsAllDefinition[] = [];
+  filteredEvents = new BehaviorSubject(this.eventsAll);
   constructor(
     private apiService: ApiService
   ) {}
  
 
   ngOnInit(): void {
-
     this.apiService.getAllEvents()
-      .subscribe(res => console.log(res)); 
-      console.log(EventsAll);
+      .subscribe((res: ResEventsDefinition) => this.eventsAll = res.content)
   }
 
   OnFilterClick(event) {
     console.log(event);
-    const filteredEvents = this.EventsAll.filter(item => item.type === event.srcElement.innerText); 
+    const filteredEvents = this.eventsAll.filter(item => item.type === event.srcElement.innerText); 
     
     this.filteredEvents.next(filteredEvents);
   }

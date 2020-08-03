@@ -70,7 +70,7 @@
         </div>
         <div class="b-events">
             <ul class="l-events">
-                <li *ngFor="let event of (filteredEvents | async)" class="l-events__item">
+                <li *ngFor="let event of eventsAll" class="l-events__item">
                     <app-eventitem [isButtonVisible]="!isButtonVisible"[event]="event" ></app-eventitem>
                 </li>
             </ul>

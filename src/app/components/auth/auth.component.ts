@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService, ApiService, ToastsService } from '@app/services';
 import { finalize } from 'rxjs/operators'
 import { pipe } from 'rxjs';
-import { ResDefinition } from '@app/shared/interfaces'
+import { ResDefinition, ResUserDefinition } from '@app/shared/interfaces'
 
 
 @Component({
@@ -116,7 +116,7 @@ export class AuthComponent implements OnInit, OnDestroy {
 
         })
       )
-      .subscribe((res:ResDefinition) => {
+      .subscribe((res:ResUserDefinition) => {
         // this.toastsService.show(res.code, res.message);
         this.userService.userData$.next(res.content);
         this.showUser.emit(true);

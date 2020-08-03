@@ -5,6 +5,9 @@
         <p class="b-event__text">{{event.description}}</p>
         <div class="b-event__time">{{event.date | date:'shortTime'}}</div>
         <div [style.color]="colorsTable[event.type]" class="b-event__date">{{event.date | date:'longDate'}}</div>
-        <button *ngIf="isButtonVisible" class="b-event__btn" type="button">Подписаться</button>
+        <button *ngIf="isButtonVisible" class="b-event__btn" type="button"
+        (click)="onGoToEvent(event.id)"
+        >Я ИДУ
+        </button>
     </div>
 </div>
