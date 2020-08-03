@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { EventsAllDefinition, ResUserEventsDefinition } from '@app/shared/interfaces';
-import { UserDefinition } from '@app/shared/interfaces';
+import { ResUserEventsDefinition } from '@app/shared/interfaces';
+
 import { ApiService, UserService } from '@app/services';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
