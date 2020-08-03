@@ -31,7 +31,10 @@
                     </ul>
                 </div>
                 <div class="b-event">
-                    <a routerLink="event">Создать событие</a>    
+                    <a 
+                        routerLink="event" 
+                        (click)="onCreateEvent($event)"
+                    >Создать событие</a>    
                 </div>
                 <div class="b-auth">
                     <button
