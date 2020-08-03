@@ -1,2 +1,10 @@
 $mainColor: #69f0ae;
 $mainTextColor:#38384f;
+$tabletWidth: 992px;
+$mobileWidth: 740px;
+
+$breakPoints:(
+    'desktop': 1200px,
+    'tablet': 992px,
+    'mobile': 740px
+)
