@@ -16,6 +16,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onCreateEvent(event: Event) {
+    if (!localStorage.getItem('userEmail')) {
+      this.authOn.emit(true);
+    }
+  }
+
   OnAuthClick(event:Event) {
     this.authOn.emit(true);
   }
