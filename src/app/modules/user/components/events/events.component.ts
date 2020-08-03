@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EventsAll } from '@app/shared/mocks';
-import { EventsAllDefinition } from '@app/shared/interfaces';
-import { User } from '@app/shared/mocks';
-import { UserDefinition } from '@app/shared/interfaces';
+import { ResUserEventsDefinition } from '@app/shared/interfaces';
+import { ApiService, UserService } from '@app/services';
 
 @Component({
   selector: 'app-events',
@@ -10,18 +8,22 @@ import { UserDefinition } from '@app/shared/interfaces';
   styleUrls: ['./events.component.scss']
 })
 export class EventsComponent implements OnInit {
-  userEvents: EventsAllDefinition[] = [];
-  EventsAll : EventsAllDefinition[]  = EventsAll;
   isButtonVisible = false;
+  subscribedEvents  = [];
  
   
  
-  constructor() { }
+  constructor(
+    private apiService: ApiService,
+    private userService: UserService,
+  ) { }
 
   ngOnInit(): void { 
-    // const userEvents = this.User[0].subscriedEventsId;
-    // this.userEvents = this.EventsAll.filter(events => userEvents.includes(events.id))
-    // console.log(this.userEvents); 
+    this.apiService.getUserEvents({email:this.userService.userData$.value.email})
+    .subscribe((res: ResUserEventsDefinition) => {
+      this.subscribedEvents = res.content.eventsToVisit;
+      console.log(res.content.eventsToVisit);
+    })
   }
 
   
