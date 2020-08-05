@@ -45,7 +45,7 @@ export class EventComponent implements OnInit, OnDestroy {
       description: [null, [
           Validators.required,
           Validators.minLength(20),
-          Validators.maxLength(100)
+          Validators.maxLength(250)
       ]],
       
       date:[null, [

@@ -1,4 +1,5 @@
 @import 'abstracts/variables.scss';
+@import 'abstracts/mixins';
 
 .b-user {
     display: flex;
@@ -7,9 +8,7 @@
     box-shadow: 0 23px 93px -48px; ;
     
     &__aside {
-        padding: 40px;
-        padding-bottom: 0;
-        
+        padding: 40px 40px 0 40px; 
     }
 
     &__main {
@@ -19,14 +18,14 @@
 
     &__background{
         background-color: $mainColor;
-        height: 200px;
         display: flex;
         justify-content: center;
         box-shadow: 0px 2px 8px -3px;
         border-radius: 0 0 10px 10px;
+        padding: 50px;
 
         &__img{
-            height: 100%;
+            width: 100%;
         }
     }
 
@@ -56,6 +55,7 @@
 
     ul{
         display: flex;
+        flex-wrap: wrap;
         border-bottom: 2px solid rgba($color: #e2e2e2, $alpha: .5);
     }
 
@@ -64,3 +64,30 @@
     }
 
 }
+
+@include mobile(){
+    .b-user {
+        &__aside {
+            padding: 0; 
+        }
+
+        ul{
+            flex-direction: column;
+            margin-top: 25px;
+            padding: 0;
+        }
+        ._active::after{
+            content: "";
+            margin-top: 5px;    
+        }
+
+        li:nth-child(n+2){
+            margin-top: 20px;
+        }
+
+        &__main{
+            padding: 0 0 15px 0;
+        }
+
+    }
+} 
