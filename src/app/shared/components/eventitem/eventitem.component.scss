@@ -1,14 +1,16 @@
 @import 'abstracts/variables.scss';
 
 .b-event{
+    position: relative;
 
     &__info {
         border-radius: 15px;
         box-shadow: 4px 4px 12px -4px;
-        padding: 15px;
+        padding: 60px 15px;
         position: relative;
         background-repeat: no-repeat ;
-        background-size: cover;  
+        background-size: cover;
+        display: block;
     }
 
     &__type{
@@ -17,6 +19,7 @@
         padding-left: 15px;
         padding-right: 10px;
         left: 0;
+        top: 20px;
         border-radius: 0px 10px 10px 0px;
         color:#fff;
         font-weight: 600;
@@ -35,40 +38,70 @@
         color: #fff;
     }
 
-    &__date{
-        font-weight: 600;
+    &__dateTime{
         position: absolute;
+        right: 15px;
         top: 20px;
-        right: 20px;
-    }
 
-    &__time{
-        color: #fff;   
-    }
-
-    &__subscribe{
-        margin-top: 10px;
-        display: flex;
-        justify-content: space-between;
-
-        &-btn{
-            padding: 7px 21px ;
-            border-radius: 3px;
-            background-color: $mainBtnColor;
-            color: #fff;
-            transition: transform 0.2s ease-in-out;
-            font-size: 16px;
+        &-date{
+            margin-bottom: 10px;
         }
-
-        &-btn:hover{
-            transform: scale(1.1);
-        }
-
-        &-visitors {
-            align-self: center;
-            order: -1;
+    
+        &-date, &-time {
+            display: flex;
+            align-items: center;
             color: white;
-        }
+    
+            & span {
+                margin-left: 5px;
+            }
 
+            & svg {
+                fill: white;
+            }
+        }
+    
+        &-time{
+            justify-content: flex-end;
+        }
     }
+
+
+    &__btn{
+        padding: 7px 21px ;
+        border-radius: 3px;
+        background-color: $mainBtnColor;
+        color: #fff;
+        transition: transform 0.2s ease-in-out;
+        font-size: 16px;
+        position: absolute;
+        right: 15px;
+        bottom: 10px;
+    }
+
+    &__btn:hover{
+        transform: scale(1.1);
+    }
+
+    &__visitors {
+        align-self: center;
+        color: white;
+        position: absolute;
+        left: 15px;
+        bottom: 10px;
+    }
+
+    &__iGo {
+        padding: 7px 21px ;
+        border-radius: 3px;
+        background-color: $mainBtnColorIGo;
+        color: #fff;
+        transition: transform 0.2s ease-in-out;
+        font-size: 16px;
+        position: absolute;
+        right: 15px;
+        bottom: 10px;
+        width: 95px; 
+    }
+
 }

@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from '@app/shared/shared.module';
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,8 +19,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ToastsComponent } from './components/toasts/toasts/toasts.component';
+import { EventPageComponent } from './components/event-page/event-page/event-page.component';
 
-
+registerLocaleData(localeRu, 'ru');
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +31,7 @@ import { ToastsComponent } from './components/toasts/toasts/toasts.component';
     HeaderComponent,
     AuthComponent,
     ToastsComponent,
+    EventPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,9 @@ import { ToastsComponent } from './components/toasts/toasts/toasts.component';
     SharedModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'ru' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

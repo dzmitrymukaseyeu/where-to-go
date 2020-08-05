@@ -1,0 +1,35 @@
+<section class="s-eventPage">
+    <div class="conteiner">
+        <div *ngIf="event" class="b-eventPage">
+            <div class="b-eventPage__img">
+                <img [src]="imagesTable[event.type]" alt="{{event.title}}" title="{{event.title}}">
+            </div>
+            <div class="b-eventPage__info">
+                <div [style.backgroundColor]="colorsTable[event.type]" class="b-eventPage__info-type">{{event.type}}</div>
+                <h3 class="b-eventPage__info-title">{{event.title}}</h3>
+                <p class="b-eventPage__info-description">{{event.description}}</p>
+                <div class="b-eventPage__info-dateTime">
+                    <div class="b-dateTime__date">
+                        <img src="/assets/iconmonstr-calendar-9.svg" alt="iconDate">
+                        <span>{{event.date | date:'mediumDate'}}</span> 
+                    </div>                   
+                    <div class="b-dateTime__time">
+                        <img src="/assets/iconmonstr-time-3.svg" alt="iconTime">
+                        <span>{{event.date | date:'shortTime'}}</span> 
+                    </div>
+                </div>
+                <div class="b-eventPage__visitors">Уже идут:
+                    <ul class="l-vistors">
+                        <li *ngFor="let event of event.visitors" class="l-vistors__item">
+                            <p>{{event.firstName}} {{event.lastName}}</p>  
+                            <p>{{event.email}}</p>                       
+                        </li>
+                    </ul>
+                </div>
+                <button class="b-eventPage__btn" type="button"
+                >Я ИДУ
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
