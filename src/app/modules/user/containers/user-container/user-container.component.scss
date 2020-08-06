@@ -71,10 +71,14 @@
             padding: 0; 
         }
 
+        &__background{
+            padding: 25px;
+        }
+
         ul{
             flex-direction: column;
-            margin-top: 25px;
-            padding: 0;
+            padding: 25px 0;
+            text-align: center;
         }
         ._active::after{
             content: "";
