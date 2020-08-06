@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { ApiService, UserService, ToastsService } from '@app/services';
-import { ResUserEventsDefinition } from '@app/shared/interfaces';
+import { ResUserEventsDefinition, EventsAllDefinition } from '@app/shared/interfaces';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -10,9 +10,11 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./eventitem.component.scss']
 })
 export class EventitemComponent implements OnInit, OnDestroy {
-@Input() event;
+@Input() event: EventsAllDefinition;
 @Input() isButtonVisible = true;
+@Output() authOn = new EventEmitter<boolean>();
 private destroy$ = new Subject();
+doIGo = false;
 
 colorsTable = {
   'Кино': "#FF7100",
@@ -43,9 +45,22 @@ imagesTable={
   ) { }
 
   ngOnInit(): void {
+    this.userService.userData$
+    .pipe(
+      takeUntil(this.destroy$)
+    )
+    .subscribe(res => {
+        this.doIGo = res
+        ? this.event.visitors.some(item => item.email === res.email)
+        : false;
+    });
   }
 
   onGoToEvent(id: string) {
+    if (!localStorage.getItem('userEmail')) {
+      this.authOn.emit(true);
+    };
+
     this.apiService.goToEvent({
       id,
       email: this.userService.userData$.value.email 
@@ -54,7 +69,11 @@ imagesTable={
         takeUntil(this.destroy$)
       )
       .subscribe(
-        (res:ResUserEventsDefinition) => this.toastsService.show(res.code, res.message),
+        (res:ResUserEventsDefinition) => {
+          this.toastsService.show(res.code, res.message);
+          this.event.visitors.push(this.userService.userData$.value);
+          this.doIGo = true;
+        },
         ({error}: { error: {
           code: number,
           message: string

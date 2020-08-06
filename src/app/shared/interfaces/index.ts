@@ -4,7 +4,8 @@ import {
     ResDefinition,
     ResEventsDefinition,
     ResUserDefinition,
-    ResUserEventsDefinition
+    ResUserEventsDefinition,
+    ResEventPageDefinition
 } from './res'
 import { ToastsDataDefinition } from './toastData'
 
@@ -16,5 +17,6 @@ export {
     ResEventsDefinition,
     ResUserDefinition,
     ResUserEventsDefinition,
-    ToastsDataDefinition
+    ToastsDataDefinition,
+    ResEventPageDefinition
 }

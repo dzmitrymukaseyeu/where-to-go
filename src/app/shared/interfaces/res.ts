@@ -11,6 +11,10 @@ export interface ResEventsDefinition extends ResDefinition {
         content: EventsAllDefinition[];
 }
 
+export interface ResEventPageDefinition extends ResDefinition {
+        content: EventsAllDefinition;
+}
+
 export interface ResUserDefinition extends ResDefinition {
         content: UserDefinition;
 }
@@ -21,10 +25,3 @@ export interface ResUserEventsDefinition extends ResDefinition {
                 eventsToVisit: [];
         };
 }
-// {
-//         firstName: string;
-//         lastName: string;
-//         email: string;
-//         createdEvents: [];
-//         eventsToVisit: [];
-// };

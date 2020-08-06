@@ -2,76 +2,19 @@
     <div class="conteiner">
         <div class="b-filter">
             <ul class="l-list">
-                <li class="l-list__link">
+                <li *ngFor="let event of typeOfEvents" class="l-list__link">
                     <button 
-                    type="button" 
-                    (click)="OnFilterClick($event)"
-                    >
-                    Кино
-                    </button>
-                </li>
-                <li class="l-list__link">
-                    <button 
-                    type="button" 
-                    (click)="OnFilterClick($event)"
-                    >
-                    Концерты
-                    </button>
-                </li>
-                <li class="l-list__link">
-                    <button 
-                    type="button" 
-                    (click)="OnFilterClick($event)"
-                    >
-                    Фестивали
-                    </button>
-                </li>
-                <li class="l-list__link">
-                    <button 
-                    type="button" 
-                    (click)="OnFilterClick($event)"
-                    >
-                    Вечеринки
-                    </button>
-                </li>
-                <li class="l-list__link">
-                    <button 
-                    type="button" 
-                    (click)="OnFilterClick($event)"
-                    >
-                    Спектакли
-                    </button>
-                </li>
-                <li class="l-list__link">
-                    <button 
-                    type="button" 
-                    (click)="OnFilterClick($event)"
-                    >
-                    Выставки
-                    </button>
-                </li>
-                <li class="l-list__link">
-                    <button 
-                    type="button" 
-                    (click)="OnFilterClick($event)"
-                    >
-                    Другое
-                    </button>
-                </li>
-                <li class="l-list__link">
-                    <button 
-                    type="button" 
-                    (click)="OnFilterClick($event)"
-                    >
-                    Активности
+                        type="button" 
+                        (click)="OnFilterClick(event)"
+                    >{{event}}
                     </button>
                 </li>
             </ul>
         </div>
         <div class="b-events">
             <ul class="l-events">
-                <li *ngFor="let event of eventsAll" class="l-events__item">
-                    <app-eventitem [isButtonVisible]="!isButtonVisible"[event]="event" ></app-eventitem>
+                <li *ngFor="let event of (filteredEvents | async )" class="l-events__item">
+                    <app-eventitem  [isButtonVisible]="!isButtonVisible"[event]="event"></app-eventitem>
                 </li>
             </ul>
         </div>
