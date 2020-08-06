@@ -27,16 +27,11 @@
     }
 
     &__title{
-        margin-top: 50px;
-        font-weight: 600;
+        margin: 70px 0 30px;
+        font-weight: 600; 
         color: #fff;
-    }
-
-    &__text{
-        margin-top: 10px;
-        margin-bottom: 15px;
-        color: #fff;
-    }
+        
+    } 
 
     &__dateTime{
         position: absolute;
@@ -103,5 +98,9 @@
         bottom: 10px;
         width: 95px; 
     }
-
+    
+    &__btn:hover{
+        transform: scale(1.1);
+    } 
 }
+

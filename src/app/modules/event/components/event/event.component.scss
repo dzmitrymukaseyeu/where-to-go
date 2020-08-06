@@ -1,4 +1,6 @@
-.conteiner{
+@import 'abstracts/mixins';
+
+.wrapper{
     display:flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -13,8 +15,7 @@
     &__title{
         text-align: center;
         color: #0079ae;
-    }
-    
+    }   
 }
 
 .f-createevent{
@@ -28,7 +29,7 @@
 
 
     &__btn{
-        width: 500px;
+        flex-basis: 500px;
         padding: 15px;
         transition: transform 0.2s ease-in-out;
         background-color: #0079ae;
@@ -44,18 +45,18 @@
 }
 
 .b-radio{
-    border: solid 2px rgba($color: #e2e2e2, $alpha: .5);
-    border-radius: 15px;
     padding: 15px;
-    box-shadow: -1px 6px 15px -8px;
+    border-bottom: 2px solid rgba(226, 226, 226, 0.5);
+    
     &__title{
         text-align: center;
         font-weight: 600;
         color: #0079ae;
+        font-size: 22px;
     }
 
     &__value{
-        margin: 10px 0 10px 0;
+        margin: 30px 0 10px 0;
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
@@ -67,14 +68,16 @@
 .b-info{
     border: solid 2px rgba($color: #e2e2e2, $alpha: .5);
     border-radius: 15px;
-    padding: 15px;
+    padding: 30px 45px 45px 45px;
     box-shadow: -1px 6px 15px -8px;
     margin-top: 25px;
 
     &__title{
+        margin-top: 55px;
         text-align: center;
         font-weight: 600;
         color: #0079ae;
+        font-size: 22px;
     }
     
 }
@@ -82,12 +85,12 @@
 .b-datatime{
     display: flex;
     margin-top: 20px;
+    flex-wrap: wrap;
  
     &__title{
         text-align: center;
         margin: 20px 0 20px 0;
-        font-weight: 600;
-        
+        font-weight: 600;    
     }
 
     &__dt{
@@ -102,3 +105,36 @@
 .example-full-width{
     display: block;
 }
+
+@include tablet(){
+
+    .b-datatime{
+     
+        &__title{
+            flex-basis: 100%;
+        }
+    
+        &__dt{
+            flex-basis: 100%;
+        } 
+    }
+
+    .b-radio{
+        overflow: auto;
+        white-space: nowrap;
+
+        .mat-radio-button{
+            flex-basis: 100%;
+            
+        } 
+        
+        &__value{
+            
+            &-item{
+                margin-top: 10px;
+            }
+            
+        }
+    }
+} 
+

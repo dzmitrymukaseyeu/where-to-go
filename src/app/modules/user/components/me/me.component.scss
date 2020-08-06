@@ -1,18 +1,39 @@
-.b-me{
+@import 'abstracts/mixins';
 
+.b-me{
     padding: 35px;
     padding-bottom: 40px;
-
-    
+ 
     &__item:nth-child(n+2){
         border-top: 1px solid rgba($color: #e2e2e2, $alpha: .5);
         margin-top: 35px;
         padding-top: 35px;
     }
 
-
     &__item{
-        padding-left: 20px;
+        padding: 0 20px;
         font-size: 25px;
     }
+
+    span{
+        font-size: 20px; 
+        font-weight: 600; 
+      } 
 }
+
+@include mobile(){
+
+    .b-me{
+        margin-top: 35px;
+        padding: 0;
+        
+        &__item{
+            padding-left: 20px;
+            font-size: 20px;
+        }
+
+        span{
+          font-size: 15px;  
+        }
+    }
+} 
