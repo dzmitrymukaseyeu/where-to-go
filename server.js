@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 5000;
+const { projects } = require('./angular.json');
+const distPath = projects['where-to-go'].architect.build.options.outputPath;
 
 const signUpHandlerPost = require('./BACKEND/api-routes/sign-up/post');
 const signInHandlerPost = require('./BACKEND/api-routes/sign-in/post');
@@ -15,8 +17,9 @@ const eventsGoHandlerPost = require('./BACKEND/api-routes/events/go/post');
 const seedInitial = require('./BACKEND/helpers/seed-initial');
 
 
-app.use(cors())
-app.use(bodyParser.json())
+app.use(cors());
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, distPath)));
 
 // Auth routes
 app.post('/api/sign-up', signUpHandlerPost);
@@ -31,6 +34,11 @@ app.get('/api/events', eventsHandlerGet);
 app.post('/api/events', eventsHandlerPost);
 app.delete('/api/events', eventsHandlerDelete);
 app.post('/api/events/go', eventsGoHandlerPost);
+
+// index.html route
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, distPath + '/index.html'));
+});
 
 
 seedInitial();
