@@ -34,14 +34,14 @@ export class EventPageComponent implements OnInit, OnDestroy {
   };
 
   imagesTable={
-    'Кино': '/assets/cinema.jpg)',
-    'Концерты': 'url(/assets/concert.jpg)',
+    'Кино': 'assets/cinema.jpg',
+    'Концерты': 'assets/concert.jpg',
     'Фестивали': 'assets/festival.jpg',
-    'Вечеринки': 'url(/assets/party.jpg)',
-    'Спектакли': 'url(/assets/show.jpg)',
-    'Выставки': 'url(/assets/insert.jpg)',
-    'Другое': 'url(/assets/other.jpg)',
-    'Активности': 'url(/assets/active.jpg)'
+    'Вечеринки': 'assets/party.jpg',
+    'Спектакли': 'assets/show.jpg',
+    'Выставки': 'assets/insert.jpg',
+    'Другое': 'assets/other.jpg',
+    'Активности': 'assets/active.jpg'
   };
 
   ngOnInit(): void {
@@ -49,8 +49,7 @@ export class EventPageComponent implements OnInit, OnDestroy {
     .pipe(
       takeUntil(this.destroy$)
     )
-    .subscribe ( (res: ResEventPageDefinition ) => { this.event = res.content; 
-    console.log(this.event.visitors) })
+    .subscribe ( (res: ResEventPageDefinition ) => this.event = res.content)
   }
 
   ngOnDestroy(): void {

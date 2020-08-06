@@ -28,16 +28,12 @@ export class AppComponent implements OnInit, OnDestroy{
         .pipe(
           takeUntil(this.destroy$)
         )
-        .subscribe((res: ResUserDefinition) => {
-          console.log(res);
-          this.userService.userData$.next(res.content);
-        })
+        .subscribe((res: ResUserDefinition) => this.userService.userData$.next(res.content));
     }
   }
 
   onAuthUser(event:boolean) {
     this.isModalVisible = event;
-    console.log(this.isModalVisible);
   }
 
   onAuthClose(event:boolean) {

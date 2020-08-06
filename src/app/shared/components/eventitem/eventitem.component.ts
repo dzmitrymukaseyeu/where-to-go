@@ -69,7 +69,11 @@ imagesTable={
         takeUntil(this.destroy$)
       )
       .subscribe(
-        (res:ResUserEventsDefinition) => this.toastsService.show(res.code, res.message),
+        (res:ResUserEventsDefinition) => {
+          this.toastsService.show(res.code, res.message);
+          this.event.visitors.push(this.userService.userData$.value);
+          this.doIGo = true;
+        },
         ({error}: { error: {
           code: number,
           message: string

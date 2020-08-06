@@ -19,7 +19,7 @@
 
     &__info {
         flex-basis: 60%;
-        padding:  100px 50px;
+        padding:  110px 50px;
         text-align: center;
         position: relative;
         color: $mainTextColor;
@@ -104,20 +104,21 @@
 .l-vistors {
     height: 65px;
     overflow-y: scroll;
-    scrollbar-width: none;
+
+    &::-webkit-scrollbar-track {
+        border-radius: 5px;
+    }
 
     &::-webkit-scrollbar {
         width: 2px;
     }
 
     &::-webkit-scrollbar-thumb {
-        width: 3px;
-        height: 3px;
-        background-color: $mainTextColor;
+        border-radius: 4px;
     }
 
-    &::-webkit-overflow-scrolling {
-        touch-action: auto;
+    &:hover::-webkit-scrollbar-thumb {
+        background: #6a7d9b;
     }
 
     &__item {
