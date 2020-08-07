@@ -22,8 +22,3 @@ body, button {
     overflow: hidden;
 }
 
-@include mobile(){
-    .conteiner{
-        padding: 15px;
-    }
-}

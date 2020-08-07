@@ -7,7 +7,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import { ApiService, ToastsService } from '@app/services';
+import { ApiService, ToastsService, ModalService } from '@app/services';
 import { ResUserEventsDefinition, EventsAllDefinition, UserDefinition } from '@app/shared/interfaces';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -21,7 +21,6 @@ export class EventitemComponent implements OnInit, OnDestroy, OnChanges {
   @Input() event: EventsAllDefinition;
   @Input() isButtonVisible = true;
   @Input() userData: UserDefinition = null;
-  @Output() authOn = new EventEmitter<boolean>();
   private destroy$ = new Subject();
   doIGo = false;
 
@@ -50,6 +49,7 @@ export class EventitemComponent implements OnInit, OnDestroy, OnChanges {
   constructor(
     private apiService: ApiService,
     private toastsService: ToastsService,
+    private modalService: ModalService
   ) { }
 
   ngOnInit(): void {
@@ -65,10 +65,9 @@ export class EventitemComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   onGoToEvent(id: string) {
-    console.log(this.userData);
 
     if (!this.userData) {
-      return this.authOn.emit(true);
+      return this.modalService.modalData$.next(true);
     }
 
     this.apiService.goToEvent({

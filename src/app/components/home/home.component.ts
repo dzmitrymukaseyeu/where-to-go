@@ -38,10 +38,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       .pipe(
         takeUntil(this.destroy$)
       )
-      .subscribe(res => {
-        this.userData = res;
-        console.log(res);
-      });
+      .subscribe(res => this.userData = res);
 
 
     this.apiService.getAllEvents()

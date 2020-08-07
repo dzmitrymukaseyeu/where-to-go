@@ -72,8 +72,3 @@ export class EventPageComponent implements OnInit, OnDestroy {
   }
 
 }
-
-
-// this.doIGo = res
-// ? this.event.visitors.some(item => item.email === this.userService.userData$.value.email)
-// : false;

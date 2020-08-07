@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { EventPageComponent } from './components/event-page/event-page/event-page.component';
-import { FaqComponent } from './components/faq/faq.component';
 import { AuthGuard } from './shared/guards/auth/auth.guard';
 
 
@@ -16,10 +15,6 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent
-  },
-  {
-    path: 'faq',
-    component: FaqComponent
   },
   {
     path: 'user',
