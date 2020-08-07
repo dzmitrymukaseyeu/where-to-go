@@ -1,8 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { EventsAllDefinition, ResEventsDefinition } from '@app/shared/interfaces';
-import { BehaviorSubject } from 'rxjs';
 import { finalize } from 'rxjs/operators'
-import { ApiService } from '@app/services';
 import { EventsAllDefinition, ResEventsDefinition, UserDefinition } from '@app/shared/interfaces';
 import { ApiService, UserService } from '@app/services';
 import { BehaviorSubject, Subject } from 'rxjs';
@@ -37,8 +34,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   ];
 
   ngOnInit(): void {
-    const preloader = document.querySelector('.b-main__preloader');
-    preloader.classList.add('_loading');
     this.userService.userData$
       .pipe(
         takeUntil(this.destroy$)
@@ -51,7 +46,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.apiService.getAllEvents()
       .pipe(
-        finalize(() =>  preloader.classList.remove('_loading'))
         takeUntil(this.destroy$)
       )
       .subscribe((res: ResEventsDefinition) => {
