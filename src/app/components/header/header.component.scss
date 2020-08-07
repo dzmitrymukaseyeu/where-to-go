@@ -1,9 +1,8 @@
-@import 'abstracts/variables.scss';
+@import 'abstracts/mixins';
 
 .header {
-    
+
     &-content {
-        border: 1px solid;
         padding: 20px;
         text-align: center;
         display: flex;
@@ -14,18 +13,82 @@
         &__logo {
             flex-basis: 150px;
             height: auto;
+            display: flex;
+            margin-right: 20px;
+
+            & a {
+                font-size: 0;
+            }
 
             &-img {
-                max-width: 100%;
+                max-width: 150px;
+            }
+
+            &-btn {
+                display: none;
+                margin-right: 10px;
+
+                & span {
+                    display: block;
+                    width: 25px;
+                    height: 3px;
+                    background-color: $mainTextColor;
+    
+                    &:nth-of-type(n+2) {
+                        margin-top: 4px;
+                    }
+                }
             }
         }
 
         &__info {
             display: flex;
-            flex-basis: 900px;
+            flex-basis: 850px;
             align-items: center;
             justify-content: space-between;
             color: $mainTextColor;
+        }
+    }
+}
+
+.b-nav {
+    &__close {
+        display: none;
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        right: 0;
+        top: 0;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 23px;
+            height: 3px;
+            background: rgb(227, 24, 55);
+            transform: rotate(45deg);
+            transition: all 0.3s ease-out;
+        }
+
+        &:active {
+            transform: scale(0.8);
+        }
+
+        &:after {
+            transform: rotate(-45deg);
+            transition: all 0.3s ease-out;
+        }
+
+        &:hover:before,
+        &:hover:after {
+            transform: rotate(180deg);
+            background: rgb(227, 24, 55); 
         }
     }
 }
@@ -65,12 +128,10 @@
             transform: scaleX(1);
             transition: all 0.2s ease-in-out;   
         }
-
     }
 
-
     &__link:nth-child(n+2){
-        margin-left: 60px;
+        margin-left: 40px;
     }
 }
 
@@ -82,7 +143,7 @@
         border: 2px solid rgba(0,0,10,0.08);
         border-radius: 3px;
         transition: 0.2s ease-out;
-        padding: 8px;
+        padding: 5px 8;
         font-size: 16px;
 
         &:hover {
@@ -119,4 +180,85 @@
 }
 
 
+@include tablet() {
+    .header {
+    
+        &-content {
+            position: relative;
 
+            &__logo {
+
+                &-btn {
+                    display: block;
+                }
+            }
+
+            &__info {
+                justify-content: flex-end;
+            }
+        }
+    }
+
+    .b-nav {
+        display: none;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        color: #ffffff;
+        z-index: 10;
+        background-color: rgba($color: #0f0f0f, $alpha: .9);
+        padding: 20px 0;
+
+        &__close {
+            display: block;
+            z-index: 15;
+            padding: 24px;
+        }
+
+        &._open {
+            display: block;
+            pointer-events: auto;
+        }
+    } 
+
+        .l-nav{
+
+
+
+            &__link {
+                display: block;
+            }
+
+            &__link:nth-child(n+2){
+            margin-left: 0px;
+            margin-top: 10px;
+        }
+    } 
+
+
+@include mobile() {
+    .header {
+    
+        &-content {
+            padding: 20px 10px;
+        }
+    }
+
+    .b-auth {
+
+        &__user {
+
+            & span {
+                display: none;
+            }   
+        }
+    
+        &__exit {
+
+            & span {
+                display: none;
+            }
+        }
+    }
+}}

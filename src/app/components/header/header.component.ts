@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output , EventEmitter } from '@angular/core';
+import { Component, OnInit, Output , EventEmitter } from '@angular/core';
 import { UserService } from '@app/services'
 
 @Component({
@@ -16,6 +16,27 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onShowNav($event: Event) {
+    const navMenu = document.querySelector('.b-nav');
+    console.log(navMenu);
+    navMenu.classList.add('_open');
+  }
+
+  onCloseNav($event) {
+    const navMenu = document.querySelector('.b-nav');
+
+    if($event.target.classList.contains('b-nav')){
+        console.log($event.target)
+        navMenu.classList.remove('_open');
+      }
+  }
+  
+  onBtnCloseNav($event): void {
+    const navMenu = document.querySelector('.b-nav');
+    navMenu.classList.remove('_open');
+  }  
+  
+
   onCreateEvent(event: Event) {
     if (!localStorage.getItem('userEmail')) {
       this.authOn.emit(true);
@@ -31,7 +52,6 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('userEmail')
     console.log(this.userService.userData$.value);
   }
-
 }
 
 

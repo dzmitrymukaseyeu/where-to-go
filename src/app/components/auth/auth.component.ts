@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter, OnDestroy, Renderer2} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService, ApiService, ToastsService } from '@app/services';
-import { finalize } from 'rxjs/operators'
-import { pipe } from 'rxjs';
 import { ResDefinition, ResUserDefinition } from '@app/shared/interfaces'
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 
 @Component({
@@ -15,11 +15,11 @@ export class AuthComponent implements OnInit, OnDestroy {
   signUpForm: FormGroup;
   signInForm: FormGroup;
   signIn = false;
+  destroy$ = new Subject();
+  text:string = 'Зарегистрироваться';
   @Output() close = new EventEmitter<boolean>();
   @Output() showUser = new EventEmitter<boolean>();
-
-  text:string = 'Зарегистрироваться';
-  
+ 
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
@@ -62,19 +62,14 @@ export class AuthComponent implements OnInit, OnDestroy {
         Validators.maxLength(10)
       ]]
     })
-
-    console.log(1);
   }
-
 
   onSignUpSubmit(event: Event) {
     event.preventDefault();
     const userInfo = this.signUpForm.value;
     this.apiService.signUp(userInfo)
       .pipe(
-        finalize(() => {
-
-        })
+        takeUntil(this.destroy$)
       )
       .subscribe((res:ResDefinition) => {
         this.toastsService.show(res.code, res.message);
@@ -84,25 +79,19 @@ export class AuthComponent implements OnInit, OnDestroy {
         code: number,
         message: string
       }}) => {
-        console.log(error);
         this.toastsService.show(error.code, error.message);       
-      } )
-
-
+      })
 
     if(!this.signUpForm.valid) {
       return;
     }
-
   }
-
 
   onSingUpShow(event: Event) {
     this.text = this.signIn ? 'Зарегистрироваться' : 'У меня уже есть аккаунт';
     this.signIn = !this.signIn;
     
   }
-
 
   onSignInSubmit(event: Event) {
     event.preventDefault();
@@ -112,12 +101,9 @@ export class AuthComponent implements OnInit, OnDestroy {
     }
     this.apiService.signIn(userSignInValue)
       .pipe(
-        finalize(() => {
-
-        })
+        takeUntil(this.destroy$)          
       )
       .subscribe((res:ResUserDefinition) => {
-        // this.toastsService.show(res.code, res.message);
         this.userService.userData$.next(res.content);
         this.showUser.emit(true);
         console.log(res);
@@ -127,7 +113,6 @@ export class AuthComponent implements OnInit, OnDestroy {
         code: number,
         message: string
       }}) => {
-        console.log(error);
         this.toastsService.show(error.code, error.message);       
       })
   }
@@ -137,7 +122,9 @@ export class AuthComponent implements OnInit, OnDestroy {
     
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.complete();
     this.renderer.removeClass(document.body, 'modal-open');
   }
 
