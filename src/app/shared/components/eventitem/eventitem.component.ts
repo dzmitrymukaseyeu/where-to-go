@@ -7,7 +7,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import { ApiService, ToastsService, ModalService } from '@app/services';
+import { ApiService, ToastsService, UserService, ModalService } from '@app/services';
 import { ResUserEventsDefinition, EventsAllDefinition, UserDefinition } from '@app/shared/interfaces';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -21,6 +21,7 @@ export class EventitemComponent implements OnInit, OnDestroy, OnChanges {
   @Input() event: EventsAllDefinition;
   @Input() isButtonVisible = true;
   @Input() userData: UserDefinition = null;
+  @Output() eventDelete = new EventEmitter<string>() 
   private destroy$ = new Subject();
   doIGo = false;
 
@@ -48,6 +49,7 @@ export class EventitemComponent implements OnInit, OnDestroy, OnChanges {
 
   constructor(
     private apiService: ApiService,
+    private userService: UserService,
     private toastsService: ToastsService,
     private modalService: ModalService
   ) { }
@@ -62,6 +64,16 @@ export class EventitemComponent implements OnInit, OnDestroy, OnChanges {
     this.doIGo = userData
       ? this.userData.eventsToVisit.includes(this.event.id)
       : false;
+    this.userService.userData$
+    .pipe(
+      takeUntil(this.destroy$)
+    )
+    .subscribe(res => {
+        this.doIGo = res
+        ? this.event.visitors.some(item => item.email === res.email)
+        : false;
+    });
+    
   }
 
   onGoToEvent(id: string) {
@@ -88,6 +100,31 @@ export class EventitemComponent implements OnInit, OnDestroy, OnChanges {
           message: string
         }}) => this.toastsService.show(error.code, error.message)       
       )
+  }
+
+  onDeleteEvent(id: string) {
+    if (!localStorage.getItem('userEmail')) {
+      this.authOn.emit(true);
+    };
+    
+    if(confirm("Удалить?") === true){
+      this.apiService.deleteEvent({
+        id: id,
+        userEmail: this.userService.userData$.value.email 
+      })
+        .pipe(
+          takeUntil(this.destroy$)
+        )
+        .subscribe(
+          (res:ResUserEventsDefinition) => {
+            this.eventDelete.emit(id)
+          },
+          ({error}: { error: {
+            code: number,
+            message: string
+          }}) => this.toastsService.show(error.code, error.message)       
+        )
+    }   
   }
 
   ngOnDestroy(): void {

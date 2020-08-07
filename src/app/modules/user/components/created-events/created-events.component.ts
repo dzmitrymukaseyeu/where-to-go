@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ResUserEventsDefinition } from '@app/shared/interfaces';
-
 import { ApiService, UserService } from '@app/services';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -30,6 +29,10 @@ export class CreatedEventsComponent implements OnInit, OnDestroy {
       this.createdEvents = res.content.createdEvents;
       console.log(res.content.createdEvents);
     }) 
+  }
+
+  onClickDelete(id: string){
+    this.createdEvents = this.createdEvents.filter(event => event.id !== id);
   }
 
   ngOnDestroy(): void {

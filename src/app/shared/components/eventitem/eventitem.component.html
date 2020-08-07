@@ -1,4 +1,12 @@
 <div class="b-event">
+    <div *ngIf="!isButtonVisible">
+        <button
+            type="button"
+            class="btn-event__close"
+            (click)="onDeleteEvent(event.id)"
+        >
+        </button> 
+    </div>
     <a [routerLink]="['/item', event.id]" [style.backgroundImage]="imagesTable[event.type]" class="b-event__info">
         <div [style.backgroundColor]="colorsTable[event.type]" class="b-event__type">{{event.type}}</div>
         <h3 class="b-event__title">{{event.title}}</h3>
@@ -24,5 +32,5 @@
         >Пойти
         </button>
         </ng-template>
-    </div>  
+    </div> 
 </div>

@@ -30,8 +30,12 @@ export class EventsComponent implements OnInit, OnDestroy {
     })
   }
 
+  onClickDelete(id: string){
+    this.subscribedEvents = this.subscribedEvents.filter(event => event.id !== id);
+  }
+
   ngOnDestroy(): void {
     this.destroy$.next(true);
     this.destroy$.complete();
-  }
+  } 
 }

@@ -32,6 +32,8 @@
 
 @include mobile(){
     .l-events{
+        padding:20px 10px;
+
         &__item{
             flex-basis: 100%; 
 
