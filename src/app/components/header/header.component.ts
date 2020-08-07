@@ -26,28 +26,27 @@ export class HeaderComponent implements OnInit {
     const navMenu = document.querySelector('.b-nav');
 
     if($event.target.classList.contains('b-nav')){
-        console.log($event.target)
         navMenu.classList.remove('_open');
       }
   }
   
-  onBtnCloseNav($event): void {
+  onBtnCloseNav(): void {
     const navMenu = document.querySelector('.b-nav');
     navMenu.classList.remove('_open');
   }  
   
 
-  onCreateEvent(event: Event) {
+  onCreateEvent() {
     if (!localStorage.getItem('userEmail')) {
       this.authOn.emit(true);
     }
   }
 
-  OnAuthClick(event:Event) {
+  OnAuthClick() {
     this.authOn.emit(true);
   }
 
-  onLogOut(event:Event) {
+  onLogOut() {
     this.userService.userData$.next(null);
     localStorage.removeItem('userEmail')
     console.log(this.userService.userData$.value);

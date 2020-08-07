@@ -1,8 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService } from '@app/services';
-import { ResEventPageDefinition, EventsAllDefinition } from '@app/shared/interfaces';
-import { Subject } from 'rxjs';
+import { ApiService, UserService } from '@app/services';
+import {
+  ResEventPageDefinition,
+  EventsAllDefinition,
+  UserDefinition 
+} from '@app/shared/interfaces';
+import { Subject, combineLatest } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -14,10 +18,12 @@ export class EventPageComponent implements OnInit, OnDestroy {
   id: string;
   event: EventsAllDefinition = null;
   private destroy$ = new Subject();
+  doIGo = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private apiService: ApiService,
+    private userService: UserService
   ) { 
     this.id = this.activatedRoute.snapshot.params['id'];
   }
@@ -45,11 +51,19 @@ export class EventPageComponent implements OnInit, OnDestroy {
   };
 
   ngOnInit(): void {
-    this.apiService.getEventById({ id: this.id})
+    combineLatest([
+      this.apiService.getEventById({ id: this.id}),
+      this.userService.userData$
+    ])
     .pipe(
       takeUntil(this.destroy$)
     )
-    .subscribe ( (res: ResEventPageDefinition ) => this.event = res.content)
+    .subscribe( ([res, userData]:[ResEventPageDefinition, UserDefinition]) => {
+      this.event = res.content;
+      this.doIGo = userData
+        ? userData.eventsToVisit.includes(res.content.id)
+        : false;
+    })
   }
 
   ngOnDestroy(): void {
@@ -58,3 +72,8 @@ export class EventPageComponent implements OnInit, OnDestroy {
   }
 
 }
+
+
+// this.doIGo = res
+// ? this.event.visitors.some(item => item.email === this.userService.userData$.value.email)
+// : false;

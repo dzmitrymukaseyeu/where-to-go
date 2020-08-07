@@ -1,27 +1,25 @@
 <section class="s-main">
     <div class="conteiner">
-        <div class="b-main">
-            <div class="b-main__preloader">
-                <img class="preloder-img" src="/assets/preloader.gif" alt="preloader ">
-            </div>
-            <div class="b-main__filter">
-                <ul class="l-filter">
-                    <li *ngFor="let event of typeOfEvents" class="l-filter__link">
-                        <button 
-                            type="button" 
-                            (click)="OnFilterClick(event)"
-                        >{{event}}
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <div class="b-main__events">
-                <ul class="l-events">
-                    <li *ngFor="let event of (filteredEvents | async )" class="l-events__item">
-                        <app-eventitem  [isButtonVisible]="!isButtonVisible"[event]="event"></app-eventitem>
-                    </li>
-                </ul>
-            </div>
-        </div>    
+        <div class="b-filter">
+            <ul class="l-list">
+                <li *ngFor="let event of typeOfEvents" class="l-list__link">
+                    <button 
+                        type="button" 
+                        (click)="OnFilterClick(event)"
+                    >{{event}}
+                    </button>
+                </li>
+            </ul>
+        </div>
+        <div class="b-events">
+            <ul class="l-events">
+                <li *ngFor="let event of (filteredEvents | async )" class="l-events__item">
+                    <app-eventitem
+                        [userData]="userData"
+                        [event]="event"                       
+                    ></app-eventitem>
+                </li>
+            </ul>
+        </div>
     </div>
 </section>

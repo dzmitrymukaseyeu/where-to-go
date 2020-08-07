@@ -23,7 +23,7 @@
                     <button
                         type="button"
                         class="b-nav__close"
-                        (click)="onBtnCloseNav($event)"
+                        (click)="onBtnCloseNav()"
                     >
                     </button>
                     <ul class="l-nav">
@@ -53,7 +53,7 @@
                             routerLink="event" 
                             routerLinkActive="_active"
                             [routerLinkActiveOptions]="{exact:true}"
-                            (click)="onCreateEvent($event)"
+                            (click)="onCreateEvent()"
                         >Создать событие</a>  
                         </li>                        
                     </ul>
@@ -63,7 +63,7 @@
                         type="button" 
                         *ngIf= "!(userService.userData$ | async)"
                         class="b-auth__login"
-                        (click)="OnAuthClick($event)"
+                        (click)="OnAuthClick()"
                     >Войти</button>
                     <a 
                         routerLink="user" 
@@ -79,7 +79,7 @@
                         *ngIf="userService.userData$ | async"
                         class="b-auth__exit"
                         href=""
-                        (click)="onLogOut($event)"
+                        (click)="onLogOut()"
                     >
                         <img src="/assets/iconmonstr-door-8.svg " alt="logout">
                         <span>Выйти</span>

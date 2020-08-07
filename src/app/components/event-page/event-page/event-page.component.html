@@ -26,9 +26,16 @@
                         </li>
                     </ul>
                 </div>
-                <button class="b-eventPage__btn" type="button"
-                >Я ИДУ
-                </button>
+                <div>
+                    <div *ngIf="doIGo else notgo" class="b-eventPage__iGo">Я иду</div>
+                    <ng-template #notgo>
+                        <button 
+                        class="b-eventPage__btn" 
+                        type="button"
+                    >Пойти
+                    </button>
+                    </ng-template>
+                </div> 
             </div>
         </div>
     </div>
