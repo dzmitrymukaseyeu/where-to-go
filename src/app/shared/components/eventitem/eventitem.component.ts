@@ -65,21 +65,10 @@ export class EventitemComponent implements OnInit, OnDestroy, OnChanges {
 
     this.doIGo = userData
       ? this.userData.eventsToVisit.includes(this.event.id)
-      : false;
-    // this.userService.userData$
-    // .pipe(
-    //   takeUntil(this.destroy$)
-    // )
-    // .subscribe(res => {
-    //     this.doIGo = res
-    //     ? this.event.visitors.some(item => item.email === res.email)
-    //     : false;
-    // });
-    
+      : false; 
   }
 
   onGoToEvent(id: string) {
-
     if (!this.userData) {
       return this.modalService.modalData$.next(true);
     }
@@ -105,10 +94,6 @@ export class EventitemComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   onDeleteEvent(id: string) {
-    if (!localStorage.getItem('userEmail')) {
-      this.authOn.emit(true);
-    };
-    
     if(confirm("Удалить?") === true){
       this.apiService.deleteEvent({
         id: id,

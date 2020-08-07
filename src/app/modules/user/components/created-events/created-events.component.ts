@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ResUserEventsDefinition } from '@app/shared/interfaces';
+import { ResUserEventsDefinition, UserDefinition, EventsAllDefinition} from '@app/shared/interfaces';
 import { ApiService, UserService } from '@app/services';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -12,8 +12,9 @@ import { takeUntil } from 'rxjs/operators';
 
 export class CreatedEventsComponent implements OnInit, OnDestroy {
   isButtonVisible = false;
-  createdEvents  = [];
+  createdEvents: EventsAllDefinition[] = [];
   private destroy$ = new Subject();
+  userData: UserDefinition = null;
 
   constructor(
     private apiService: ApiService,
@@ -28,7 +29,13 @@ export class CreatedEventsComponent implements OnInit, OnDestroy {
     .subscribe((res: ResUserEventsDefinition) => {
       this.createdEvents = res.content.createdEvents;
       console.log(res.content.createdEvents);
-    }) 
+    });
+
+    this.userService.userData$
+    .pipe(
+      takeUntil(this.destroy$)
+    )
+    .subscribe(res => this.userData = res);
   }
 
   onClickDelete(id: string){

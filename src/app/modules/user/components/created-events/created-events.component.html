@@ -2,10 +2,11 @@
     <ul  class="l-events">
         <li *ngFor="let event of createdEvents" class="l-events__item">
             <app-eventitem 
+                [userData]="userData"
                 [isButtonVisible]="isButtonVisible" 
                 [event]="event" 
                 (eventDelete)="onClickDelete($event)"
-                >
+            >
             </app-eventitem>
         </li>
     </ul>
