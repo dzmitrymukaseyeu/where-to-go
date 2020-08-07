@@ -59,20 +59,22 @@ export class EventitemComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(changes): void {
-    const userData = changes.userData.currentValue;
+    const userData = changes.userData
+      ? changes.userData.currentValue
+      : null;
 
     this.doIGo = userData
       ? this.userData.eventsToVisit.includes(this.event.id)
       : false;
-    this.userService.userData$
-    .pipe(
-      takeUntil(this.destroy$)
-    )
-    .subscribe(res => {
-        this.doIGo = res
-        ? this.event.visitors.some(item => item.email === res.email)
-        : false;
-    });
+    // this.userService.userData$
+    // .pipe(
+    //   takeUntil(this.destroy$)
+    // )
+    // .subscribe(res => {
+    //     this.doIGo = res
+    //     ? this.event.visitors.some(item => item.email === res.email)
+    //     : false;
+    // });
     
   }
 
@@ -110,7 +112,7 @@ export class EventitemComponent implements OnInit, OnDestroy, OnChanges {
     if(confirm("Удалить?") === true){
       this.apiService.deleteEvent({
         id: id,
-        userEmail: this.userService.userData$.value.email 
+        userEmail: this.userData.email 
       })
         .pipe(
           takeUntil(this.destroy$)
