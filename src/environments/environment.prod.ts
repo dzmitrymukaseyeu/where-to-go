@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://.herokuapp.com/'
+  apiUrl: 'https://arcane-caverns-08308.herokuapp.com/'
 };
