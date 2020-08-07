@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService, ModalService } from '@app/services'
+import { UserService, ModalService } from '@app/services';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     public userService: UserService,
-    public modalService: ModalService
+    public modalService: ModalService,
+    public router: Router
   ) { }
 
   ngOnInit(): void {
@@ -44,13 +46,13 @@ export class HeaderComponent implements OnInit {
 
   OnAuthClick() {
     this.modalService.modalData$.next(true);
-    // this.authOn.emit(true);
   }
 
   onLogOut() {
     this.userService.userData$.next(null);
     localStorage.removeItem('userEmail')
-    console.log(this.userService.userData$.value);
+    this.router.navigate(['/']);
+
   }
 }
 

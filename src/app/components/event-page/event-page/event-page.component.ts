@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ApiService, UserService } from '@app/services';
+import { ApiService, UserService, ModalService, ToastsService } from '@app/services';
 import {
   ResEventPageDefinition,
   EventsAllDefinition,
-  UserDefinition 
+  UserDefinition,
+  ResUserEventsDefinition 
 } from '@app/shared/interfaces';
 import { Subject, combineLatest } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -19,11 +20,14 @@ export class EventPageComponent implements OnInit, OnDestroy {
   event: EventsAllDefinition = null;
   private destroy$ = new Subject();
   doIGo = false;
+  userData: UserDefinition = null;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private apiService: ApiService,
-    private userService: UserService
+    private userService: UserService,
+    private modalService: ModalService,
+    private toastsService: ToastsService
   ) { 
     this.id = this.activatedRoute.snapshot.params['id'];
   }
@@ -60,10 +64,35 @@ export class EventPageComponent implements OnInit, OnDestroy {
     )
     .subscribe( ([res, userData]:[ResEventPageDefinition, UserDefinition]) => {
       this.event = res.content;
+      this.userData = userData;
       this.doIGo = userData
         ? userData.eventsToVisit.includes(res.content.id)
         : false;
     })
+  }
+
+  onGoToEvent(id: string) {
+    if (!this.userData) {
+      return this.modalService.modalData$.next(true);
+    }
+    this.apiService.goToEvent({
+      id: this.event.id,
+      email: this.userData.email 
+    })
+      .pipe(
+        takeUntil(this.destroy$)
+      )
+      .subscribe(
+        (res:ResUserEventsDefinition) => {
+          this.toastsService.show(res.code, res.message);
+          this.event.visitors.push(this.userData);
+          this.doIGo = true;
+        },
+        ({error}: { error: {
+          code: number,
+          message: string
+        }}) => this.toastsService.show(error.code, error.message)       
+      )
   }
 
   ngOnDestroy(): void {
