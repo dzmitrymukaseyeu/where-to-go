@@ -1,5 +1,5 @@
-import { Component, OnInit, Output , EventEmitter } from '@angular/core';
-import { UserService} from '@app/services'
+import { Component, OnInit } from '@angular/core';
+import { UserService, ModalService } from '@app/services'
 
 @Component({
   selector: 'app-header',
@@ -7,10 +7,10 @@ import { UserService} from '@app/services'
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @Output() authOn = new EventEmitter<boolean>();
 
   constructor(
-    public userService: UserService
+    public userService: UserService,
+    public modalService: ModalService
   ) { }
 
   ngOnInit(): void {
@@ -38,12 +38,13 @@ export class HeaderComponent implements OnInit {
 
   onCreateEvent() {
     if (!localStorage.getItem('userEmail')) {
-      this.authOn.emit(true);
+      this.modalService.modalData$.next(true);
     }
   }
 
   OnAuthClick() {
-    this.authOn.emit(true);
+    this.modalService.modalData$.next(true);
+    // this.authOn.emit(true);
   }
 
   onLogOut() {

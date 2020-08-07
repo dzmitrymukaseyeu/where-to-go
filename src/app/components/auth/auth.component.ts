@@ -1,6 +1,18 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy, Renderer2} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  OnDestroy,
+  Renderer2
+} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { UserService, ApiService, ToastsService } from '@app/services';
+import {
+  UserService,
+  ApiService,
+  ToastsService,
+  ModalService
+} from '@app/services';
 import { ResDefinition, ResUserDefinition } from '@app/shared/interfaces'
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -25,6 +37,7 @@ export class AuthComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private apiService: ApiService,
     private toastsService: ToastsService,
+    private modalService: ModalService,
     private renderer: Renderer2
   ) { }
 
@@ -73,7 +86,7 @@ export class AuthComponent implements OnInit, OnDestroy {
       )
       .subscribe((res:ResDefinition) => {
         this.toastsService.show(res.code, res.message);
-        this.close.emit(true);
+        this.modalService.modalData$.next(false);
       },
       ({error}: { error: {
         code: number,
@@ -105,8 +118,7 @@ export class AuthComponent implements OnInit, OnDestroy {
       )
       .subscribe((res:ResUserDefinition) => {
         this.userService.userData$.next(res.content);
-        this.showUser.emit(true);
-        console.log(res);
+        this.modalService.modalData$.next(false);
         localStorage.setItem( "userEmail", res.content.email)
       },
       ({error}: { error: {
@@ -118,8 +130,7 @@ export class AuthComponent implements OnInit, OnDestroy {
   }
 
   onCloseAuth(event: Event) {
-    this.close.emit(true);
-    
+    this.modalService.modalData$.next(false);    
   }
 
   ngOnDestroy(): void {

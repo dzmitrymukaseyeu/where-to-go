@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { UserService, ApiService } from '@app/services';
+import { UserService, ApiService, ModalService } from '@app/services';
 import { ResUserDefinition } from '@app/shared/interfaces';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -16,7 +16,8 @@ export class AppComponent implements OnInit, OnDestroy{
 
   constructor(
     private userService: UserService,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private modalService: ModalService
   ) { }
 
 
@@ -30,19 +31,12 @@ export class AppComponent implements OnInit, OnDestroy{
         )
         .subscribe((res: ResUserDefinition) => this.userService.userData$.next(res.content));
     }
-  }
 
-  onAuthUser(event:boolean) {
-    this.isModalVisible = event;
-  }
-
-  onAuthClose(event:boolean) {
-    this.isModalVisible = !event;
-  }
-
-  
-  onUserShow(event:boolean){
-    this.isModalVisible = false;
+    this.modalService.modalData$
+      .pipe(
+        takeUntil(this.destroy$)
+      )
+      .subscribe(res => this.isModalVisible = res)
   }
 
   ngOnDestroy(): void {
