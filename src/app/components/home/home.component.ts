@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { EventsAllDefinition, ResEventsDefinition } from '@app/shared/interfaces';
 import { BehaviorSubject } from 'rxjs';
+import { finalize } from 'rxjs/operators'
 import { ApiService } from '@app/services';
 
 @Component({
@@ -30,7 +31,13 @@ export class HomeComponent implements OnInit {
   ];
 
   ngOnInit(): void {
+    const preloader = document.querySelector('.b-main__preloader');
+    preloader.classList.add('_loading');
+
     this.apiService.getAllEvents()
+      .pipe(
+        finalize(() =>  preloader.classList.remove('_loading'))
+      )
       .subscribe((res: ResEventsDefinition) => {
         this.eventsAll = res.content;
         this.filteredEvents.next(res.content);
