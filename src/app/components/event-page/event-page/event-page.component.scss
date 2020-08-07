@@ -56,7 +56,7 @@
     }
 
     &__btn{
-        padding: 15px 45px ;
+        padding: 7px 21px ;
         border-radius: 3px;
         background-color: $mainBtnColor;
         color: #fff;
@@ -64,9 +64,9 @@
         font-size: 16px;
         position: absolute;
         right: 15px;
-        bottom: 30px;
+        bottom: 10px;
     }
-
+    
     &__btn:hover{
         transform: scale(1.1);
     }
@@ -77,6 +77,19 @@
         left: 15px;
         bottom: 30px;
         text-align: left;
+    }
+    
+    &__iGo {
+        padding: 7px 21px ;
+        border-radius: 3px;
+        background-color: $mainBtnColorIGo;
+        color: #fff;
+        transition: transform 0.2s ease-in-out;
+        font-size: 16px;
+        position: absolute;
+        right: 15px;
+        bottom: 10px;
+        width: 95px; 
     }
 }
 

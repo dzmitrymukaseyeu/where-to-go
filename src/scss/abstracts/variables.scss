@@ -3,10 +3,11 @@ $mainTextColor:#38384f;
 $tabletWidth: 992px;
 $mobileWidth: 740px;
 
-$breakPoints:(
-    'desktop': 1200px,
+$breakPoints: (
+    'desktop': 1500px,
+    'tabletXL': 1200px,
     'tablet': 992px,
-    'mobile': 740px
+    'mobile': 740px,
 );
 
 $mainBtnColor: rgba(227, 24, 55);

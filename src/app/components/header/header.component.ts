@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output , EventEmitter } from '@angular/core';
-import { UserService } from '@app/services'
+import { Component, OnInit, Output , EventEmitter } from '@angular/core';
+import { UserService} from '@app/services'
 
 @Component({
   selector: 'app-header',
@@ -16,22 +16,41 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onCreateEvent(event: Event) {
+  onShowNav($event: Event) {
+    const navMenu = document.querySelector('.b-nav');
+    console.log(navMenu);
+    navMenu.classList.add('_open');
+  }
+
+  onCloseNav($event) {
+    const navMenu = document.querySelector('.b-nav');
+
+    if($event.target.classList.contains('b-nav')){
+        navMenu.classList.remove('_open');
+      }
+  }
+  
+  onBtnCloseNav(): void {
+    const navMenu = document.querySelector('.b-nav');
+    navMenu.classList.remove('_open');
+  }  
+  
+
+  onCreateEvent() {
     if (!localStorage.getItem('userEmail')) {
       this.authOn.emit(true);
     }
   }
 
-  OnAuthClick(event:Event) {
+  OnAuthClick() {
     this.authOn.emit(true);
   }
 
-  onLogOut(event:Event) {
+  onLogOut() {
     this.userService.userData$.next(null);
     localStorage.removeItem('userEmail')
     console.log(this.userService.userData$.value);
   }
-
 }
 
 

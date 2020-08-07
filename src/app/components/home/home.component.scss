@@ -38,10 +38,47 @@
 .l-filter {
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap;
-    text-align: center;
+
+    &__link button {
+        position: relative;
+        padding: 5px 0;
+
+
+        &::after {
+            position: absolute;
+            content: '';
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: $mainColor;
+            transition: transform .2s ease-out;
+            transform: scaleX(0);
+        }
+
+        &:hover::after {
+            transform: scaleX(1);
+
+        }
+
+        &._active::after {
+            position: absolute;
+            content: '';
+            height: 3px;
+            bottom: 0;
+            left: 0;
+            background-color: $mainColor;
+            transform: scaleX(1);
+            transition: all 0.2s ease-in-out;   
+        }
+
+    }
 }
 
+.b-events {
+    padding: 50px 0; 
+    overflow-x: hidden; 
+}
 
 .l-events{
     display: flex;
@@ -62,7 +99,7 @@
 @include tablet(){
 
     .l-events{
-
+        
         &__item{
             flex-basis: 50%; 
 

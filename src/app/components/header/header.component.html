@@ -1,11 +1,31 @@
 <header class="header">
     <div class="conteiner">
         <div class="header-content">
-            <a routerLink="" class="header-content__logo">
-                <img src="/assets/logo_site.png" alt="site-logo" class="header-content__logo-img">
-            </a>
+            <div class="header-content__logo">
+                <button
+                    type="button"
+                    class="header-content__logo-btn"
+                    (click)="onShowNav($event)"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <a routerLink="">
+                    <img src="/assets/logo_site.png" alt="site-logo" class="header-content__logo-img">
+                </a>
+            </div>  
             <div class="header-content__info">
-                <div class="b-nav">
+                <div
+                    class="b-nav"                        
+                    (click)="onCloseNav($event)"
+                >
+                    <button
+                        type="button"
+                        class="b-nav__close"
+                        (click)="onBtnCloseNav()"
+                    >
+                    </button>
                     <ul class="l-nav">
                         <li class="l-nav__link">
                             <a 
@@ -33,7 +53,7 @@
                             routerLink="event" 
                             routerLinkActive="_active"
                             [routerLinkActiveOptions]="{exact:true}"
-                            (click)="onCreateEvent($event)"
+                            (click)="onCreateEvent()"
                         >Создать событие</a>  
                         </li>                        
                     </ul>
@@ -43,8 +63,8 @@
                         type="button" 
                         *ngIf= "!(userService.userData$ | async)"
                         class="b-auth__login"
-                        (click)="OnAuthClick($event)"
-                    >Зарегистрироваться / Войти</button>
+                        (click)="OnAuthClick()"
+                    >Войти</button>
                     <a 
                         routerLink="user" 
                         *ngIf="userService.userData$ | async as user"
@@ -59,7 +79,7 @@
                         *ngIf="userService.userData$ | async"
                         class="b-auth__exit"
                         href=""
-                        (click)="onLogOut($event)"
+                        (click)="onLogOut()"
                     >
                         <img src="/assets/iconmonstr-door-8.svg " alt="logout">
                         <span>Выйти</span>
