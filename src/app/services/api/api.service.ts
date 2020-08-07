@@ -67,4 +67,11 @@ export class ApiService {
   }) {
     return this.httpClient.post(this.env.apiUrl + 'api/events/go', body);
   }
+
+  deleteEvent (params: {
+    id: string;
+    userEmail: string;
+  }) {
+    return this.httpClient.delete(this.env.apiUrl + 'api/events', { params });
+  }
 }

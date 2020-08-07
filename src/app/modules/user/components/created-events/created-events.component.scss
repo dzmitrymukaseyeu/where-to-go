@@ -18,7 +18,6 @@
 }
 
 @include tablet(){
-
     .l-events{
         &__item{
             flex-basis: 50%; 
@@ -31,9 +30,9 @@
 } 
 
 @include mobile(){
-
     .l-events{
-       
+        padding:20px 10px;
+
         &__item{
             flex-basis: 100%; 
 

@@ -1,4 +1,5 @@
 @import 'abstracts/variables.scss';
+@import 'abstracts/mixins';
 
 .b-event{
     position: relative;
@@ -36,7 +37,7 @@
     &__dateTime{
         position: absolute;
         right: 15px;
-        top: 20px;
+        top: 50px;
 
         &-date{
             margin-bottom: 10px;
@@ -104,3 +105,84 @@
     } 
 }
 
+.btn-event{
+    &__close{
+        position: absolute;
+        width: 25px;
+        height: 25px;
+        right: 15px;
+        top: 10px;
+        z-index: 1;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 23px;
+            height: 3px;
+            background: rgb(227, 24, 55);
+            transform: rotate(45deg);
+            transition: all 0.3s ease-out;
+        }
+
+        &:active {
+            transform: scale(0.8);
+        }
+
+        &:after {
+            transform: rotate(-45deg);
+            transition: all 0.3s ease-out;
+        }
+
+        &:hover:before,
+        &:hover:after {
+            transform: rotate(180deg);
+            background: rgb(227, 24, 55); 
+        }
+    }
+}
+
+@include tablet(){
+    .b-event{
+        &__dateTime{
+            top: 60px;
+        } 
+        
+        .btn-event{
+            &__close{
+                top: 23px;
+                right: 23px;  
+            }
+        }
+    }
+
+}
+
+@include mobile(){
+    .b-event{
+        &__dateTime{
+            display: flex;
+            justify-content: space-around;
+            align-items: baseline;
+            top: 75px;
+        } 
+
+        &__dateTime{
+            &-time{
+                margin-left: 23px;
+            }
+        }
+        
+        .btn-event{
+            &__close{
+                top: 20px; 
+                right: 23px;  
+            }
+        }
+    }
+} 
