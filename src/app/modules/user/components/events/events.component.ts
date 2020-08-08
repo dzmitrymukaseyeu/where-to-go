@@ -10,7 +10,6 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./events.component.scss']
 })
 export class EventsComponent implements OnInit, OnDestroy {
-  isButtonVisible = false;
   subscribedEvents  = [];
   destroy$ = new Subject();
 

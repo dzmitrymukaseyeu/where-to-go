@@ -2,7 +2,7 @@
     <ul class="l-events">
         <li *ngFor="let event of subscribedEvents" class="l-events__item">
             <app-eventitem
-                [isButtonVisible]="!isButtonVisible"
+                [isButtonVisible]="false"
                 [event]="event"
                 (eventDelete)="onClickDelete($event)"
             >
