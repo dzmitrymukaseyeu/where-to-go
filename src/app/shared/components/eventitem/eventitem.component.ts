@@ -21,6 +21,7 @@ export class EventitemComponent implements OnInit, OnDestroy, OnChanges {
   @Input() event: EventsAllDefinition;
   @Input() isButtonVisible = true;
   @Input() userData: UserDefinition = null;
+  @Input() canDelete = false;
   @Output() eventDelete = new EventEmitter<string>() 
   private destroy$ = new Subject();
   doIGo = false;

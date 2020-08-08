@@ -1,0 +1,17 @@
+.b-about {
+    text-align: center;
+    padding: 20px 0;
+
+}
+
+.l-about {
+    margin-top: 20px;
+    &__item {
+        display: block;
+        font-size: 20px;
+
+        &:nth-of-type(n+2) {
+            margin-top: 10px;
+        }
+    }
+}
