@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ToastsComponent } from './components/toasts/toasts/toasts.component';
 import { EventPageComponent } from './components/event-page/event-page/event-page.component';
+import { PreloaderComponent } from './components/preloader/preloader/preloader.component';
 
 registerLocaleData(localeRu, 'ru');
 @NgModule({
@@ -30,6 +31,7 @@ registerLocaleData(localeRu, 'ru');
     AuthComponent,
     ToastsComponent,
     EventPageComponent,
+    PreloaderComponent,
   ],
   imports: [
     BrowserModule,
