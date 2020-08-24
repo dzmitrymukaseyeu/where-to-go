@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { finalize } from 'rxjs/operators'
 import { EventsAllDefinition, ResEventsDefinition, UserDefinition } from '@app/shared/interfaces';
-import { ApiService, UserService } from '@app/services';
+import { ApiService, UserService, PreloaderService } from '@app/services';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
@@ -18,7 +18,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(
     private apiService: ApiService,
-    private userService: UserService
+    private userService: UserService,
+    private preloaderService: PreloaderService
   ) {}
 
   typeOfEvents = [
@@ -34,6 +35,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   ];
 
   ngOnInit(): void {
+    this.preloaderService.show();
     this.userService.userData$
       .pipe(
         takeUntil(this.destroy$)
@@ -43,6 +45,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
     this.apiService.getAllEvents()
       .pipe(
+        finalize(() => this.preloaderService.hide()),
         takeUntil(this.destroy$)
       )
       .subscribe((res: ResEventsDefinition) => {
