@@ -1,5 +1,6 @@
 <div  class="b-events">
-    <ul class="l-events">
+    <app-placeholder *ngIf="!subscribedEvents.length"></app-placeholder>
+    <ul class="l-events" *ngIf="subscribedEvents.length">
         <li *ngFor="let event of subscribedEvents" class="l-events__item">
             <app-eventitem
                 [isButtonVisible]="false"

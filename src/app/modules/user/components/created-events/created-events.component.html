@@ -1,5 +1,6 @@
-<div  class="b-events">
-    <ul  class="l-events">
+<div class="b-events">
+    <app-placeholder class="b-events__placeholder" *ngIf="!createdEvents.length"></app-placeholder>
+    <ul class="l-events" *ngIf="createdEvents.length">
         <li *ngFor="let event of createdEvents" class="l-events__item">
             <app-eventitem 
                 [canDelete]="true"

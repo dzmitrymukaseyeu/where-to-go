@@ -13,7 +13,8 @@
                 </ul>
             </div>
             <div class="b-events">
-                <ul class="l-events">
+                <app-placeholder *ngIf="!eventsAll.length"></app-placeholder>
+                <ul class="l-events" *ngIf="eventsAll.length">
                     <li *ngFor="let event of (filteredEvents | async )" class="l-events__item">
                         <app-eventitem
                             [userData]="userData"
@@ -22,6 +23,7 @@
                     </li>
                 </ul>
             </div>
+
         </div>
     </div>
 </section>

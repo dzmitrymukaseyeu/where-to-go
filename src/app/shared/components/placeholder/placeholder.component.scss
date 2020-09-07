@@ -1,0 +1,12 @@
+.b-placeholder {
+    text-align: center;
+    opacity: 0.3;
+    font-size: 18px;
+    pointer-events: none;
+    
+    & svg {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 10px;
+    }
+}
