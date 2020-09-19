@@ -6,6 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const { projects } = require('./angular.json');
 const distPath = projects['where-to-go'].architect.build.options.outputPath;
+const mongoose = require('mongoose');
 
 const signUpHandlerPost = require('./BACKEND/api-routes/sign-up/post');
 const signInHandlerPost = require('./BACKEND/api-routes/sign-in/post');
@@ -16,6 +17,8 @@ const eventsHandlerPost = require('./BACKEND/api-routes/events/post');
 const eventsHandlerDelete = require('./BACKEND/api-routes/events/delete');
 const eventsGoHandlerPost = require('./BACKEND/api-routes/events/go/post');
 const seedInitial = require('./BACKEND/helpers/seed-initial');
+
+
 
 
 app.use(cors());
@@ -49,3 +52,12 @@ app.listen(PORT, () =>
     console.log('Server is running on port ' + PORT)
 );
 
+mongoose.connect('mongodb://localhost/wheretogo', {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+})
+.then(
+    () => console.log('Database connection established'),
+    err => console.log(`Database connection error: ${err.name}`)
+);
