@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const EventSchema = new Schema ({
+const EventSchema = mongoose.Schema ({
     type: {
         type: String,
         required: true
@@ -19,7 +19,8 @@ const EventSchema = new Schema ({
     },
     creator: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Users'
+        ref: 'Users',
+        required: true
     },
     bgImage: {
         type: String,
