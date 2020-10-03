@@ -1,4 +1,6 @@
 const fs = require('fs');
+const path = require('path');
+const appRootPath = require('app-root-path').path;
 const responseSender = require('../../../helpers/response-sender');
 
 const userEventsHandlerGet = async (req, res) => {
@@ -8,7 +10,7 @@ const userEventsHandlerGet = async (req, res) => {
         return responseSender(res, 422, 'You\'ve missed something important...');
     }
     
-    const rawData = fs.readFileSync('./BACKEND/DB/events.json');
+    const rawData = fs.readFileSync(path.join(appRootPath, 'BACKEND/DB/events.json'));
     const events = JSON.parse(rawData);
     const userEvents = events.reduce((acc, event) => {
         const isVisitor = event.visitors.some(user => user.email === email);

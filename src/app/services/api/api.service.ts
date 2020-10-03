@@ -18,20 +18,20 @@ export class ApiService {
     email: string;
     password: string;
   }) {
-    return this.httpClient.post(this.env.apiUrl + 'api/sign-up', body);
+    return this.httpClient.post(this.env.apiUrl + 'sign-up', body);
   }
 
   signIn(body: {
     email: string;
     password: string;
   }) {
-    return this.httpClient.post(this.env.apiUrl + 'api/sign-in', body);
+    return this.httpClient.post(this.env.apiUrl + 'sign-in', body);
   }
 
   getUser(params: {
     email: string;
   }) {
-    return this.httpClient.get(this.env.apiUrl + 'api/user', { params });
+    return this.httpClient.get(this.env.apiUrl + 'user', { params });
   }
 
   createEvent(body: {
@@ -42,36 +42,36 @@ export class ApiService {
     bgImage: string;
     userEmail: string;
   }) {
-    return this.httpClient.post(this.env.apiUrl + 'api/events', body);
+    return this.httpClient.post(this.env.apiUrl + 'events', body);
   }
 
   getAllEvents() {
-    return this.httpClient.get(this.env.apiUrl + 'api/events');
+    return this.httpClient.get(this.env.apiUrl + 'events');
   }
   
   getEventById(params: {
     id: string;
   }) {
-    return this.httpClient.get(this.env.apiUrl + 'api/events' , { params });
+    return this.httpClient.get(this.env.apiUrl + 'events' , { params });
   }
 
   getUserEvents(params: {
     email: string;
   }) {
-    return this.httpClient.get(this.env.apiUrl + 'api/user/events' , { params });
+    return this.httpClient.get(this.env.apiUrl + 'user/events' , { params });
   }
   
   goToEvent (body: {
     id: string;
     email: string;
   }) {
-    return this.httpClient.post(this.env.apiUrl + 'api/events/go', body);
+    return this.httpClient.post(this.env.apiUrl + 'events/go', body);
   }
 
   deleteEvent (params: {
     id: string;
     userEmail: string;
   }) {
-    return this.httpClient.delete(this.env.apiUrl + 'api/events', { params });
+    return this.httpClient.delete(this.env.apiUrl + 'events', { params });
   }
 }

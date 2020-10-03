@@ -1,4 +1,6 @@
 const fs = require('fs');
+const path = require('path');
+const appRootPath = require('app-root-path').path;
 const responseSender = require('../../helpers/response-sender');
 
 const userHandlerGet = async (req, res) => {
@@ -8,7 +10,7 @@ const userHandlerGet = async (req, res) => {
         return responseSender(res, 422, 'You\'ve missed something important...');
     }
     
-    const rawData = fs.readFileSync('./BACKEND/DB/users.json');
+    const rawData = fs.readFileSync(path.join(appRootPath, 'BACKEND/DB/users.json'));
     const users = JSON.parse(rawData);
     const user = users.find(user => user.email === email);
 

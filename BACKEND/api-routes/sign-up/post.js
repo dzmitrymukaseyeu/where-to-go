@@ -1,4 +1,6 @@
 const fs = require('fs');
+const path = require('path');
+const appRootPath = require('app-root-path').path;
 const bcrypt = require('bcrypt');
 const responseSender = require('../../helpers/response-sender');
 const saltRounds = 10;
@@ -16,7 +18,7 @@ const registerHandlerPost = async (req, res) => {
         return responseSender(res, 422, 'You\'ve missed something important...');
     }
 
-    const rawData = fs.readFileSync('./BACKEND/DB/users.json');
+    const rawData = fs.readFileSync(path.join(appRootPath, 'BACKEND/DB/users.json'));
     const users = JSON.parse(rawData);
     const isUserExist = users.some(user => user.email === userToSave.email);
 
@@ -30,7 +32,7 @@ const registerHandlerPost = async (req, res) => {
     users.push(userToSave)
 
     try {
-        fs.writeFileSync('./BACKEND/DB/users.json', JSON.stringify(users));
+        fs.writeFileSync(path.join(appRootPath, 'BACKEND/DB/users.json'), JSON.stringify(users));
         responseSender(res, 200, 'Registration succeeded!');
 
     } catch (err) {

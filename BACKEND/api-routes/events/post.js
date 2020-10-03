@@ -1,4 +1,6 @@
 const fs = require('fs');
+const path = require('path');
+const appRootPath = require('app-root-path').path;
 const sha1 = require('sha1');
 const responseSender = require('../../helpers/response-sender');
 
@@ -17,8 +19,8 @@ const eventsHandlerPost = async (req, res) => {
         return responseSender(res, 422, 'You\'ve missed something important...');
     }
 
-    const rawEventsData = fs.readFileSync('./BACKEND/DB/events.json');
-    const rawUsersData = fs.readFileSync('./BACKEND/DB/users.json');
+    const rawEventsData = fs.readFileSync(path.join(appRootPath, 'BACKEND/DB/events.json'));
+    const rawUsersData = fs.readFileSync(path.join(appRootPath, 'BACKEND/DB/users.json'));
     const events = JSON.parse(rawEventsData);
     const users = JSON.parse(rawUsersData);
     const user = users.find(user => user.email === eventToSave.userEmail);
@@ -43,8 +45,8 @@ const eventsHandlerPost = async (req, res) => {
     user.eventsToVisit.push(eventToSave.id);
 
     try {
-        fs.writeFileSync('./BACKEND/DB/events.json', JSON.stringify(events));
-        fs.writeFileSync('./BACKEND/DB/users.json', JSON.stringify(users));
+        fs.writeFileSync(path.join(appRootPath, 'BACKEND/DB/events.json'), JSON.stringify(events));
+        fs.writeFileSync(path.join(appRootPath, 'BACKEND/DB/users.json'), JSON.stringify(users));
         responseSender(res, 200, 'The new event created!', eventToSave);
 
     } catch (err) {

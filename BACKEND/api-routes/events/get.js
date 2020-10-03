@@ -1,8 +1,10 @@
 const fs = require('fs');
+const path = require('path');
+const appRootPath = require('app-root-path').path;
 const responseSender = require('../../helpers/response-sender');
 
 const eventsHandlerGet = async (req, res) => {
-    const rawData = fs.readFileSync('./BACKEND/DB/events.json');
+    const rawData = fs.readFileSync(path.join(appRootPath, '/BACKEND/DB/events.json'));
     const events = JSON.parse(rawData);
     const id = req.query.id;
 

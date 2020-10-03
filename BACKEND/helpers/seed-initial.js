@@ -1,6 +1,8 @@
 const fs = require('fs');
+const path = require('path');
+const appRootPath = require('app-root-path').path;
 const isProd = process.argv.includes('--prod');
-const dbDir = './BACKEND/DB';
+const dbDir = path.join(appRootPath, 'BACKEND/DB');
 
 const initialUsers = isProd
     ? [{'firstName':'Дмитрий','lastName':'Мукасеев','email':'mukas180292@gmail.com','password':'$2b$10$GU8Ypmd6Tj1SoYZ48tmw6u9nCi9m2X0zubiWhee/scINPuTdXRvJO','createdEvents':['51dcce6bfa504a57147ef76834727c675da895a1','fe31d1c5e3fbf8adbf0abb64a8c646b5969dfe34'],'eventsToVisit':['51dcce6bfa504a57147ef76834727c675da895a1','fe31d1c5e3fbf8adbf0abb64a8c646b5969dfe34']},{'firstName':'Денис','lastName':'Дудинский','email':'dudik@gmail.com','password':'$2b$10$YpfuI1r8zGVWh9vdN.DHJO7O1F9A6Et5reepMdDss20wAqrLgdoVu','createdEvents':['91c797bae48ee79122f879e4ba0d93f6f9d934a5','0a1b5f83bb3a6d9770131d0e9765d5fd22133a8b'],'eventsToVisit':['91c797bae48ee79122f879e4ba0d93f6f9d934a5','0a1b5f83bb3a6d9770131d0e9765d5fd22133a8b']}]

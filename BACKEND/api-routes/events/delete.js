@@ -1,4 +1,6 @@
 const fs = require('fs');
+const path = require('path');
+const appRootPath = require('app-root-path').path;
 const responseSender = require('../../helpers/response-sender');
 
 const eventsHandlerPost = (req, res) => {
@@ -12,8 +14,8 @@ const eventsHandlerPost = (req, res) => {
         return responseSender(res, 422, 'You\'ve missed something important...');
     }
 
-    const rawEventsData = fs.readFileSync('./BACKEND/DB/events.json');
-    const rawUsersData = fs.readFileSync('./BACKEND/DB/users.json');
+    const rawEventsData = fs.readFileSync(path.join(appRootPath, 'BACKEND/DB/events.json'));
+    const rawUsersData = fs.readFileSync(path.join(appRootPath, 'BACKEND/DB/users.json'));
     const events = JSON.parse(rawEventsData);
     const users = JSON.parse(rawUsersData);
     const user = users.find(user => user.email === userEmail);
@@ -37,8 +39,8 @@ const eventsHandlerPost = (req, res) => {
     });
 
     try {
-        fs.writeFileSync('./BACKEND/DB/events.json', JSON.stringify(filteredEvents));
-        fs.writeFileSync('./BACKEND/DB/users.json', JSON.stringify(remappedUsers));
+        fs.writeFileSync(path.join(appRootPath, 'BACKEND/DB/events.json'), JSON.stringify(filteredEvents));
+        fs.writeFileSync(path.join(appRootPath, 'BACKEND/DB/users.json'), JSON.stringify(remappedUsers));
         responseSender(res, 200, 'Event has been deleted!', { id });
 
     } catch (err) {

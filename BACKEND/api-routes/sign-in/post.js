@@ -1,4 +1,6 @@
 const fs = require('fs');
+const path = require('path');
+const appRootPath = require('app-root-path').path;
 const bcrypt = require('bcrypt');
 const responseSender = require('../../helpers/response-sender');
 
@@ -13,7 +15,7 @@ const signInHandlerPost = async (req, res) => {
         return responseSender(res, 422, 'You\'ve missed something important...');
     }
     
-    const rawData = fs.readFileSync('./BACKEND/DB/users.json');
+    const rawData = fs.readFileSync(path.join(appRootPath, 'BACKEND/DB/users.json'));
     const users = JSON.parse(rawData);
     const user = users.find(user => user.email === credsToLogin.email);
 
